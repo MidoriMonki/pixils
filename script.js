@@ -15,7 +15,8 @@ var storePositions = [0, 1, 2, 3, 0,
 
 
 
-var move = "slide1";
+var moveH = "slide1";
+var moveV = "slide5";
 var slide1 = 0;
 
 
@@ -26,18 +27,31 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-     document.getElementById(move).prepend(document.getElementById(move).childNodes[2]);
-     document.getElementById(move).prepend(document.getElementById(move).childNodes[2]);
+     document.getElementById(moveH).prepend(document.getElementById(moveH).childNodes[2]);
+     document.getElementById(moveH).prepend(document.getElementById(moveH).childNodes[2]);
   }
   if (event.code == "ArrowLeft")
   {
-      document.getElementById(move).appendChild(document.getElementById(move).childNodes[0]);
-      document.getElementById(move).appendChild(document.getElementById(move).childNodes[0]);
+      document.getElementById(moveH).appendChild(document.getElementById(moveH).childNodes[0]);
+      document.getElementById(moveH).appendChild(document.getElementById(moveH).childNodes[0]);
   }
   
-    if (event.code == "Digit1")
+  if (event.code == "Digit1")
+  {
+    moveH = "slide1";
+    moveV = "slide5";
+    for (var i = 0; i > 4; i++)
     {
-      move = "slide1";
+        document.getElementById(moveH)
     }
+  }
     
 });
+
+function oneRight()
+{
+  document.getElementById(moveH).appendChild(document.getElementById("slider5").childNodes[moveH]);
+  document.getElementById(moveH).appendChild(document.getElementById("slider6").childNodes[0]);
+  document.getElementById(moveH).appendChild(document.getElementById("slider7").childNodes[0]);
+  document.getElementById(moveH).appendChild(document.getElementById("slider8").childNodes[0]);
+}
