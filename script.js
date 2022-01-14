@@ -27,12 +27,14 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-      for (var i = 0; i < 4; i++)
+      for (var i = 0; i < 5; i++)
       {
          document.getElementById(move).children[i].classList.add("test");
-         document.getElementById(move).children[i].style.transform = "translateX(100px)";
+         document.getElementById(move).children[i].style.transform = "translateX(0px)";
       }
      document.getElementById(move).prepend(document.getElementById("dummy"));
+     document.getElementById("dummy").classList.add("testD");
+     document.getElementById("dummy").style.transform = "translateX(0px)";
   }
   if (event.code == "Digit1")
   {

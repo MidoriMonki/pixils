@@ -12,14 +12,22 @@
 }
 .test
 {
-  background: green;
-  animation-name: example;
+  animation-name: right;
+  animation-duration: 1s;
+}
+.testD
+{
+  animation-name: rightD;
   animation-duration: 1s;
 }
 
 
 
 @keyframes right {
+  0%   {transform : translateX(-100px)}
+  100% {transform : translateX(0px)}
+}
+@keyframes rightD {
   0%   {transform : translateX(-100px)}
   100% {transform : translateX(0px)}
 }
