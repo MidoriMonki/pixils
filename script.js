@@ -16,6 +16,7 @@ var storePositions = [0, 1, 2, 3, 0,
 
 
 var move = 0;
+var right = 0;
 
 function ohYeah()
 {
@@ -27,14 +28,24 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-      for (var i = 0; i < 5; i++)
-      {
+      for (var i = 0; i < 4; i++){
          document.getElementById(move).children[i].classList.add("test");
-         document.getElementById(move).children[i].style.transform = "translateX(0px)";
+         document.getElementById(move).children[i].style.transform = "translateX(" + right + "px)";
       }
-     document.getElementById(move).prepend(document.getElementById("dummy"));
-     document.getElementById("dummy").classList.add("testD");
-     document.getElementById("dummy").style.transform = "translateX(0px)";
+      right += 100;
+    
+     setTimeout(function(){
+      for (var i = 0; i < 4; i++){
+         document.getElementById(move).children[i].classList.remove("test");
+      }
+      }, 2000);
+  }
+  if (event.code == "ArrowLeft")
+  {
+      for (var i = 0; i < 4; i++)
+      {
+         document.getElementById(move).children[i].classList.remove("test");
+      }
   }
   if (event.code == "Digit1")
   {
