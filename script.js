@@ -16,6 +16,12 @@ var storePositions = [0, 1, 2, 3, 0,
 
 
 var move = 0;
+
+function ohYeah()
+{
+  document.getElementById("nah").appendChild(document.getElementById("yah").childNodes[0]);
+}
+
 // Add event listener on keydown
 document.addEventListener('keydown', (event) => {
   
@@ -31,10 +37,9 @@ document.addEventListener('keydown', (event) => {
         if (storePositions[i] != 0)
         {
             document.getElementById(i).classList.add("test");
+          ohYeah();
         }
     }
   }
     
 });
-
-document.getElementById("nah").appendChild(document.getElementById("ya").childNodes[0]);
