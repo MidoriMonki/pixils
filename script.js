@@ -15,21 +15,18 @@ var storePositions = [0, 1, 2, 3, 0,
 
 
 
-var move = 1;
+var move = "slide1";
 var slide1 = 0;
 
 
 
-function ohYeah()
-{
-  document.getElementById("nah").appendChild(document.getElementById("yah").childNodes[0]);
-}
 
 // Add event listener on keydown
 document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
+    document.getElementById("slide1").prependChild(document.getElementById("slide1").childNodes[7]);
       slide1 += 100;
       for (var i = 0; i < 8; i++)
       {
@@ -38,7 +35,8 @@ document.addEventListener('keydown', (event) => {
   }
   if (event.code == "ArrowLeft")
   {
-      slide1 -= 100;
+      slide1 -= 0;
+      document.getElementById("slide1").appendChild(document.getElementById("slide1").childNodes[0]);
       document.getElementById("slide1").appendChild(document.getElementById("slide1").childNodes[0]);
     
       for (var i = 0; i < 8; i++)
@@ -47,37 +45,9 @@ document.addEventListener('keydown', (event) => {
       }
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  if (event.code == "Digit1")
-  {
-    move = "slide1";
-    for (var i = 0; i < 0; i++)
+    if (event.code == "Digit1")
     {
-        if (storePositions[i] != 0)
-        {
-            document.getElementById(i).classList.add("test");
-          ohYeah();
-        }
+      move = "slide1";
     }
-  }
     
 });
