@@ -26,8 +26,8 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-     document.getElementById(move).prepend(document.getElementById(move).childNodes[3]);
-     document.getElementById(move).prepend(document.getElementById(move).childNodes[3]);
+     document.getElementById(move).prepend(document.getElementById(move).childNodes[2]);
+     document.getElementById(move).prepend(document.getElementById(move).childNodes[2]);
   }
   if (event.code == "ArrowLeft")
   {

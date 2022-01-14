@@ -5,8 +5,13 @@
   width: 100px;
   height: 100px;
   transition-duration: .5s;
+  animation: float 1s;
 }
 
+.null{
+  background: grey;
+  z-index: -10;
+}
 .yes
 {
     background: red;
@@ -18,6 +23,6 @@
 
 @keyframes float{
   0%{ transform: translateY(0px)}
-  80% { transform: translateY(9px) }
-  100% { transform: translateY(10px) }
+  80% { transform: translateY(-9px) }
+  100% { transform: translateY(-10px) }
 }
