@@ -46,11 +46,6 @@ document.addEventListener('keydown', (event) => {
     {
         document.getElementById("slide" + moveH).children[i].style.transform = "translateY(-20px)";
     }
-    Vertical();
-    for (var i = 0; i < 4; i++)
-    {
-        document.getElementById("slide" + moveV).children[i].style.transform = "translateY(-20px)";
-    }
   }
     
 });
@@ -58,19 +53,35 @@ document.addEventListener('keydown', (event) => {
 function Horizontal()
 {
   if (document.getElementById("slide" + moveH).children.length == 0) {
-  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide5").childNodes[moveH]);
-  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide6").childNodes[moveH]);
-  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide7").childNodes[moveH]);
-  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide8").childNodes[moveH]);
+  document.getElementById("slide1").appendChild(document.getElementById("slide5").childNodes[0]);
+  document.getElementById("slide1").appendChild(document.getElementById("slide6").childNodes[0]);
+  document.getElementById("slide1").appendChild(document.getElementById("slide7").childNodes[0]);
+  document.getElementById("slide1").appendChild(document.getElementById("slide8").childNodes[0]);
+    
+  document.getElementById("slide2").appendChild(document.getElementById("slide5").childNodes[1]);
+  document.getElementById("slide2").appendChild(document.getElementById("slide6").childNodes[1]);
+  document.getElementById("slide2").appendChild(document.getElementById("slide7").childNodes[1]);
+  document.getElementById("slide2").appendChild(document.getElementById("slide8").childNodes[1]);
+    
+  document.getElementById("slide3").appendChild(document.getElementById("slide5").childNodes[2]);
+  document.getElementById("slide3").appendChild(document.getElementById("slide6").childNodes[2]);
+  document.getElementById("slide3").appendChild(document.getElementById("slide7").childNodes[2]);
+  document.getElementById("slide3").appendChild(document.getElementById("slide8").childNodes[2]);
+    
+  document.getElementById("slide4").appendChild(document.getElementById("slide5").childNodes[3]);
+  document.getElementById("slide4").appendChild(document.getElementById("slide6").childNodes[0]);
+  document.getElementById("slide4").appendChild(document.getElementById("slide7").childNodes[0]);
+  document.getElementById("slide4").appendChild(document.getElementById("slide8").childNodes[0]);
   }
 }
 
 
 function Vertical()
 {
-    if (document.getElementById("slide" + moveH).children.length == 0) {
+  if (document.getElementById("slide" + moveV).children.length == 0) {
   document.getElementById("slide" + moveV).appendChild(document.getElementById("slide1").childNodes[moveV - 5]);
   document.getElementById("slide" + moveV).appendChild(document.getElementById("slide2").childNodes[moveV - 5]);
   document.getElementById("slide" + moveV).appendChild(document.getElementById("slide3").childNodes[moveV - 5]);
   document.getElementById("slide" + moveV).appendChild(document.getElementById("slide4").childNodes[moveV - 5]);
+  }
 }
