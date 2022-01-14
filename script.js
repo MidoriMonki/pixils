@@ -38,7 +38,7 @@ document.addEventListener('keydown', (event) => {
       for (var i = 0; i < 4; i++){
          document.getElementById(move).children[i].classList.remove("test");
       }
-      }, 2000);
+      }, 1000);
   }
   if (event.code == "ArrowLeft")
   {

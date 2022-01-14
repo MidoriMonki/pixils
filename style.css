@@ -4,30 +4,10 @@
   border-radius: 20px;
   width: 100px;
   height: 100px;
+  transition-duration: 1s;
 }
 
 .yes
 {
     background: red;
-}
-.test
-{
-  animation-name: right;
-  animation-duration: 1s;
-}
-.testD
-{
-  animation-name: rightD;
-  animation-duration: 1s;
-}
-
-
-
-@keyframes right {
-  0%   {transform : translateX(0px)}
-  100% {transform : translateX(100px)}
-}
-@keyframes rightD {
-  0%   {transform : translateX(-100px)}
-  100% {transform : translateX(0px)}
 }
