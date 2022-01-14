@@ -15,8 +15,10 @@ var storePositions = [0, 1, 2, 3, 0,
 
 
 
-var move = 0;
-var right = 0;
+var move = 1;
+var slide1 = 0;
+
+
 
 function ohYeah()
 {
@@ -28,25 +30,43 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-      for (var i = 0; i < 4; i++){
-         document.getElementById(move).children[i].classList.add("test");
-         document.getElementById(move).children[i].style.transform = "translateX(" + right + "px)";
+      slide1 += 100;
+      for (var i = 0; i < 8; i++)
+      {
+         document.getElementById(move).children[i].style.transform = "translateX(" + slide1 + "px)";
       }
-      right += 100;
-    
-     setTimeout(function(){
-      for (var i = 0; i < 4; i++){
-         document.getElementById(move).children[i].classList.remove("test");
-      }
-      }, 1000);
   }
   if (event.code == "ArrowLeft")
   {
-      for (var i = 0; i < 4; i++)
+      slide1 -= 100;
+      document.getElementById("slide1").appendChild(document.getElementById("slide1").childNodes[0]);
+    
+      for (var i = 0; i < 8; i++)
       {
-         document.getElementById(move).children[i].classList.remove("test");
+         document.getElementById(move).children[i].style.transform = "translateX(" + slide1 + "px)";
       }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   if (event.code == "Digit1")
   {
     move = "slide1";
