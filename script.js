@@ -58,17 +58,17 @@ function Horizontal()
   document.getElementById("slide1").appendChild(document.getElementById("slide7").childNodes[0]);
   document.getElementById("slide1").appendChild(document.getElementById("slide8").childNodes[0]);
     
-  document.getElementById("slide2").appendChild(document.getElementById("slide5").childNodes[1]);
-  document.getElementById("slide2").appendChild(document.getElementById("slide6").childNodes[1]);
-  document.getElementById("slide2").appendChild(document.getElementById("slide7").childNodes[1]);
-  document.getElementById("slide2").appendChild(document.getElementById("slide8").childNodes[1]);
+  document.getElementById("slide2").appendChild(document.getElementById("slide5").childNodes[0]);
+  document.getElementById("slide2").appendChild(document.getElementById("slide6").childNodes[0]);
+  document.getElementById("slide2").appendChild(document.getElementById("slide7").childNodes[0]);
+  document.getElementById("slide2").appendChild(document.getElementById("slide8").childNodes[0]);
     
-  document.getElementById("slide3").appendChild(document.getElementById("slide5").childNodes[2]);
-  document.getElementById("slide3").appendChild(document.getElementById("slide6").childNodes[2]);
-  document.getElementById("slide3").appendChild(document.getElementById("slide7").childNodes[2]);
-  document.getElementById("slide3").appendChild(document.getElementById("slide8").childNodes[2]);
+  document.getElementById("slide3").appendChild(document.getElementById("slide5").childNodes[0]);
+  document.getElementById("slide3").appendChild(document.getElementById("slide6").childNodes[0]);
+  document.getElementById("slide3").appendChild(document.getElementById("slide7").childNodes[0]);
+  document.getElementById("slide3").appendChild(document.getElementById("slide8").childNodes[0]);
     
-  document.getElementById("slide4").appendChild(document.getElementById("slide5").childNodes[3]);
+  document.getElementById("slide4").appendChild(document.getElementById("slide5").childNodes[0]);
   document.getElementById("slide4").appendChild(document.getElementById("slide6").childNodes[0]);
   document.getElementById("slide4").appendChild(document.getElementById("slide7").childNodes[0]);
   document.getElementById("slide4").appendChild(document.getElementById("slide8").childNodes[0]);
