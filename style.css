@@ -1,4 +1,11 @@
 box{
-  width: 200px;
-  height: 200px;
+  background: rgb(30, 30, 30);
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+.yes
+{
+    background: red;
 }
