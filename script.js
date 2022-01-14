@@ -27,12 +27,16 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-      alert("yo");
+      for (var i = 0; i < 4; i++)
+      {
+         document.getElementById(move).children[i].classList.add("test");
+         document.getElementById(move).children[i].style.left = 100;
+      }
   }
   if (event.code == "Digit1")
   {
-    move = 1;
-    for (var i = 0; i < 5; i++)
+    move = "slide1";
+    for (var i = 0; i < 0; i++)
     {
         if (storePositions[i] != 0)
         {
