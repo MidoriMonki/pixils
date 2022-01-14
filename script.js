@@ -27,19 +27,13 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-      if (document.getElementById("slide" + moveH).children.length == 0)
-      {
-             Horizontal();
-      }
+      Horizontal();
       document.getElementById("slide" + moveH).insertBefore(document.getElementById("slide" + moveH).childNodes[3], document.getElementById("slide" + moveH).firstChild);
   }
   
   if (event.code == "ArrowLeft")
   {
-      if (document.getElementById("slide" + moveH).children.length == 0)
-      {
-             Horizontal();
-      }
+      Horizontal();
       document.getElementById("slide" + moveH).appendChild(document.getElementById("slide" + moveH).childNodes[0]);
   }
   
@@ -48,14 +42,14 @@ document.addEventListener('keydown', (event) => {
     moveH = "1";
     moveV = "5";
     Horizontal();
-    for (var i = 0; i > 4; i++)
+    for (var i = 0; i < 4; i++)
     {
-        document.getElementById(moveH).child.style.transform = "translateY(-20px)";
+        document.getElementById("slide" + moveH).children[i].style.transform = "translateY(-20px)";
     }
     Vertical();
-    for (var i = 0; i > 4; i++)
+    for (var i = 0; i < 4; i++)
     {
-        document.getElementById(moveV).child[i].classList.add("test");
+        document.getElementById("slide" + moveV).children[i].style.transform = "translateY(-20px)";
     }
   }
     
@@ -63,14 +57,20 @@ document.addEventListener('keydown', (event) => {
 
 function Horizontal()
 {
+  if (document.getElementById("slide" + moveH).children.length == 0) {
   document.getElementById("slide" + moveH).appendChild(document.getElementById("slide5").childNodes[moveH]);
   document.getElementById("slide" + moveH).appendChild(document.getElementById("slide6").childNodes[moveH]);
   document.getElementById("slide" + moveH).appendChild(document.getElementById("slide7").childNodes[moveH]);
   document.getElementById("slide" + moveH).appendChild(document.getElementById("slide8").childNodes[moveH]);
+  }
 }
 
 
 function Vertical()
 {
+    if (document.getElementById("slide" + moveH).children.length == 0) {
   document.getElementById("slide" + moveV).appendChild(document.getElementById("slide1").childNodes[moveV - 5]);
+  document.getElementById("slide" + moveV).appendChild(document.getElementById("slide2").childNodes[moveV - 5]);
+  document.getElementById("slide" + moveV).appendChild(document.getElementById("slide3").childNodes[moveV - 5]);
+  document.getElementById("slide" + moveV).appendChild(document.getElementById("slide4").childNodes[moveV - 5]);
 }
