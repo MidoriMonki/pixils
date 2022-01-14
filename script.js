@@ -15,8 +15,8 @@ var storePositions = [0, 1, 2, 3, 0,
 
 
 
-var moveH = "slide1";
-var moveV = "slide5";
+var moveH = "1";
+var moveV = "5";
 var slide1 = 0;
 
 
@@ -27,19 +27,22 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-     document.getElementById(moveH).prepend(document.getElementById(moveH).childNodes[2]);
-     document.getElementById(moveH).prepend(document.getElementById(moveH).childNodes[2]);
+    if (document.getElementById("slide" + moveH).children.length == 0)
+      {
+             oneRight();
+      }
+     document.getElementById("slide" + moveH).prepend(document.getElementById("slide" + moveH).childNodes[0]);
+   document.getElementById("slide" + moveH).insertBefore(document.getElementById("slide" + moveH), eElement.firstChild);
   }
   if (event.code == "ArrowLeft")
   {
-      document.getElementById(moveH).appendChild(document.getElementById(moveH).childNodes[0]);
-      document.getElementById(moveH).appendChild(document.getElementById(moveH).childNodes[0]);
+      document.getElementById("slide" + moveH).appendChild(document.getElementById("slide" + moveH).childNodes[0]);
   }
   
   if (event.code == "Digit1")
   {
-    moveH = "slide1";
-    moveV = "slide5";
+    moveH = "1";
+    moveV = "5";
     for (var i = 0; i > 4; i++)
     {
         document.getElementById(moveH)
@@ -50,8 +53,8 @@ document.addEventListener('keydown', (event) => {
 
 function oneRight()
 {
-  document.getElementById(moveH).appendChild(document.getElementById("slider5").childNodes[moveH]);
-  document.getElementById(moveH).appendChild(document.getElementById("slider6").childNodes[0]);
-  document.getElementById(moveH).appendChild(document.getElementById("slider7").childNodes[0]);
-  document.getElementById(moveH).appendChild(document.getElementById("slider8").childNodes[0]);
+  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide5").childNodes[moveH]);
+  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide6").childNodes[moveH]);
+  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide7").childNodes[moveH]);
+  document.getElementById("slide" + moveH).appendChild(document.getElementById("slide8").childNodes[moveH]);
 }
