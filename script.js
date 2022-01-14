@@ -30,8 +30,9 @@ document.addEventListener('keydown', (event) => {
       for (var i = 0; i < 4; i++)
       {
          document.getElementById(move).children[i].classList.add("test");
-         document.getElementById(move).children[i].style.left = 100;
+         document.getElementById(move).children[i].style.transform = "translateX(100px)";
       }
+     document.getElementById(move).prepend(document.getElementById("dummy"));
   }
   if (event.code == "Digit1")
   {
