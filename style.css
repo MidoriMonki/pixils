@@ -11,3 +11,13 @@
 {
     background: red;
 }
+
+.test{
+  animation: float 1s;
+}
+
+@keyframes float{
+  0%{ transform: translateY(0px)}
+  80% { transform: translateY(9px) }
+  100% { transform: translateY(10px) }
+}

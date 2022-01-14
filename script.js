@@ -26,23 +26,13 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-    document.getElementById("slide1").prependChild(document.getElementById("slide1").childNodes[7]);
-      slide1 += 100;
-      for (var i = 0; i < 8; i++)
-      {
-         document.getElementById(move).children[i].style.transform = "translateX(" + slide1 + "px)";
-      }
+     document.getElementById(move).prepend(document.getElementById(move).childNodes[3]);
+     document.getElementById(move).prepend(document.getElementById(move).childNodes[3]);
   }
   if (event.code == "ArrowLeft")
   {
-      slide1 -= 0;
-      document.getElementById("slide1").appendChild(document.getElementById("slide1").childNodes[0]);
-      document.getElementById("slide1").appendChild(document.getElementById("slide1").childNodes[0]);
-    
-      for (var i = 0; i < 8; i++)
-      {
-         document.getElementById(move).children[i].style.transform = "translateX(" + slide1 + "px)";
-      }
+      document.getElementById(move).appendChild(document.getElementById(move).childNodes[0]);
+      document.getElementById(move).appendChild(document.getElementById(move).childNodes[0]);
   }
   
     if (event.code == "Digit1")
