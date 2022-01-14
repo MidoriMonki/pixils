@@ -16,11 +16,11 @@ document.addEventListener('keydown', (event) => {
   
   if (event.code == "ArrowRight")
   {
-      
+      alert("yo");
   }
-    if (event.code == "ArrowRight")
+  if (event.code == "Digit1")
   {
-      
+      alert("yo");
   }
     
 });
