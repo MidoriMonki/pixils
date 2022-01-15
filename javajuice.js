@@ -30,6 +30,7 @@ var mode = 2;
 var target;
 var selected;
 var row;
+var pixilsInRow;
 
 function dragStart(e)
 {
@@ -152,7 +153,7 @@ function dragEnd()
                 //go to the center from top
                 if (uTopMS[row-1] == -150){
                 for (var i=0; i < 4; i++){  
-                  storePositions[(row-1) + (5*(i))] = storePositions[(row-1) - (5*i)]
+                  storePositions[(row-1) + (5*(i+1))] = storePositions[(row-1) + (5*(i))]
                 }
                 storePositions[(row-1)] = 0;
                 }
@@ -254,6 +255,9 @@ function checkDirection()
              row = 5;      
            }    
          }
+         for (var i=0;i<5;i++){
+           pixilsInRow[i] = storePositions[((row-1)*5) + i];
+         }
        }
   }else{
       mode = 0;
@@ -271,6 +275,9 @@ function checkDirection()
              }else if (cheese == 4 || cheese == 9){
              row = 5;
            }    
+         }
+         for (var i=0;i<5;i+=5){
+            pixilsInRow[i] = storePositions[i];
          }
        }
      }
