@@ -141,15 +141,9 @@ function dragMove(e)
   
   // let us begin scrolling
   if(mode == 1){
-    for (var i=0;i<5;i++)
-    {
-      slide.children[pixilsInRow[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + 15*(i-2) + "vw";
-    }
+    //for (var i=0;i<5;i++){slide.children[pixilsInRow[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + 15*(i-2) + "vw";}
   } else if (mode == 0){
-    for (var i=0;i<5;i++)
-    {
-      slide.children[pixilsInRow[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + 15*(i-2) + "vw";
-    }
+    //for (var i=0;i<5;i++){slide.children[pixilsInRow[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + 15*(i-2) + "vw";}
   }
 }
 
