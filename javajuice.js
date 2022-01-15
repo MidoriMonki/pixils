@@ -118,10 +118,13 @@ function dragMove(e)
       }
     }
   } else if (mode == 0){
-      for (var i=1; i < 9; i+=4){
-         slide.children[i].style.top = uTop - (uPosY - vPosY) + "px";
+    for (var i=(row-6); i < 5; i+=5)
+    {
+      if (storePositions[i] - 1 != -1){
+        slide.children[storePositions[i] - 1].style.right = uTop[row-1] - (uPosY - vPosY) + "px";
       }
     }
+  }
 }
 
 
@@ -131,7 +134,7 @@ function checkDirection()
 {
   if (Math.pow((vPosX - uPosX), 2) > Math.pow((vPosY - uPosY), 2)) {
        mode = 1;
-       for (var i=0;i<16;i++){
+       for (var i=0;i<25;i++){
          if (storePositions[i] == target){
              if (i <= 4){
              row = 1;   
@@ -148,5 +151,20 @@ function checkDirection()
        }
   }else{
       mode = 0;
-  }
-}
+      for (var i=0;i<25;i++){
+         if (storePositions[i] == target){
+             if (i[1] == 0 || i[1] == 5){
+             row = 1;   
+             }else if (i[1] == 1 || i[1] == 6){
+             row = 2;
+             }else if (i[1] == 2 || i[1] == 7){
+             row = 3;  
+             }else if (i[1] == 3 || i[1] == 8){
+             row = 4;     
+             }else if (i[1] == 4 || i[1] == 9){
+             row = 5;      
+           }    
+         }
+       }
+     }
+   }
