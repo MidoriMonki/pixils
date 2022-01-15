@@ -56,33 +56,31 @@ function dragEnd()
   if (mode == 1)
   {
           uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
-          if (uRight[row-1] > -175){
-             uRight[row-1] = -100;
+          if (uRight[row-1] > -17.5){
+             uRight[row-1] = -10;
 
             
             
             
             
-          }else if (uRight[row-1] > -325){
-               uRight[row-1] = -250;
+          }else if (uRight[row-1] > -32.5){
+               uRight[row-1] = -25;
 
                   
             
             
           }else{
-               uRight[row-1] = -400;
+               uRight[row-1] = -40;
 
             
             
             //done :)))) that was frustating
           }
-          for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
-          {
-              if (storePositions[i] - 1 != -1){
-                slide.children[storePositions[i] - 1].style.right = uRight[row-1] + "px";
-              }
-          }
-    document.getElementById("bruh").innerHTML = storePositions;
+         for (var i=0;i<5;i++)
+         {
+            slide.children[pixilsInRow[i] - 1].style.right = (uRight[row-1] + 15*(i-2))/100 + "vw";
+         }
+    document.getElementById("bruh").innerHTML = (uRight[row-1] + 15*(i-2)) + "vw";
     document.getElementById("bruhY").innerHTML = uRightMS[1];
   }
   if (mode == 0)
@@ -145,12 +143,12 @@ function dragMove(e)
   if(mode == 1){
     for (var i=0;i<5;i++)
     {
-      slide.children[pixilsInRow[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + 100*(i-2) + "px";
+      slide.children[pixilsInRow[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + 15*(i-2) + "vw";
     }
   } else if (mode == 0){
     for (var i=0;i<5;i++)
     {
-      slide.children[pixilsInRow[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + 100*(i-2) + "px";
+      slide.children[pixilsInRow[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + 15*(i-2) + "vw";
     }
   }
 }
