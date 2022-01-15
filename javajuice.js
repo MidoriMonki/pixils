@@ -1,8 +1,9 @@
 var pixils = document.getElementsByClassName('box');
 
-pixils.addEventListener('touchstart', dragStart)
-pixils.addEventListener('touchend', dragEnd)
-pixils.addEventListener('touchmove', dragMove)
+pixils.addEventListener('touchstart', dragStart);
+pixils.addEventListener('touchend', dragEnd);
+pixils.addEventListener('touchmove', dragMove);
+pixils.mousedown = dragStart;
 
 var p = 0;
 if (p == 1)
@@ -13,6 +14,7 @@ if (p == 1)
 
 function dragStart(e)
 {
+      alert("yah");
   e.preventDefault();
   if (e.type == "touchstart")
   {
