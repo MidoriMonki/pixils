@@ -2,10 +2,13 @@ var slide = document.getElementById('slide1');
 
 for (var i=0;i<9;i++)
 {
+  if (slide.children[i].class != "null")
+    {  
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
     slide.children[i].mousedown = dragStart;
+    }
 }
 
 var uRight = [0, -250, -250, -250, 0];
