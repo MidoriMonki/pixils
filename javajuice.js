@@ -55,48 +55,18 @@ function dragEnd()
           if (uRight[row-1] > -175){
              uRight[row-1] = -100;
                   //go to the left
-              uRightMS[row-1] = -100; 
-
+                  
             
           }else if (uRight[row-1] > -325){
                   uRight[row-1] = -250;
                   //go back to center
-                  if (uRightMS[row-1] == -400) 
-                  {
-                  for (var i=((row-1)*5); i < 4+(5*(row-1)); i++){
-                     storePositions[i] = storePositions[i + 1];
-                  }
-                  storePositions[5 + (row-1)*5] = 0;
-                  }
-                  //now the other way :)
-                  if (uRightMS[row-1] == -100) 
-                  {
-                  for (var i=((row-1)*5)+4; i > (5*(row-1)); i--){
-                     storePositions[i] = storePositions[i - 1];
-                  }
-                  storePositions[((row-1)*5) - 5] = 0;
-                  }
-                  uRightMS[row-1] = -250; 
+                  
             
             
           }else{
-             uRight[row-1] = -400;
-            // go to right
-              if (uRightMS[row-1] == -100){
-              for (var i=((row-1)*5)+3; i > (5*(row-1)); i--){
-                 storePositions[i] = storePositions[i - 1];
-                }
-              storePositions[((row-1)*5) - 5] = 0;
-              }
-            
-            
-              if (uRightMS[row-1] != -400){
-              for (var i=((row-1)*5)+4; i > (5*(row-1)); i--){
-                 storePositions[i] = storePositions[i - 1];
-                }
-              storePositions[((row-1)*5) - 4] = 0;
-              }
-              uRightMS[row-1] = uRightMS[row-1] = -400;
+                 uRight[row-1] = -400;
+                // go to right
+
             
             
             //done
