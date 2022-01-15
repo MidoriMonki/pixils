@@ -140,12 +140,13 @@ function dragEnd()
           }else if (uTop[row-1] > -75){
              uTop[row-1] = 0;
                 //go to the center from top
-                if (uRightMS[row-1] == -400){
+                if (uTopMS[row-1] == -150){
                 for (var i=0; i < 3; i++){  
                   storePositions[(row-1) + 15] = storePositions[(row-1) + 15 - i*5]
                 }
                 storePositions[(row-1)] = 0;
                 }
+                uTopMS[row-1] = 0;
             
             
             
@@ -156,9 +157,14 @@ function dragEnd()
             
           }else{
              uTop[row-1] = -150;
-                //this is top
-            
-            
+                //go to the top from center
+                if (uTopMS[row-1] == 0){
+                for (var i=0; i < 4; i++){  
+                  storePositions[(row-1)] = storePositions[(row-1) + i*5]
+                }
+                storePositions[(row-1) + 20] = 0;
+                }
+                uTopMS[row-1] = -150;
             
             
             
