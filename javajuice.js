@@ -142,7 +142,7 @@ function dragEnd()
                 //go to the center from top
                 if (uTopMS[row-1] == -150){
                 for (var i=1; i < 5; i++){  
-                  storePositions[(row-1) + 15 + (5*(i-1))] = storePositions[(row-1) + 15 - (5*i)]
+                  storePositions[(row-1) + 20 - (5*(i-1))] = storePositions[(row-1) + 20 - (5*i)]
                 }
                 storePositions[(row-1)] = 0;
                 }
@@ -214,7 +214,7 @@ function dragMove(e)
       }
     }
   } else if (mode == 0){
-    for (var i=(row-1); i < (19 + row); i+=5)
+    for (var i=(row-1); i < 25; i+=5)
     {
       if (storePositions[i] - 1 != -1){
         slide.children[storePositions[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + "px";
