@@ -54,16 +54,51 @@ function dragEnd()
           uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
           if (uRight[row-1] > -175){
              uRight[row-1] = -100;
-          //oh boy
+                  //yay how fun
+                  if (uRightMS[row-1] = -400) 
+                  {
+                  for (var i=((row-1)*5); i < 4+(5*(row-1)); i++){
+                     storePositions[i] = storePositions[i + 1];
+                  }
+                  storePositions[5 + (row-1)*5] = 0;
+                  }
+                  uRightMS[row-1] = uRight[row-1]; 
+                  //now the other way :)
+                  if (uRightMS[row-1] = -100) 
+                  {
+                  for (var i=((row-1)*5)+4; i > (5*(row-1)); i--){
+                     storePositions[i] = storePositions[i - 1];
+                  }
+                  storePositions[((row-1)*5) - 5] = 0;
+                  }
+                  uRightMS[row-1] = uRight[row-1]; 
 
             
             
-            
-            
-            
           }else if (uRight[row-1] > -325){
-             uRight[row-1] = -250;
-             //
+            
+                  uRight[row-1] = -250;
+                  //yay how
+                  if (uRightMS[row-1] = -400) 
+                  {
+                  for (var i=((row-1)*5); i < 4+(5*(row-1)); i++){
+                     storePositions[i] = storePositions[i + 1];
+                  }
+                  storePositions[5 + (row-1)*5] = 0;
+                  }
+                  uRightMS[row-1] = uRight[row-1]; 
+                  //now the other way :)
+                  if (uRightMS[row-1] = -100) 
+                  {
+                  for (var i=((row-1)*5)+4; i > (5*(row-1)); i--){
+                     storePositions[i] = storePositions[i - 1];
+                  }
+                  storePositions[((row-1)*5) - 5] = 0;
+                  }
+                  uRightMS[row-1] = uRight[row-1]; 
+            
+            
+            
           }else{
              uRight[row-1] = -400;
           }
