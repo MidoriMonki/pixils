@@ -59,10 +59,9 @@ function dragEnd()
 
             
           }else if (uRight[row-1] > -325){
-            
                   uRight[row-1] = -250;
-                  //yay how fun
-                  if (uRightMS[row-1] = -400) 
+                  //go back to center
+                  if (uRightMS[row-1] == -400) 
                   {
                   for (var i=((row-1)*5); i < 4+(5*(row-1)); i++){
                      storePositions[i] = storePositions[i + 1];
@@ -70,7 +69,7 @@ function dragEnd()
                   storePositions[5 + (row-1)*5] = 0;
                   }
                   //now the other way :)
-                  if (uRightMS[row-1] = -100) 
+                  if (uRightMS[row-1] == -100) 
                   {
                   for (var i=((row-1)*5)+4; i > (5*(row-1)); i--){
                      storePositions[i] = storePositions[i - 1];
@@ -84,20 +83,23 @@ function dragEnd()
              uRight[row-1] = -400;
             // go to right
               if (uRightMS[row-1] == -100){
-              for (var i=((row-1)*5)+4; i > (5*(row-1)); i--){
+              for (var i=((row-1)*5)+3; i > (5*(row-1)); i--){
                  storePositions[i] = storePositions[i - 1];
                 }
               storePositions[((row-1)*5) - 5] = 0;
               }
+            
+            
               if (uRightMS[row-1] != -400){
-              for (var i=((row-1)*5)+5; i > (5*(row-1)); i--){
+              for (var i=((row-1)*5)+4; i > (5*(row-1)); i--){
                  storePositions[i] = storePositions[i - 1];
                 }
-              storePositions[((row-1)*5) - 5] = 0;
+              storePositions[((row-1)*5) - 4] = 0;
               }
               uRightMS[row-1] = uRightMS[row-1] = -400;
             
             
+            //done
           }
           for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
           {
@@ -105,7 +107,8 @@ function dragEnd()
                 slide.children[storePositions[i] - 1].style.right = uRight[row-1] + "px";
               }
           }
-    
+    document.getElementById("bruh").innerHTML = storePositions;
+    document.getElementById("bruhY").innerHTML = uRightMS[1];
   }
   if (mode == 0)
   {
