@@ -55,14 +55,14 @@ function dragEnd()
           if (uRight[row-1] > -175){
              uRight[row-1] = -100;
                   //go to the center from right
-                  if (uRightMS == -400){
+                  if (uRightMS[row-1] == -400){
                   for (var i=0; i < 4; i++){  
                     storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
                   }
                   storePositions[(row-1)*5 + 4] = 0;
                   }
                   //go to the left from center
-                  if (uRightMS != uRight[row-1]){
+                  if (uRightMS[row-1] != uRight[row-1]){
                   for (var i=0; i < 3; i++){  
                     storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
                   }
@@ -77,16 +77,16 @@ function dragEnd()
           }else if (uRight[row-1] > -325){
                uRight[row-1] = -250;
                   //go to the center from right
-                  if (uRightMS == -400){
+                  if (uRightMS[row-1] == -400){
                   for (var i=0; i < 4; i++){  
                     storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
                   }
-                  storePositions[(row-1)*5 + 4] = 0;
+                  storePositions[(row-1)*5 + 0] = 0;
                   }
                   //go to the center from left
                   if (uRightMS[row-1] == -100){
-                  for (var i=0; i < 3; i++){  
-                    storePositions[(row-1)*5 + 1 + i] = storePositions[(row-1)*5 + i]
+                  for (var i=4; i > 0; i--){  
+                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + i - 1]
                   }
                   storePositions[(row-1)*5] = 0;
                   }
@@ -97,14 +97,20 @@ function dragEnd()
           }else{
                uRight[row-1] = -400;
                   //go to the center from left
-                  if (uRightMS == -100){
-                  for (var i=0; i < 3; i++){  
-                    storePositions[(row-1)*5 + 1 + i] = storePositions[(row-1)*5 + i]
+                  if (uRightMS[row-1] == -100){
+                  for (var i=4; i > 0; i--){  
+                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + i - 1]
                   }
                   storePositions[(row-1)*5] = 0;
                   }
+                  //go to the right from center
+                  if (uRightMS[row-1] != uRight[row-1]){
+                  for (var i=5; i > 1; i--){  
+                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + i - 1]
+                  }
+                  storePositions[(row-1)*5 + 1] = 0;
+                  }
                   uRightMS[row-1] = -400;
-
             
             
             //done
