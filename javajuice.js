@@ -6,6 +6,7 @@ slide.addEventListener('touchmove', dragMove);
 slide.mousedown = dragStart;
 
 var uRight = 100;
+var uTop = 100;
 var uPosX;
 var uPosY;
 var vPosX;
@@ -35,6 +36,7 @@ function dragStart(e)
 function dragEnd()
 {
   uRight = 0;
+  uTop = 0;
   mode = 2;
   var holder = slide.children[0].style.right;
   for (var i=0; i < (holder.length - 2); i++)
@@ -51,6 +53,23 @@ function dragEnd()
   if (cheese == 1)
   {
     uRight *= -1;
+    cheese = 0;
+  }
+  var holder = slide.children[1].style.top;
+  for (var i=0; i < (holder.length - 2); i++)
+  {
+    if (holder[i] != "-")
+    {
+       uTop += holder[i];
+    }
+    else
+    {
+       var cheese = 1;
+    }
+  }
+  if (cheese == 1)
+  {
+    uTop *= -1;
     cheese = 0;
   }
 }
@@ -82,14 +101,14 @@ function dragMove(e)
      }
   } else if (mode == 0){
       for (var i=1; i < 16; i+=4){
-         slide.children[i].style.top = uRight + (vPosY - uPosY) + "px";
+         slide.children[i].style.top = uTop - (uPosY - vPosY) + "px";
       }
     }
 }
 
 function checkDirection()
 {
-  if ((vPosX - uPosX)^2 > (vPosY - uPosY)^2) {
+  if (Math.pow((vPosX - uPosX), 2) > Math.pow((vPosY - uPosY), 2)) {
        mode = 1;
   }else{
       mode = 0;
