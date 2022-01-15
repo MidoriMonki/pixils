@@ -56,6 +56,8 @@ function dragEnd()
              uRight[row-1] = -100;
                   //go to the left
                   
+                  storePositions[] = storePositions[] 
+            
             
           }else if (uRight[row-1] > -325){
                   uRight[row-1] = -250;
