@@ -2,7 +2,7 @@ var slide = document.getElementById('slide1');
 
 for (var i=0;i<9;i++)
 {
-  if (slide.children[i].class != "null")
+  if (slide.children[i].className != "null")
     {  
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
@@ -132,7 +132,14 @@ function dragEnd()
           uTop[row-1] = uTop[row-1] - (uPosY - vPosY);
           if (uTop[row-1] > 75){
              uTop[row-1] = 150;
-                 //this is bottom
+                //go to the bottom from center
+                if (uTopMS[row-1] == 0){
+                for (var i=1; i < 5; i++){  
+                  storePositions[(row-1) + 20 - (5*(i-1))] = storePositions[(row-1) + 20 - (5*i)]
+                }
+                storePositions[(row-1)] = 0;
+                }
+                uTopMS[row-1] = 150;
             
             
             
@@ -144,8 +151,8 @@ function dragEnd()
              uTop[row-1] = 0;
                 //go to the center from top
                 if (uTopMS[row-1] == -150){
-                for (var i=1; i < 5; i++){  
-                  storePositions[(row-1) + 20 - (5*(i-1))] = storePositions[(row-1) + 20 - (5*i)]
+                for (var i=0; i < 4; i++){  
+                  storePositions[(row-1) + (5*(i))] = storePositions[(row-1) - (5*i)]
                 }
                 storePositions[(row-1)] = 0;
                 }
