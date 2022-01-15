@@ -250,10 +250,10 @@ function checkDirection()
              row = 5;      
            }    
          }
+       }
          for (var i=0;i<5;i++){
            pixilsInRow[i] = storePositions[((row-1)*5) + i];
          }
-       }
   }else{
       mode = 0;
       for (var i=0;i<25;i++){
@@ -271,10 +271,10 @@ function checkDirection()
              row = 5;
            }    
          }
-         for (var i=0;i<5;i++){
+       }
+         for (var i=0;i<0;i++){
             pixilsInRow[i] = storePositions[(row-1) + (5*i)];
          }
          document.getElementById("bruh").innerHTML = pixilsInRow;
-       }
      }
    }
