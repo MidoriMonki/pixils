@@ -5,7 +5,7 @@ slide.addEventListener('touchend', dragEnd);
 slide.addEventListener('touchmove', dragMove);
 slide.mousedown = dragStart;
 
-var uRight = 10;
+var uRight = 100;
 var uPosX;
 var uPosY;
 var vPosX;
@@ -36,7 +36,24 @@ function dragStart(e)
 }
 function dragEnd()
 {
-  uRight = slide.children[0].style.right;
+  uRight = 0;
+  var holder = slide.children[0].style.right;
+  for (var i=0; i < (holder.length - 2); i++)
+  {
+    if (holder[i] != "-")
+    {
+       uRight += holder[i];
+    }
+    else
+    {
+       var cheese = 1;
+    }
+  }
+  if (cheese == 1)
+  {
+    uRight *= -1;
+    cheese = 0;
+  }
 }
 function dragMove(e)
 {
