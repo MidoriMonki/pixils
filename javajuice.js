@@ -141,8 +141,8 @@ function dragEnd()
              uTop[row-1] = 0;
                 //go to the center from top
                 if (uTopMS[row-1] == -150){
-                for (var i=0; i < 3; i++){  
-                  storePositions[(row-1) + 15] = storePositions[(row-1) + 15 - i*5]
+                for (var i=1; i < 5; i++){  
+                  storePositions[(row-1) + 15 + (5*(i-1))] = storePositions[(row-1) + 15 - (5*i)]
                 }
                 storePositions[(row-1)] = 0;
                 }
@@ -159,8 +159,8 @@ function dragEnd()
              uTop[row-1] = -150;
                 //go to the top from center
                 if (uTopMS[row-1] == 0){
-                for (var i=0; i < 4; i++){  
-                  storePositions[(row-1)] = storePositions[(row-1) + i*5]
+                for (var i=1; i < 5; i++){  
+                  storePositions[(row-1) + (5*(i-1))] = storePositions[(row-1) + (5*i)]
                 }
                 storePositions[(row-1) + 20] = 0;
                 }
@@ -176,6 +176,8 @@ function dragEnd()
                 slide.children[storePositions[i] - 1].style.top = uTop[row-1] + "px";
               }
             }
+    document.getElementById("bruh").innerHTML = storePositions;
+    document.getElementById("bruhY").innerHTML = uTopMS[3];
   }
   mode = 2;
   
