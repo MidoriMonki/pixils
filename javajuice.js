@@ -54,20 +54,46 @@ function dragEnd()
           uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
           if (uRight[row-1] > -175){
              uRight[row-1] = -100;
-                  //go to the left
-                  
-                  storePositions[] = storePositions[] 
+                  //go to the center from right
+                  if (uRightMS == -400){
+                  for (var i=0; i < 4; i++){  
+                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
+                  }
+                  storePositions[(row-1)*5 + 4] = 0;
+                  }
+                  //go to the left from center
+                  if (uRightMS != uRight[row-1]){
+                  for (var i=0; i < 3; i++){  
+                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
+                  }
+                  storePositions[(row-1)*5 + 3] = 0;
+                  storePositions[(row-1)*5 + 4] = 0;
+                  }
+            
+            
             
             
           }else if (uRight[row-1] > -325){
-                  uRight[row-1] = -250;
-                  //go back to center
+               uRight[row-1] = -250;
+                  //go to the center from right
+                  if (uRightMS == -400){
+                  for (var i=0; i < 4; i++){  
+                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
+                  }
+                  storePositions[(row-1)*5 + 4] = 0;
+                  }
                   
             
             
           }else{
-                 uRight[row-1] = -400;
-                // go to right
+               uRight[row-1] = -400;
+                  //go to the center from left
+                  if (uRightMS == -100){
+                  for (var i=0; i < 4; i++){  
+                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
+                  }
+                  storePositions[(row-1)*5 + 4] = 0;
+                  }
 
             
             
