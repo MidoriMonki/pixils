@@ -90,9 +90,8 @@ function Vertical()
 }
 
 var c = document.createDocumentFragment();
-for (var i=0; i<10000; i++) {
-    var e = document.createElement("div");
-    e.className = "test-div";
+for (var i=0; i<4; i++) {
+    var e = document.getElementById("slide" + (i + 5)).children[3];
     c.appendChild(e);
 }
 document.body.appendChild(c);
