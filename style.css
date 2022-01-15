@@ -1,11 +1,12 @@
 .box{
+  margin: 0px;
   float: left;
   background: rgb(30, 30, 30);
   border-radius: 20px;
   width: 20vw;
   height: 20vw;
   transition: ease;
-  right: 10vw;
+  right: -18.5vw;
   position: relative;
 }
 

@@ -5,7 +5,7 @@ slide.addEventListener('touchend', dragEnd);
 slide.addEventListener('touchmove', dragMove);
 slide.mousedown = dragStart;
 
-var uRight = 100;
+var uRight = -100;
 var uTop = 100;
 var uPosX;
 var uPosY;
@@ -75,6 +75,8 @@ function dragEnd()
 }
 function dragMove(e)
 {
+  document.getElementById("bruh").innerHTML = slide.children[0].style.right;
+  document.getElementById("bruhY").innerHTML = slide.children[1].style.top;
   e = e || window.event;
   e.preventDefault();
   if (e.type == "touchmove")
