@@ -114,10 +114,12 @@ function dragMove(e)
   if(mode == 1){
     for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
     {
+      if (storePositions[i] - 1 != -1){
         slide.children[storePositions[i] - 1].style.right = uRight - (vPosX - uPosX) + "px";
+      }
     }
   } else if (mode == 0){
-      for (var i=1; i < 16; i+=4){
+      for (var i=1; i < 9; i+=4){
          slide.children[i].style.top = uTop - (uPosY - vPosY) + "px";
       }
     }
