@@ -9,7 +9,9 @@ for (var i=0;i<9;i++)
 }
 
 var uRight = [0, -250, -250, -250, 0];
-var uTop = [0, -250, -250, -250, 0];
+var uRightMS = [0, -250, -250, -250, 0];
+var uTop = [0, 0, 0, 0, 0];
+var uTopMS = [0, 0, 0, 0, 0];
 var uPosX;
 var uPosY;
 var vPosX;
@@ -52,8 +54,16 @@ function dragEnd()
           uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
           if (uRight[row-1] > -175){
              uRight[row-1] = -100;
+          //oh boy
+
+            
+            
+            
+            
+            
           }else if (uRight[row-1] > -325){
              uRight[row-1] = -250;
+             //
           }else{
              uRight[row-1] = -400;
           }
@@ -63,16 +73,17 @@ function dragEnd()
                 slide.children[storePositions[i] - 1].style.right = uRight[row-1] + "px";
               }
           }
+    
   }
   if (mode == 0)
   {
           uTop[row-1] = uTop[row-1] - (uPosY - vPosY);
-          if (uTop[row-1] > -175){
-             uTop[row-1] = -100;
-          }else if (uTop[row-1] > -325){
-             uTop[row-1] = -250;
+          if (uTop[row-1] > 75){
+             uTop[row-1] = 150;
+          }else if (uTop[row-1] > -75){
+             uTop[row-1] = 0;
           }else{
-             uTop[row-1] = -400;
+             uTop[row-1] = -150;
           }
           for (var i=(row-1); i < (19 + row); i+=5)
             {
@@ -82,6 +93,7 @@ function dragEnd()
             }
   }
   mode = 2;
+  
 }
 
 
@@ -151,7 +163,7 @@ function checkDirection()
       for (var i=0;i<25;i++){
          if (storePositions[i] == target){
              var cheese = i.toString()[i.toString().length - 1];
-             if (i[1] == 0 || i[1] == 5){
+             if (cheese == 0 || cheese == 5){
              row = 1;   
              }else if (cheese == 1 || cheese == 6){
              row = 2;
