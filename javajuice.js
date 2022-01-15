@@ -69,6 +69,7 @@ function dragEnd()
                   storePositions[(row-1)*5 + 3] = 0;
                   storePositions[(row-1)*5 + 4] = 0;
                   }
+                  uRightMS[row-1] = -100;
             
             
             
@@ -82,6 +83,14 @@ function dragEnd()
                   }
                   storePositions[(row-1)*5 + 4] = 0;
                   }
+                  //go to the center from left
+                  if (uRightMS[row-1] == -100){
+                  for (var i=0; i < 3; i++){  
+                    storePositions[(row-1)*5 + 1 + i] = storePositions[(row-1)*5 + i]
+                  }
+                  storePositions[(row-1)*5] = 0;
+                  }
+                  uRightMS[row-1] = -250;
                   
             
             
@@ -89,11 +98,12 @@ function dragEnd()
                uRight[row-1] = -400;
                   //go to the center from left
                   if (uRightMS == -100){
-                  for (var i=0; i < 4; i++){  
-                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
+                  for (var i=0; i < 3; i++){  
+                    storePositions[(row-1)*5 + 1 + i] = storePositions[(row-1)*5 + i]
                   }
-                  storePositions[(row-1)*5 + 4] = 0;
+                  storePositions[(row-1)*5] = 0;
                   }
+                  uRightMS[row-1] = -400;
 
             
             
