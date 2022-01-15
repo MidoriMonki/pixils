@@ -8,7 +8,7 @@ for (var i=0;i<9;i++)
     slide.children[i].mousedown = dragStart;
 }
 
-var uRight = -100;
+var uRight = [0, -250, -250, -250, 0];
 var uTop = 100;
 var uPosX;
 var uPosY;
@@ -49,24 +49,23 @@ function dragEnd()
 {
   uTop = 0;
   mode = 2;
-  var holder = uRight[row-1];
-  uRight[row-1] = 0;
-  for (var i=0; i < (holder.length - 2); i++)
-  {
-    if (holder[i] != "-")
-    {
-       uRight[row-1] += holder[i];
-    }
-    else
-    {
-       var cheese = 1;
-    }
+  uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
+  if (uRight[row-1] > -175){
+     uRight[row-1] = -100;
+  }else if (uRight[row-1] > -325){
+     uRight[row-1] = -250;
+  }else{
+     uRight[row-1] = -400;
   }
-  if (cheese == 1)
+  for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
   {
-    uRight[row-1] *= -1;
-    cheese = 0;
+      if (storePositions[i] - 1 != -1){
+        slide.children[storePositions[i] - 1].style.right = uRight[row-1] + "px";
+      }
   }
+  
+  
+  
   var holder = slide.children[1].style.top;
   for (var i=0; i < (holder.length - 2); i++)
   {

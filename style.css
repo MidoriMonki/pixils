@@ -5,8 +5,8 @@
   border-radius: 20px;
   width: 15vw;
   height: 15vw;
-  transition: ease;
-  right: -26.5vw;
+  transition: .2s ease;
+  right: -25.5vw;
   position: relative;
 }
 
