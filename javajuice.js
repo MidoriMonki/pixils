@@ -36,6 +36,7 @@ function dragEnd()
 {
   uRight = 0;
   mode = 2;
+  alert("fuck");
   var holder = slide.children[0].style.right;
   for (var i=0; i < (holder.length - 2); i++)
   {
@@ -71,7 +72,7 @@ function dragMove(e)
   
   // Important to determine which direction we scrolling 
   if (mode == 2){
-      if ((vPosX - uPosX)^2 > (vPosY - uPosY)^2) {
+      if ((vPosX - uPosX)^2 > (uPosY - vPosY)^2) {
           mode = 0;
       }else{
           mode = 1;
@@ -79,12 +80,12 @@ function dragMove(e)
   }
   // let us begin scrolling
   if(mode == 0){
-     for (var i=0; i < 8; i++){
+     for (var i=0; i < 4; i++){
        slide.children[i].style.right = uRight - (vPosX - uPosX) + "px";
      }
   } else{
-      for (var i=0; i < 8; i++){
-         slide.children[i].style.top = uRight - (vPosY - uPosY) + "px";
+      for (var i=1; i < 8; i++){
+         slide.children[i].style.top = uRight + (vPosY - uPosY) + "px";
       }
     }
 }
