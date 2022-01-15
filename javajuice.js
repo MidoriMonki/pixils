@@ -1,9 +1,12 @@
 var slide = document.getElementById('slide1');
 
-slide.addEventListener('touchstart', dragStart);
-slide.addEventListener('touchend', dragEnd);
-slide.addEventListener('touchmove', dragMove);
-slide.mousedown = dragStart;
+for (var i=0;i<9;i++)
+{
+    slide.children[i].addEventListener('touchstart', dragStart);
+    slide.children[i].addEventListener('touchend', dragEnd);
+    slide.children[i].addEventListener('touchmove', dragMove);
+    slide.children[i].mousedown = dragStart;
+}
 
 var uRight = -100;
 var uTop = 100;
@@ -12,6 +15,11 @@ var uPosY;
 var vPosX;
 var vPosY;
 
+var storePositions = [0, 0, 0, 0, 0,
+                      0, 1, 2, 3, 0,
+                      0, 4, 5, 6, 0,
+                      0, 7, 8, 9, 0,
+                      0, 0, 0, 0, 0]
 
 var mode = 2;
 
@@ -33,6 +41,7 @@ function dragStart(e)
     document.onmousedown = dragMove;
   }
 }
+
 function dragEnd()
 {
   uRight = 0;
@@ -73,12 +82,14 @@ function dragEnd()
     cheese = 0;
   }
 }
+
+
 function dragMove(e)
 {
-  document.getElementById("bruh").innerHTML = slide.children[0].style.right;
-  document.getElementById("bruhY").innerHTML = slide.children[1].style.top;
   e = e || window.event;
   e.preventDefault();
+  document.getElementById("bruh").innerHTML = slide.children[0].style.right;
+  document.getElementById("bruhY").innerHTML = slide.children[1].style.top;
   if (e.type == "touchmove")
   {
      vPosX = e.touches[0].clientX;
@@ -108,6 +119,10 @@ function dragMove(e)
     }
 }
 
+
+
+
+//check to see if we are going horizontal or vertical :)
 function checkDirection()
 {
   if (Math.pow((vPosX - uPosX), 2) > Math.pow((vPosY - uPosY), 2)) {
