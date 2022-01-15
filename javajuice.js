@@ -23,6 +23,8 @@ var storePositions = [0, 0, 0, 0, 0,
 
 var mode = 2;
 var target;
+var selected;
+var row;
 
 function dragStart(e)
 {
@@ -111,7 +113,10 @@ function dragMove(e)
   // let us begin scrolling
   if(mode == 1){
      for (var i=0; i < 4; i++){
-       slide.children[i].style.right = uRight - (vPosX - uPosX) + "px";
+       for (var i=(row*5); i < 5+(5*row); i++)
+         {
+            slide.children[].style.right = uRight - (vPosX - uPosX) + "px";
+         }
      }
   } else if (mode == 0){
       for (var i=1; i < 16; i+=4){
@@ -127,7 +132,21 @@ function checkDirection()
 {
   if (Math.pow((vPosX - uPosX), 2) > Math.pow((vPosY - uPosY), 2)) {
        mode = 1;
-    
+       for (var i=0;i<16;i++){
+         if (storePositions[i] == target){
+             if (i <= 4){
+             row = 1;   
+             }else if (i <= 9){
+             row = 2;
+             }else if (i <= 14){
+             row = 3;  
+             }else if (i <= 19){
+             row = 4;     
+             }else if (i <= 24){
+             row = 5;      
+           }    
+         }
+       }
   }else{
       mode = 0;
   }
