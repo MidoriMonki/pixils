@@ -9,7 +9,7 @@ for (var i=0;i<9;i++)
 }
 
 var uRight = [0, -250, -250, -250, 0];
-var uTop = 100;
+var uTop = [0, -250, -250, -250, 0];
 var uPosX;
 var uPosY;
 var vPosX;
@@ -47,7 +47,6 @@ function dragStart(e)
 
 function dragEnd()
 {
-  uTop = 0;
   mode = 2;
   uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
   if (uRight[row-1] > -175){
@@ -64,24 +63,19 @@ function dragEnd()
       }
   }
   
-  
-  
-  var holder = slide.children[1].style.top;
-  for (var i=0; i < (holder.length - 2); i++)
-  {
-    if (holder[i] != "-")
-    {
-       uTop += holder[i];
-    }
-    else
-    {
-       var cheese = 1;
-    }
+  uTop[row-1] = uTop[row-1] - (uPosY - vPosY);
+  if (uTop[row-1] > -175){
+     uTop[row-1] = -100;
+  }else if (uTop[row-1] > -325){
+     uTop[row-1] = -250;
+  }else{
+     uTop[row-1] = -400;
   }
-  if (cheese == 1)
+  for (var i=(row-6); i < (20+(row-6)); i+=5)
   {
-    uTop *= -1;
-    cheese = 0;
+      if (storePositions[i] - 1 != -1){
+        slide.children[storePositions[i] - 1].style.top = uTop[row-6] + "px";
+      }
   }
 }
 
@@ -118,10 +112,10 @@ function dragMove(e)
       }
     }
   } else if (mode == 0){
-    for (var i=(row-6); i < 5; i+=5)
+    for (var i=(row-6); i < (20+(row-6)); i+=5)
     {
       if (storePositions[i] - 1 != -1){
-        slide.children[storePositions[i] - 1].style.right = uTop[row-1] - (uPosY - vPosY) + "px";
+        slide.children[storePositions[i] - 1].style.top = uTop[row-6] - (uPosY - vPosY) + "px";
       }
     }
   }
@@ -154,15 +148,15 @@ function checkDirection()
       for (var i=0;i<25;i++){
          if (storePositions[i] == target){
              if (i[1] == 0 || i[1] == 5){
-             row = 1;   
+             row = 6;   
              }else if (i[1] == 1 || i[1] == 6){
-             row = 2;
+             row = 7;
              }else if (i[1] == 2 || i[1] == 7){
-             row = 3;  
+             row = 8;  
              }else if (i[1] == 3 || i[1] == 8){
-             row = 4;     
+             row = 9;     
              }else if (i[1] == 4 || i[1] == 9){
-             row = 5;      
+             row = 10;      
            }    
          }
        }
