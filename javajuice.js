@@ -47,15 +47,15 @@ function dragStart(e)
 
 function dragEnd()
 {
-  uRight = 0;
   uTop = 0;
   mode = 2;
-  var holder = slide.children[0].style.right;
+  var holder = uRight[row-1];
+  uRight[row-1] = 0;
   for (var i=0; i < (holder.length - 2); i++)
   {
     if (holder[i] != "-")
     {
-       uRight += holder[i];
+       uRight[row-1] += holder[i];
     }
     else
     {
@@ -64,7 +64,7 @@ function dragEnd()
   }
   if (cheese == 1)
   {
-    uRight *= -1;
+    uRight[row-1] *= -1;
     cheese = 0;
   }
   var holder = slide.children[1].style.top;
@@ -115,7 +115,7 @@ function dragMove(e)
     for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
     {
       if (storePositions[i] - 1 != -1){
-        slide.children[storePositions[i] - 1].style.right = uRight - (vPosX - uPosX) + "px";
+        slide.children[storePositions[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + "px";
       }
     }
   } else if (mode == 0){
