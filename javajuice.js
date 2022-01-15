@@ -47,36 +47,41 @@ function dragStart(e)
 
 function dragEnd()
 {
-  mode = 2;
-  uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
-  if (uRight[row-1] > -175){
-     uRight[row-1] = -100;
-  }else if (uRight[row-1] > -325){
-     uRight[row-1] = -250;
-  }else{
-     uRight[row-1] = -400;
-  }
-  for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
+  if (mode == 1)
   {
-      if (storePositions[i] - 1 != -1){
-        slide.children[storePositions[i] - 1].style.right = uRight[row-1] + "px";
-      }
+          uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
+          if (uRight[row-1] > -175){
+             uRight[row-1] = -100;
+          }else if (uRight[row-1] > -325){
+             uRight[row-1] = -250;
+          }else{
+             uRight[row-1] = -400;
+          }
+          for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
+          {
+              if (storePositions[i] - 1 != -1){
+                slide.children[storePositions[i] - 1].style.right = uRight[row-1] + "px";
+              }
+          }
   }
-  
-  uTop[row-1] = uTop[row-1] - (uPosY - vPosY);
-  if (uTop[row-1] > -175){
-     uTop[row-1] = -100;
-  }else if (uTop[row-1] > -325){
-     uTop[row-1] = -250;
-  }else{
-     uTop[row-1] = -400;
+  if (mode == 0)
+  {
+          uTop[row-1] = uTop[row-1] - (uPosY - vPosY);
+          if (uTop[row-1] > -175){
+             uTop[row-1] = -100;
+          }else if (uTop[row-1] > -325){
+             uTop[row-1] = -250;
+          }else{
+             uTop[row-1] = -400;
+          }
+          for (var i=(row-1); i < (19 + row); i+=5)
+            {
+              if (storePositions[i] - 1 != -1){
+                slide.children[storePositions[i] - 1].style.top = uTop[row-1] + "px";
+              }
+            }
   }
-  for (var i=(row-1); i < (19 + row); i+=5)
-    {
-      if (storePositions[i] - 1 != -1){
-        slide.children[storePositions[i] - 1].style.top = uTop[row-1] + "px";
-      }
-    }
+  mode = 2;
 }
 
 
@@ -84,8 +89,6 @@ function dragMove(e)
 {
   e = e || window.event;
   e.preventDefault();
-  document.getElementById("bruh").innerHTML = slide.children[0].style.right;
-  document.getElementById("bruhY").innerHTML = slide.children[1].style.top;
   if (e.type == "touchmove")
   {
      vPosX = e.touches[0].clientX;
@@ -147,11 +150,11 @@ function checkDirection()
       mode = 0;
       for (var i=0;i<25;i++){
          if (storePositions[i] == target){
-             if (i[1] == 0 || i[1] == 5){
+             if (storePositions[i][1] == 0 || storePositions[i][1] == 5){
              row = 1;   
-             }else if (i[i.length - 1] == 1 || i[i.length - 1] == 6){
+             }else if (storePositions[i][1] == 1 || storePositions[i][1] == 6){
              row = 2;
-             }else if (i[i.length - 1] == 2 || i[i.length - 1] == 7){
+             }else if (storePositions[i][1] == 2 || i[i.length - 1] == 7){
              row = 3;  
              }else if (i[i.length - 1] == 3 || i[i.length - 1] == 8){
              row = 4;     
