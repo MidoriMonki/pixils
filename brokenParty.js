@@ -102,11 +102,25 @@ function dragEnd()
       } 
   
   }else if (mode == 0){
-      if (vPosY > uPosY){
-      
-      }else{
-      
+      if (vPosY > uPosY && storePositions[row] != 0){
+      //up
+      for(var i=row;i<(row+20);i+=5){
+        storePositions[i] = storePositions[i+5];
       }
+      storePositions[row+20] = 0;
+      }else if(vPosY < uPosY && storePositions[row+20] != 0){
+      //down
+      for(var i=row+20;i>row;i-=5){
+        storePositions[i] = storePositions[i-5];
+      }
+      storePositions[row] = 0;
+    }
+    //Set their top property correctly
+      for(var i=(row);i<(row+20);i++){
+        if (storePositions[i] != 0){
+            slide.children[storePositions[i]-6].style.top = (2-(i-(row*5)))*15 + "vw";
+        }
+      } 
   }
   
   mode = 2;
