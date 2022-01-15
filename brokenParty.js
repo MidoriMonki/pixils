@@ -5,7 +5,6 @@ var vPosY;
 var uPosY;
 var target;
 var mode = 1;
-var upRight;
 var pixilsInRow;
 var slide = document.getElementById("slide1");
 var storePositions = [0, 0, 0, 0, 0,
@@ -94,11 +93,8 @@ function dragMove(e)
 //End
 function dragEnd()
 {
-  
-  
-  
   if (mode == 1){
-      if (upRight != true){
+      if (vPosX < uPosX){
         //left
         for(var i=(row*5);i<(5+(row*5));i++){
           storePositions[i] = storePositions[i+1];
@@ -111,6 +107,13 @@ function dragEnd()
         }
         storePositions[(row*5)] = 0;
       }
+      //Set their right property correctly
+      for(var i=(row*5)+5;i<(5+(row*5));i++){
+        if (storePositions[i] != 0){
+            storePositions[i].style.right = (i-2)*15 + "vw";
+        }
+      } 
+  
   }else if (mode == 0){
       if (vPosY > uPosY){
       
@@ -118,6 +121,7 @@ function dragEnd()
       
       }
   }
+  
   
   document.getElementById("bruh").innerHTML = storePositions;
 }
