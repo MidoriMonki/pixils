@@ -12,7 +12,7 @@ var vPosX;
 var vPosY;
 
 
-var mode;
+var mode = 2;
 
 
 function dragStart(e)
@@ -70,17 +70,17 @@ function dragMove(e)
   }
   
   // Important to determine which direction we scrolling 
-     vPosX = e.touches[0].clientX;
-     vPosY = e.touches[0].clientY;
   if (mode == 2){
-    setTimeout(checkDirection, 300);
+    checkDirection();
   }
+  
+  
   // let us begin scrolling
-  if(mode == 0){
+  if(mode == 1){
      for (var i=0; i < 4; i++){
        slide.children[i].style.right = uRight - (vPosX - uPosX) + "px";
      }
-  } else{
+  } else if (mode == 0){
       for (var i=1; i < 16; i+=4){
          slide.children[i].style.top = uRight + (vPosY - uPosY) + "px";
       }
@@ -89,9 +89,9 @@ function dragMove(e)
 
 function checkDirection()
 {
-  if ((vPosX - uPosX)^2 > (uPosY - vPosY)^2) {
-       mode = 0;
+  if ((vPosX - uPosX)^2 > (vPosY - uPosY)^2) {
+       mode = 1;
   }else{
-      mode = 1;
+      mode = 0;
   }
 }
