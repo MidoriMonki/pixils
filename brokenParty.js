@@ -4,7 +4,8 @@ var uPosX;
 var vPosY;
 var uPosY;
 var target;
-var mode;
+var mode = 1;
+var upRight;
 var pixilsInRow;
 var slide = document.getElementById("slide1");
 var storePositions = [0, 0, 0, 0, 0,
@@ -29,6 +30,10 @@ for (var i=0;i<9;i++)
     }
 }
 
+
+
+
+
 //Mobile Start
 function dragStart(e)
 {
@@ -48,6 +53,8 @@ function dragStart(e)
     document.onmousedown = dragMove;
   }
 }
+
+
 
 
 
@@ -80,10 +87,42 @@ function dragMove(e)
   }
 }
 
+
+
+
+
 //End
 function dragEnd()
 {
+  
+  
+  
+  if (mode == 1){
+      if (upRight != true){
+        //left
+        for(var i=(row*5);i<(5+(row*5));i++){
+          storePositions[i] = storePositions[i+1];
+        }
+        storePositions[(row*5)+4] = 0;
+      }else{
+        //right
+        for(var i=(row*5)+5;i>(row*5);i--){
+          storePositions[i] = storePositions[i-1];
+        }
+        storePositions[(row*5)] = 0;
+      }
+  }else if (mode == 0){
+      if (vPosY > uPosY){
+      
+      }else{
+      
+      }
+  }
+  
+  document.getElementById("bruh").innerHTML = storePositions;
 }
+
+
 
 
 
@@ -153,6 +192,4 @@ for(var i=(row*5);i<(5+(row*5));i++){
   storePositions[i] = storePositions[i+1];
 }
 storePositions[(row*5)+4] = 0;
-
-
 document.getElementById("bruh").innerHTML = storePositions;
