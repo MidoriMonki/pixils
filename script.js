@@ -28,13 +28,15 @@ document.addEventListener('keydown', (event) => {
   if (event.code == "ArrowRight")
   {
       Horizontal();
-      document.getElementById("slide" + moveH).insertBefore(document.getElementById("slide" + moveH).childNodes[3], document.getElementById("slide" + moveH).firstChild);
+      e = document.getElementById("slide" + moveH);
+      e.insertBefore(e.childNodes[3], e.firstChild);
   }
   
   if (event.code == "ArrowLeft")
   {
       Horizontal();
-      document.getElementById("slide" + moveH).appendChild(document.getElementById("slide" + moveH).childNodes[0]);
+      e = document.getElementById("slide" + moveH);
+      e.appendChild(e.childNodes[0]);
   }
   
   if (event.code == "Digit1")
@@ -86,3 +88,11 @@ function Vertical()
   document.getElementById("slide" + moveV).appendChild(document.getElementById("slide4").childNodes[moveV - 5]);
   }
 }
+
+var c = document.createDocumentFragment();
+for (var i=0; i<10000; i++) {
+    var e = document.createElement("div");
+    e.className = "test-div";
+    c.appendChild(e);
+}
+document.body.appendChild(c);
