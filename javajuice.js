@@ -9,13 +9,11 @@ var uRight = 100;
 var uPosX;
 var uPosY;
 var vPosX;
+var vPosY;
 
-var p = 0;
-if (p == 1)
-  {
-    document.onmouseup = dragEnd;
-    document.onmousedown = dragMove;
-  }
+
+var mode;
+
 
 function dragStart(e)
 {
@@ -37,6 +35,7 @@ function dragStart(e)
 function dragEnd()
 {
   uRight = 0;
+  mode = 2;
   var holder = slide.children[0].style.right;
   for (var i=0; i < (holder.length - 2); i++)
   {
@@ -62,15 +61,30 @@ function dragMove(e)
   if (e.type == "touchmove")
   {
      vPosX = e.touches[0].clientX;
-     uPosY = e.touches[0].clientY;
+     vPosY = e.touches[0].clientY;
   }
   else
   {
     document.onmouseup = dragEnd;
     document.onmousedown = dragMove;
   }
-  for (var i=0; i < 8; i++)
-  {
-     slide.children[i].style.right = uRight - (vPosX - uPosX) + "px";
+  
+  // Important to determine which direction we scrolling 
+  if (mode == 2){
+      if ((vPosX - uPosX)^2 > (vPosY - uPosY)^2) {
+          mode = 0;
+      }else{
+          mode = 1;
+      }
   }
+  // let us begin scrolling
+  if(mode == 0){
+     for (var i=0; i < 8; i++){
+       slide.children[i].style.right = uRight - (vPosX - uPosX) + "px";
+     }
+  } else{
+      for (var i=0; i < 8; i++){
+         slide.children[i].style.top = uRight - (vPosY - uPosY) + "px";
+      }
+    }
 }
