@@ -108,9 +108,9 @@ function dragEnd()
         storePositions[(row*5)] = 0;
       }
       //Set their right property correctly
-      for(var i=(row*5)+5;i<(5+(row*5));i++){
+      for(var i=(row*5);i<(5+(row*5));i++){
         if (storePositions[i] != 0){
-            storePositions[i].style.right = (i-2)*15 + "vw";
+            slide.children[storePositions[i]].style.right = (i-(row*5))*15 + "vw";
         }
       } 
   
