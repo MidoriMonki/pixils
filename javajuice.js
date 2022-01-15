@@ -22,7 +22,7 @@ var storePositions = [0, 0, 0, 0, 0,
                       0, 0, 0, 0, 0]
 
 var mode = 2;
-
+var target;
 
 function dragStart(e)
 {
@@ -32,6 +32,7 @@ function dragStart(e)
   {
      uPosX = e.touches[0].clientX;
      uPosY = e.touches[0].clientY;
+     target = e.target.id
   }
   else
   {
@@ -121,12 +122,12 @@ function dragMove(e)
 
 
 
-
-//check to see if we are going horizontal or vertical :)
+//check to see if we are going horizontal or vertical and then select all pixils in that row :)
 function checkDirection()
 {
   if (Math.pow((vPosX - uPosX), 2) > Math.pow((vPosY - uPosY), 2)) {
        mode = 1;
+    
   }else{
       mode = 0;
   }

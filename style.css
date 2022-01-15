@@ -3,10 +3,10 @@
   float: left;
   background: rgb(30, 30, 30);
   border-radius: 20px;
-  width: 20vw;
-  height: 20vw;
+  width: 15vw;
+  height: 15vw;
   transition: ease;
-  right: -18.5vw;
+  right: -26.5vw;
   position: relative;
 }
 
