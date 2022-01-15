@@ -81,7 +81,7 @@ function dragEnd()
                   for (var i=0; i < 4; i++){  
                     storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
                   }
-                  storePositions[(row-1)*5 + 0] = 0;
+                  storePositions[(row-1)*5 + 4] = 0;
                   }
                   //go to the center from left
                   if (uRightMS[row-1] == -100){
@@ -105,7 +105,7 @@ function dragEnd()
                   }
                   //go to the right from center
                   if (uRightMS[row-1] != uRight[row-1]){
-                  for (var i=5; i > 1; i--){  
+                  for (var i=4; i > 1; i--){  
                     storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + i - 1]
                   }
                   storePositions[(row-1)*5 + 1] = 0;
@@ -113,7 +113,7 @@ function dragEnd()
                   uRightMS[row-1] = -400;
             
             
-            //done
+            //done :)))) that was frustating
           }
           for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
           {
@@ -129,10 +129,40 @@ function dragEnd()
           uTop[row-1] = uTop[row-1] - (uPosY - vPosY);
           if (uTop[row-1] > 75){
              uTop[row-1] = 150;
+                 //this is bottom
+            
+            
+            
+            
+            
+            
+            
           }else if (uTop[row-1] > -75){
              uTop[row-1] = 0;
+                //go to the center from top
+                if (uRightMS[row-1] == -400){
+                for (var i=0; i < 3; i++){  
+                  storePositions[(row-1) + 15] = storePositions[(row-1) + 15 - i*5]
+                }
+                storePositions[(row-1)] = 0;
+                }
+            
+            
+            
+            
+            
+            
+            
+            
           }else{
              uTop[row-1] = -150;
+                //this is top
+            
+            
+            
+            
+            
+            
           }
           for (var i=(row-1); i < (19 + row); i+=5)
             {
