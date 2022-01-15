@@ -30,7 +30,7 @@ var mode = 2;
 var target;
 var selected;
 var row;
-var pixilsInRow;
+var pixilsInRow = [0, 0, 0, 0, 0];
 
 function dragStart(e)
 {
@@ -215,21 +215,16 @@ function dragMove(e)
     checkDirection();
   }
   
-  
   // let us begin scrolling
   if(mode == 1){
-    for (var i=((row-1)*5); i < 5+(5*(row-1)); i++)
+    for (var i=0;i<5;i++)
     {
-      if (storePositions[i] - 1 != -1){
-        slide.children[storePositions[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + "px";
-      }
+      slide.children[pixilsInRow[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + "px";
     }
   } else if (mode == 0){
-    for (var i=(row-1); i < 25; i+=5)
+    for (var i=0;i<5;i++)
     {
-      if (storePositions[i] - 1 != -1){
-        slide.children[storePositions[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + "px";
-      }
+      slide.children[pixilsInRow[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + "px";
     }
   }
 }
@@ -276,9 +271,10 @@ function checkDirection()
              row = 5;
            }    
          }
-         for (var i=0;i<5;i+=5){
-            pixilsInRow[i] = storePositions[i];
+         for (var i=0;i<5;i++){
+            pixilsInRow[i] = storePositions[(row-1) + (5*i)];
          }
+         document.getElementById("bruh").innerHTML = pixilsInRow;
        }
      }
    }
