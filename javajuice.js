@@ -58,63 +58,20 @@ function dragEnd()
           uRight[row-1] = uRight[row-1] - (vPosX - uPosX);
           if (uRight[row-1] > -175){
              uRight[row-1] = -100;
-                  //go to the center from right
-                  if (uRightMS[row-1] == -400){
-                  for (var i=0; i < 4; i++){  
-                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
-                  }
-                  storePositions[(row-1)*5 + 4] = 0;
-                  }
-                  //go to the left from center
-                  if (uRightMS[row-1] != uRight[row-1]){
-                  for (var i=0; i < 3; i++){  
-                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
-                  }
-                  storePositions[(row-1)*5 + 3] = 0;
-                  storePositions[(row-1)*5 + 4] = 0;
-                  }
-                  uRightMS[row-1] = -100;
+
             
             
             
             
           }else if (uRight[row-1] > -325){
                uRight[row-1] = -250;
-                  //go to the center from right
-                  if (uRightMS[row-1] == -400){
-                  for (var i=0; i < 4; i++){  
-                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + 1 + i]
-                  }
-                  storePositions[(row-1)*5 + 4] = 0;
-                  }
-                  //go to the center from left
-                  if (uRightMS[row-1] == -100){
-                  for (var i=4; i > 0; i--){  
-                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + i - 1]
-                  }
-                  storePositions[(row-1)*5] = 0;
-                  }
-                  uRightMS[row-1] = -250;
+
                   
             
             
           }else{
                uRight[row-1] = -400;
-                  //go to the center from left
-                  if (uRightMS[row-1] == -100){
-                  for (var i=4; i > 0; i--){  
-                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + i - 1]
-                  }
-                  storePositions[(row-1)*5] = 0;
-                  }
-                  //go to the right from center
-                  if (uRightMS[row-1] != uRight[row-1]){
-                  for (var i=4; i > 1; i--){  
-                    storePositions[(row-1)*5 + i] = storePositions[(row-1)*5 + i - 1]
-                  }
-                  storePositions[(row-1)*5 + 1] = 0;
-                  }
-                  uRightMS[row-1] = -400;
+
             
             
             //done :)))) that was frustating
@@ -133,32 +90,12 @@ function dragEnd()
           uTop[row-1] = uTop[row-1] - (uPosY - vPosY);
           if (uTop[row-1] > 75){
              uTop[row-1] = 150;
-                //go to the bottom from center
-                if (uTopMS[row-1] == 0){
-                for (var i=1; i < 5; i++){  
-                  storePositions[(row-1) + 20 - (5*(i-1))] = storePositions[(row-1) + 20 - (5*i)]
-                }
-                storePositions[(row-1)] = 0;
-                }
-                uTopMS[row-1] = 150;
-            
-            
-            
-            
+
             
             
             
           }else if (uTop[row-1] > -75){
              uTop[row-1] = 0;
-                //go to the center from top
-                if (uTopMS[row-1] == -150){
-                for (var i=0; i < 4; i++){  
-                  storePositions[(row-1) + (5*(i+1))] = storePositions[(row-1) + (5*(i))]
-                }
-                storePositions[(row-1)] = 0;
-                }
-                uTopMS[row-1] = 0;
-            
             
             
             
@@ -168,17 +105,6 @@ function dragEnd()
             
           }else{
              uTop[row-1] = -150;
-                //go to the top from center
-                if (uTopMS[row-1] == 0){
-                for (var i=1; i < 5; i++){  
-                  storePositions[(row-1) + (5*(i-1))] = storePositions[(row-1) + (5*i)]
-                }
-                storePositions[(row-1) + 20] = 0;
-                }
-                uTopMS[row-1] = -150;
-            
-            
-            
             
           }
           for (var i=(row-1); i < (19 + row); i+=5)
@@ -219,12 +145,12 @@ function dragMove(e)
   if(mode == 1){
     for (var i=0;i<5;i++)
     {
-      slide.children[pixilsInRow[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + "px";
+      slide.children[pixilsInRow[i] - 1].style.right = uRight[row-1] - (vPosX - uPosX) + 100*(i-2) + "px";
     }
   } else if (mode == 0){
     for (var i=0;i<5;i++)
     {
-      slide.children[pixilsInRow[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + "px";
+      slide.children[pixilsInRow[i] - 1].style.top = uTop[row-1] - (uPosY - vPosY) + 100*(i-2) + "px";
     }
   }
 }

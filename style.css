@@ -6,8 +6,7 @@
   width: 15vw;
   height: 15vw;
   transition: .5s ease;
-  right: -25.5vw;
-  position: relative;
+  position: absolute;
 }
 
 .null{
