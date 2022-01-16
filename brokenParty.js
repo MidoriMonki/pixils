@@ -6,14 +6,22 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-
-var slideColour = ["black", "red", "black", "black", "black", "red", "red", "blue", "black", "black", "black", "black", "black"];
+var slideColour = [1, 2, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1];
 var slide = document.getElementById("slide1");
-var storePositions = [0, 0, 10, 0, 0,
-                      0, 1, 2, 3, 0,
-                      11, 4, 5, 6, 13,
-                      0, 7, 8, 9, 0,
-                      0, 0, 12, 0, 0]
+var correct;
+var solution = 
+[0, 0, 1, 0, 0,
+ 0, 1, 3, 1, 0,
+ 0, 1, 1, 1, 0,
+ 2, 1, 1, 1, 2,
+ 0, 0, 2, 0, 0];
+
+var storePositions = 
+[0, 0, 10, 0, 0,
+ 0, 1, 2, 3, 0,
+ 11, 4, 5, 6, 13,
+ 0, 7, 8, 9, 0,
+ 0, 0, 12, 0, 0];
 
 
 
@@ -149,7 +157,6 @@ function dragEnd()
   
   mode = 2;
   checkSolution();
-  document.getElementById("bruh").innerHTML = storePositions;
 }
 
 
@@ -200,5 +207,15 @@ function checkDirection()
 document.getElementById("bruh").innerHTML = storePositions;
 
 function checkSolution(){
-  
+  correct = true;
+  for(i=0;i<25;i++){
+      if (storePositions[i] == 0 && solution[i] == 0){}else{
+        if (slideColour[storePositions[i]-1] != solution[i]){
+            correct = false;
+        }
+      }
+   }
+  if (correct){
+    alert("You did it!");
+  }
 }
