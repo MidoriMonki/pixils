@@ -45,10 +45,10 @@ function startTime() {
   const today = new Date();
   let s = today.getSeconds();
   time = s;
-  if (holdTime == null){
+  if (holdTime == null || s == 0){
     holdTime = s;
   }
-  document.getElementById("test").innerHTML += time - holdTime;
+  document.getElementById("test").innerHTML = parseFloat(document.getElementById("test").innerHTML) + time - holdTime;
   if (time > holdTime){
     holdTime = time;
   }
