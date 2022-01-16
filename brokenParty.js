@@ -13,7 +13,7 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013", "002000212000300011100111011", "202000310021110001110001113", "010101212101210003000000011", "200020101000200100010111010"];
+var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Smile", "200020101000200100010111010Heart", "000000023020102110111101113Castle"];
 var whichChild;
 var amountOfBoxes;
 var solution = 
@@ -258,12 +258,16 @@ function setUpSolution()
    0, 0, 12, 0, 0];
 
    //Setting puzzle up
-   whichPuzzle = Math.floor(Math.random() * 5);
+   document.getElementById("nameHolder").innerHTML = "";
+   whichPuzzle = Math.floor(Math.random() * 6);
+   let why = (puzzleList[whichPuzzle]);
+   for(var i=27;i<why.length;i++){
+      document.getElementById("nameHolder").innerHTML += why[i];
+   }
    for(var i=0;i<25;i++){
      let why = (puzzleList[whichPuzzle]);
      solution[i] = why[i];
    }
-   let why = (puzzleList[whichPuzzle]);
    amountOfBoxes = "" + why[25] + why[26];
    //Set up solution display
    whichChild = -1;
