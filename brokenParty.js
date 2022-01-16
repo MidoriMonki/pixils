@@ -6,7 +6,7 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = [1, 2, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1];
+var slideColour = [1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 3, 1, 1];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
@@ -300,5 +300,6 @@ function setUpSolution()
             slideS.children[whichChild].classList.add("turq");
        }
    } 
-   dragEnd();
+   //put everything back to normal
+   
 }
