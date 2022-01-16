@@ -46,6 +46,11 @@ function dragStart(e)
     document.onmouseup = dragEnd;
     document.onmousedown = dragMove;
   }
+  for(i=0;i<24;i++){
+      if (storePositions[i] != 0){
+        slide.children[i-1].classList.remove("rumble");
+      }
+  }
 }
 
 
@@ -94,6 +99,13 @@ function dragEnd()
           storePositions[i] = storePositions[i-1];
         }
         storePositions[(row*5)] = 0;
+      }else{
+        //add rumble effect if failed
+        for(var i=(row*5);i<(5+(row*5));i++){
+          if (storePositions[i] != 0){
+              slide.children[storePositions[i]-1].classList.add("rumble");
+          }
+        }
       }
       //Set their right property correctly
       for(var i=(row*5);i<(5+(row*5));i++){
