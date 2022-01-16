@@ -8,12 +8,12 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = [1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 3, 1, 1];
+var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121311"];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat"];
+var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "010100111010101022200030015Trolley"];
 var whichChild;
 var amountOfBoxes;
 var solution = 
@@ -24,8 +24,8 @@ var solution =
  0, 0, 2, 0, 0];
 
 var storePositions = 
-[0, 0, 10, 0, 0,
- 0, 1, 2, 3, 0,
+[0, 0, 10, 14, 0,
+ 0, 1, 2, 3, 15,
  11, 4, 5, 6, 13,
  0, 7, 8, 9, 0,
  0, 0, 12, 0, 0];
@@ -34,7 +34,7 @@ var storePositions =
 
 
 
-for(var i=0;i<13;i++){
+for(var i=0;i<15;i++){
   originalPositionsY[i] = slide.children[i].style.top;
   originalPositionsX[i] = slide.children[i].style.right;
 }
@@ -44,7 +44,7 @@ for(var i=0;i<13;i++){
 
 
 //Start by adding event listeners
-for (var i=0;i<13;i++)
+for (var i=0;i<15;i++)
 {
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
@@ -226,7 +226,7 @@ function checkSolution(){
   correct = true;
   for(i=0;i<25;i++){
       if (storePositions[i] == 0 && solution[i] == 0){}else{
-        if (slideColour[storePositions[i]-1] != solution[i]){
+        if ((slideColour[whichPuzzle])[storePositions[i]-1] != solution[i]){
             correct = false;
         }
       }
@@ -259,7 +259,7 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   Math.floor(Math.random() * 7);
+   whichPuzzle = Math.floor(Math.random() * 7);
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
@@ -271,7 +271,7 @@ function setUpSolution()
    amountOfBoxes = "" + why[25] + why[26];
    //Set up solution display
    whichChild = -1;
-   for(var i=0;i<13;i++){
+   for(var i=0;i<15;i++){
      if (i<amountOfBoxes){
         slideS.children[i].classList.add("box");
         slide.children[i].classList.add("box");
@@ -335,10 +335,19 @@ function setUpSolution()
    //put everything back to normal
    for(var i=0;i<25;i++){
      if(storePositions[i] != 0){
+       slide.children[storePositions[i]-1].classList.remove("yes");
+       slide.children[storePositions[i]-1].classList.remove("turq");
        slide.children[storePositions[i]-1].classList.remove("purple");
        slide.children[storePositions[i]-1].classList.remove("orange");
        slide.children[storePositions[i]-1].classList.remove("blue");
        slide.children[storePositions[i]-1].classList.remove("green");
+       
+       if((slideColour[whichPuzzle])[i] == 2){
+         slide.children[storePositions[i]-1].classList.add("yes");
+       }
+       if((slideColour[whichPuzzle])[i] == 3){
+         slide.children[storePositions[i]-1].classList.add("turq");
+       }
        
        if(slide.children[storePositions[i]-1].classList.contains("yes")){
          if (colourAlt == 1){
