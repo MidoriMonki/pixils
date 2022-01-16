@@ -327,6 +327,19 @@ function setUpSolution()
    //put everything back to normal
    for(var i=0;i<25;i++){
      if(storePositions[i] != 0){
+       if(slide.children[storePositions[i]-1].classList.contains("yes")){
+         if (colourAlt == 1){
+             slide.children[storePositions[i]-1].classList.add("purple");
+         }else if (colourAlt == 2){
+             slide.children[storePositions[i]-1].classList.add("orange");
+         }
+       }else if(slide.children[storePositions[i]-1].classList.contains("turq")){
+         if (colourAlt == 1){i
+             slide.children[storePositions[i]-1].classList.add("green");
+         }else if (colourAlt == 2){
+             slide.children[storePositions[i]-1].classList.add("blue");
+         }
+       }
        slide.children[storePositions[i]-1].style.right = originalPositionsX[storePositions[i]-1];
        slide.children[storePositions[i]-1].style.top = originalPositionsY[storePositions[i]-1];
      }
