@@ -241,14 +241,14 @@ function setUpSolution()
        if (solution[i] != 0){
            whichChild++;
            //apply horizontal
-           slideS.children[whichChild].style.right = (2-i+(row*5))*8 + "vw";
+           slideS.children[whichChild].style.right = (2-i+(row*5))*6 + "vw";
            //apply vertical
-           slideS.children[whichChild].style.top = (row-2)*8 + "vw";
+           slideS.children[whichChild].style.top = (row-2)*6 + "vw";
        }
-       if (solution[i] == 1){
+       if (solution[i] == 2){
             slideS.children[whichChild].classList.add("yes");
             slideS.children[whichChild].classList.remove("turq");
-       }else if (solution[i] == 2){
+       }else if (solution[i] == 3){
             slideS.children[whichChild].classList.add("turq");
             slideS.children[whichChild].classList.remove("yes");
        }
