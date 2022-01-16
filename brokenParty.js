@@ -10,6 +10,7 @@ var slideColour = [1, 2, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
+var whichChild;
 var solution = 
 [0, 0, 1, 0, 0,
  0, 1, 3, 1, 0,
@@ -219,20 +220,37 @@ function checkSolution(){
     alert("You did it!");
   }
 }
+setUpSolution();
 
 function setUpSolution()
 {
+   whichChild = -1;
    for(var i=0;i<25;i++){
-       if (i)
+         //check horizontal row
+         if (i <= 4){
+         row = 0;   
+         }else if (i <= 9){
+         row = 1;
+         }else if (i <= 14){
+         row = 2;  
+         }else if (i <= 19){
+         row = 3;     
+         }else if (i <= 24){
+         row = 4;      
+       } 
        if (solution[i] != 0){
-           slide.children[storePositions[i]-1].style.right2-i-(row*5)
+           whichChild++;
+           //apply horizontal
+           slideS.children[whichChild].style.right = (2-i+(row*5))*8 + "vw";
+           //apply vertical
+           slideS.children[whichChild].style.top = (row-2)*8 + "vw";
        }
        if (solution[i] == 1){
-            slideS.children[i].classList.add("yes");
-            slideS.children[i].classList.remove("turq");
+            slideS.children[whichChild].classList.add("yes");
+            slideS.children[whichChild].classList.remove("turq");
        }else if (solution[i] == 2){
-            slideS.children[i].classList.add("turq");
-            slideS.children[i].classList.remove("yes");
+            slideS.children[whichChild].classList.add("turq");
+            slideS.children[whichChild].classList.remove("yes");
        }
    } 
 }
