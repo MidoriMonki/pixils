@@ -10,6 +10,8 @@ var slideColour = [1, 2, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
+var whichSolution;
+var solutionList;
 var whichChild;
 var solution = 
 [0, 0, 1, 0, 0,
@@ -217,13 +219,23 @@ function checkSolution(){
       }
    }
   if (correct){
-    alert("You did it!");
+    alert("Well done!");
+    setUpSolution();
   }
 }
 setUpSolution();
 
+
+
+
+
 function setUpSolution()
 {
+   whichSolution = Math.floor(Math.random() * 10);
+   for(var i=0;i<25;i++){
+     
+   }
+   //Set up solution display
    whichChild = -1;
    for(var i=0;i<25;i++){
          //check horizontal row
