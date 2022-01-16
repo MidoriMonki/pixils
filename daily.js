@@ -38,13 +38,20 @@ for(var i=0;i<15;i++){
   originalPositionsX[i] = slide.children[i].style.right;
 }
 
-startTime();
-
 //timer
 var time = 0;
+var holdTime = null;
 function startTime() {
-  document.getElementById("test").innerHTML = time/10 + ;
-  time += 1;
+  const today = new Date();
+  let s = today.getSeconds();
+  time = s;
+  if (holdTime == null){
+    holdTime = s;
+  }
+  document.getElementById("test").innerHTML += time - holdTime;
+  if (time > holdTime){
+    holdTime = time;
+  }
   setTimeout(startTime, 100);
 }
 
@@ -62,6 +69,7 @@ for (var i=0;i<15;i++)
 //Mobile Start
 function dragStart(e)
 {
+  startTime();
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
