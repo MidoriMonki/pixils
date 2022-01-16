@@ -6,6 +6,7 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
+
 var slideColour = ["black", "red", "black", "black", "black", "red", "red", "blue", "black", "black", "black", "black", "black"];
 var slide = document.getElementById("slide1");
 var storePositions = [0, 0, 10, 0, 0,
