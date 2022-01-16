@@ -1,4 +1,6 @@
 var row = 0;
+var originalPositionsY = [];
+var originalPositionsX = [];
 var vPosX;
 var uPosX;
 var vPosY;
@@ -31,8 +33,17 @@ var storePositions =
 
 
 
-//Start by adding event listeners
 
+for(var i=0;i<13;i++){
+  originalPositionsY[i] = slide.children[i].style.top;
+  originalPositionsX[i] = slide.children[i].style.right;
+}
+
+
+
+
+
+//Start by adding event listeners
 for (var i=0;i<13;i++)
 {
     slide.children[i].addEventListener('touchstart', dragStart);
@@ -234,8 +245,11 @@ setUpSolution();
 
 
 
+
+
 function setUpSolution()
 {
+  var colourAlt = Math.floor(Math.random() * 2);
   storePositions = 
   [0, 0, 10, 0, 0,
    0, 1, 2, 3, 0,
@@ -296,19 +310,25 @@ function setUpSolution()
        }
        if (solution[i] == 2){
             slideS.children[whichChild].classList.add("yes");
-            if (Math.floor(Math.random() * 2) == 1 || Math.floor(Math.random() * 2) == 2 ){
-               if (Math.floor(Math.random() * 2) == 1){
+               if (colourAlt == 1){
                    slideS.children[whichChild].classList.add("purple");
-               }else{
+               }else if (colourAlt == 2){
                    slideS.children[whichChild].classList.add("orange");
                }
-            }
        }else if (solution[i] == 3){
             slideS.children[whichChild].classList.add("turq");
+               if (colourAlt == 1){
+                   slideS.children[whichChild].classList.add("green");
+               }else if (colourAlt == 2){
+                   slideS.children[whichChild].classList.add("blue");
+               }
        }
    } 
    //put everything back to normal
    for(var i=0;i<25;i++){
-     
+     if(storePositions[i] != 0){
+       slide.children[storePositions[i]-1].style.right = originalPositionsX[storePositions[i]-1];
+       slide.children[storePositions[i]-1].style.top = originalPositionsY[storePositions[i]-1];
+     }
    }
 }
