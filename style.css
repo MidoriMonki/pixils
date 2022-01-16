@@ -39,9 +39,9 @@
 }
 @keyframes rumble{
   0% {transform: rotate(0deg);}
-  15% {transform: rotate(7deg);}
-  45% {transform: rotate(-7deg);}
-  60% {transform: rotate(7deg);}
-  75% {transform: rotate(-7deg);}
+  15% {transform: rotate(8deg);}
+  45% {transform: rotate(-8deg);}
+  60% {transform: rotate(8deg);}
+  75% {transform: rotate(-8deg);}
   100% {transform: rotate(0deg);}
 }

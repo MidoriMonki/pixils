@@ -47,10 +47,9 @@ function dragStart(e)
     document.onmousedown = dragMove;
   }
   // rumble reset
-  for(i=0;i<24;i++){
+  for(i=0;i<25;i++){
       if (storePositions[i] != 0){
         slide.children[storePositions[i]-1].classList.remove("rumble");
-        slide.children[storePositions[i]-1].classList.remove("thisOneRightHereOfficer");
       }
   }
 }
@@ -102,8 +101,10 @@ function dragEnd()
       }else{
         //add rumble effect if failed
         for(var i=(row*5);i<(5+(row*5));i++){
-          if (storePositions[i] != 0){
-              slide.children[storePositions[i]-1].classList.add("rumble");
+        if (storePositions[i] != 0){
+              if (i==(row*5) && vPosX < uPosX || i==(4+(row*5)) && vPosX > uPosX){
+                 slide.children[storePositions[i]-1].classList.add("rumble");
+              }
           }
         }
       }
