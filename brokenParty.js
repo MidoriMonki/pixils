@@ -45,6 +45,7 @@ for (var i=0;i<13;i++)
 //Mobile Start
 function dragStart(e)
 {
+  document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
   if (e.type == "touchstart")
@@ -235,6 +236,13 @@ setUpSolution();
 
 function setUpSolution()
 {
+  storePositions = 
+  [0, 0, 10, 0, 0,
+   0, 1, 2, 3, 0,
+   11, 4, 5, 6, 13,
+   0, 7, 8, 9, 0,
+   0, 0, 12, 0, 0];
+
    //Setting puzzle up
    whichPuzzle = Math.floor(Math.random() * 5);
    for(var i=0;i<25;i++){
@@ -250,17 +258,15 @@ function setUpSolution()
         slideS.children[i].classList.remove("byebye");
         slide.children[i].classList.remove("byebye");
      }else{
+        for (var f=0;f<25;f++){
+          if (storePositions[f] == i){
+            storePositions[f] = 0;
+          }
+        }
         slideS.children[i].classList.add("byebye");
         slide.children[i].classList.add("byebye");
      }
    }
-   storePositions = 
-  [0, 0, 10, 0, 0,
-   0, 1, 2, 3, 0,
-   11, 4, 5, 6, 13,
-   0, 7, 8, 9, 0,
-   0, 0, 12, 0, 0];
-
 
    for(var i=0;i<25;i++){
          //check horizontal row
@@ -290,4 +296,5 @@ function setUpSolution()
             slideS.children[whichChild].classList.add("turq");
        }
    } 
+   dragEnd();
 }
