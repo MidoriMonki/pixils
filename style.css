@@ -21,6 +21,11 @@
 {
     background: rgb(0, 131, 140);
 }
+.small{
+  width: 8vw;
+  height: 8vw;
+  border-radius: 1vw;
+}
 
 #background{
   background: rgb(230, 230, 230);

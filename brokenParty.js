@@ -8,6 +8,7 @@ var mode = 2;
 var pixilsInRow;
 var slideColour = [1, 2, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1];
 var slide = document.getElementById("slide1");
+var slideS = document.getElementById("slide2");
 var correct;
 var solution = 
 [0, 0, 1, 0, 0,
@@ -204,7 +205,6 @@ function checkDirection()
     }
 }
 
-document.getElementById("bruh").innerHTML = storePositions;
 
 function checkSolution(){
   correct = true;
@@ -218,4 +218,21 @@ function checkSolution(){
   if (correct){
     alert("You did it!");
   }
+}
+
+function setUpSolution()
+{
+   for(var i=0;i<25;i++){
+       if (i)
+       if (solution[i] != 0){
+           slide.children[storePositions[i]-1].style.right2-i-(row*5)
+       }
+       if (solution[i] == 1){
+            slideS.children[i].classList.add("yes");
+            slideS.children[i].classList.remove("turq");
+       }else if (solution[i] == 2){
+            slideS.children[i].classList.add("turq");
+            slideS.children[i].classList.remove("yes");
+       }
+   } 
 }
