@@ -8,7 +8,7 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121311"];
+var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121311"];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
