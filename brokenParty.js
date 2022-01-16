@@ -11,7 +11,7 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["0010001310011102111200200", "0"]
+var puzzleList = ["0010001310011102111200200", "0020002120003001111101110", "2020003100211100011100011"];
 var whichChild;
 var solution = 
 [0, 0, 1, 0, 0,
@@ -234,9 +234,10 @@ setUpSolution();
 
 function setUpSolution()
 {
-   whichPuzzle = Math.floor(Math.random() * 0);
+   whichPuzzle = Math.floor(Math.random() * 3);
    for(var i=0;i<25;i++){
-     solution[i] = ((puzzleList[whichPuzzle]).toString())[i];
+     let why = (puzzleList[whichPuzzle])
+     solution[i] = why[i];
    }
    //Set up solution display
    whichChild = -1;
@@ -259,13 +260,13 @@ function setUpSolution()
            slideS.children[whichChild].style.right = (2-i+(row*5))*6 + "vw";
            //apply vertical
            slideS.children[whichChild].style.top = (row-2)*6 + "vw";
+           slideS.children[whichChild].classList.remove("turq");
+           slideS.children[whichChild].classList.remove("yes");
        }
        if (solution[i] == 2){
             slideS.children[whichChild].classList.add("yes");
-            slideS.children[whichChild].classList.remove("turq");
        }else if (solution[i] == 3){
             slideS.children[whichChild].classList.add("turq");
-            slideS.children[whichChild].classList.remove("yes");
        }
    } 
 }
