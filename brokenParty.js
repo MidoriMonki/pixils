@@ -8,12 +8,12 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121311"];
+var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121111","1211121121311", "111111111111111", "111111111111111"];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "010100111010101022200030015Trolley"];
+var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "00001111111010111111010115Trolley", "011101101111110100001010014YinYang"];
 var whichChild;
 var amountOfBoxes;
 var solution = 
@@ -85,6 +85,7 @@ function dragStart(e)
 //Moving   mode0 = Y, mode1 = X
 function dragMove(e)
 {
+  document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
   if (e.type == "touchmove")
@@ -259,7 +260,7 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   whichPuzzle = Math.floor(Math.random() * 7);
+   whichPuzzle = Math.floor(Math.random() * 9);
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
