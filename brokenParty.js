@@ -50,6 +50,7 @@ function dragStart(e)
   for(i=0;i<24;i++){
       if (storePositions[i] != 0){
         slide.children[storePositions[i]-1].classList.remove("rumble");
+        slide.children[storePositions[i]-1].classList.remove("thisOneRightHereOfficer");
       }
   }
 }
@@ -130,7 +131,9 @@ function dragEnd()
         //add rumble effect if failed
         for(var i=0;i<5;i++){
         if (storePositions[row+(i*5)] != 0){
-            slide.children[storePositions[row+(i*5)]-1].classList.add("rumble");
+            if (i==0 && vPosY < uPosY || i==4 && vPosY > uPosY){
+                slide.children[storePositions[row+(i*5)]-1].classList.add("rumble")
+            }
         }
       } 
     }

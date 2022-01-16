@@ -37,12 +37,11 @@
 .rumble{
   animation: rumble .4s;
 }
-
 @keyframes rumble{
   0% {transform: rotate(0deg);}
-  15% {transform: rotate(6deg);}
-  45% {transform: rotate(-6deg);}
-  60% {transform: rotate(6deg);}
-  75% {transform: rotate(-6deg);}
+  15% {transform: rotate(7deg);}
+  45% {transform: rotate(-7deg);}
+  60% {transform: rotate(7deg);}
+  75% {transform: rotate(-7deg);}
   100% {transform: rotate(0deg);}
 }
