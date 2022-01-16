@@ -33,3 +33,13 @@
   border-radius: 30px;
   
 }
+
+.rumble{
+  animation: rumble .5s;
+}
+
+@keyframes rumble{
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(50deg);}
+  100% {transform: rotate(0deg);}
+}
