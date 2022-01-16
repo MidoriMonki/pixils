@@ -11,8 +11,9 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["0010001310011102111200200", "0020002120003001111101110", "2020003100211100011100011"];
+var puzzleList = ["001000131001110211120020013", "002000212000300111110111013", "202000310021110001110001113"];
 var whichChild;
+var amountOfBoxes;
 var solution = 
 [0, 0, 1, 0, 0,
  0, 1, 3, 1, 0,
@@ -234,13 +235,25 @@ setUpSolution();
 
 function setUpSolution()
 {
+   //Setting puzzle up
    whichPuzzle = Math.floor(Math.random() * 3);
    for(var i=0;i<25;i++){
-     let why = (puzzleList[whichPuzzle])
+     let why = (puzzleList[whichPuzzle]);
      solution[i] = why[i];
    }
+   let why = (puzzleList[whichPuzzle]);
+   amountOfBoxes = "" + why[25] + why[26];
    //Set up solution display
    whichChild = -1;
+   for(var i=0;i<13;i++){
+     if (i<=amountOfBoxes){
+        slideS.children[i].classList.add("box");
+        slide.children[i].classList.add("box");
+     }else{
+       slideS.children[i].classList.remove("box");
+       slide.children[i].classList.remove("box");
+     }
+   }
    for(var i=0;i<25;i++){
          //check horizontal row
          if (i <= 4){
