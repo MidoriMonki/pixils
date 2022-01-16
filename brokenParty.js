@@ -8,12 +8,12 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121311","1211121121311","1211121121111","1211121121311", "111111111111111", "111111111111111"];
+var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1211121121111","1211121121311", "111111111111111", "111111111111111"];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "011100101001110010100111013Lucky Eight", "011101101111110100001010014YinYang"];
+var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "011100101001110010100111013Lucky Eight", "011101101111110100001010014YinYang"];
 var whichChild;
 var amountOfBoxes;
 var solution = 
@@ -252,15 +252,15 @@ function setUpSolution()
 {
   var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
-  [0, 0, 10, 0, 0,
-   0, 1, 2, 3, 0,
+  [0, 0, 10, 14, 0,
+   0, 1, 2, 3, 15,
    11, 4, 5, 6, 13,
    0, 7, 8, 9, 0,
    0, 0, 12, 0, 0];
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   whichPuzzle = 7;
+   whichPuzzle = Math.floor(Math.random() * 9);
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
