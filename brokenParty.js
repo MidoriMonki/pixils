@@ -11,7 +11,7 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["0010001310011102111200200", ""]
+var puzzleList = ["0010001310011102111200200", "0"]
 var whichChild;
 var solution = 
 [0, 0, 1, 0, 0,
