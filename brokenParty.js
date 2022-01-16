@@ -11,7 +11,7 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013", "002000212000300011100111011", "202000310021110001110001113", "001000121001210113110010013", "200020101000200100010111010"];
+var puzzleList = ["001000131001110211120020013", "002000212000300011100111011", "202000310021110001110001113", "010101212101210003000000011", "200020101000200100010111010"];
 var whichChild;
 var amountOfBoxes;
 var solution = 
@@ -296,6 +296,13 @@ function setUpSolution()
        }
        if (solution[i] == 2){
             slideS.children[whichChild].classList.add("yes");
+            if (Math.floor(Math.random() * 2) == 1 || Math.floor(Math.random() * 2) == 2 ){
+               if (Math.floor(Math.random() * 2) == 1){
+                   slideS.children[whichChild].classList.add("purple");
+               }else{
+                   slideS.children[whichChild].classList.add("orange");
+               }
+            }
        }else if (solution[i] == 3){
             slideS.children[whichChild].classList.add("turq");
        }
