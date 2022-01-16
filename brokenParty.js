@@ -334,6 +334,7 @@ function setUpSolution()
        }
    } 
    //put everything back to normal
+   var bruh = 0;
    for(var i=0;i<25;i++){
      if(storePositions[i] != 0){
        slide.children[storePositions[i]-1].classList.remove("yes");
@@ -343,11 +344,14 @@ function setUpSolution()
        slide.children[storePositions[i]-1].classList.remove("blue");
        slide.children[storePositions[i]-1].classList.remove("green");
        
-       if((slideColour[whichPuzzle])[i] == 2){
+       let yep = slideColour[whichPuzzle];
+       if(yep[bruh] == 2){
          slide.children[storePositions[i]-1].classList.add("yes");
+         bruh++;
        }
-       if((slideColour[whichPuzzle])[i] == 3){
+       else if(yep[bruh] == 3){
          slide.children[storePositions[i]-1].classList.add("turq");
+         bruh++;
        }
        
        if(slide.children[storePositions[i]-1].classList.contains("yes")){
