@@ -255,14 +255,18 @@ function setUpSolution()
    whichChild = -1;
    for(var i=0;i<13;i++){
      if (i<amountOfBoxes){
+        slideS.children[i].classList.add("box");
+        slide.children[i].classList.add("box");
         slideS.children[i].classList.remove("byebye");
         slide.children[i].classList.remove("byebye");
      }else{
         for (var f=0;f<25;f++){
-          if (storePositions[f] == i){
+          if (storePositions[f] == i+1){
             storePositions[f] = 0;
           }
         }
+        slideS.children[i].classList.remove("box");
+        slide.children[i].classList.remove("box");
         slideS.children[i].classList.add("byebye");
         slide.children[i].classList.add("byebye");
      }
