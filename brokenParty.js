@@ -7,18 +7,18 @@ var target;
 var mode = 2;
 var pixilsInRow;
 var slide = document.getElementById("slide1");
-var storePositions = [0, 0, 0, 0, 0,
+var storePositions = [0, 0, 10, 0, 0,
                       0, 1, 2, 3, 0,
-                      0, 4, 5, 6, 0,
+                      11, 4, 5, 6, 13,
                       0, 7, 8, 9, 0,
-                      0, 0, 0, 0, 0]
+                      0, 0, 12, 0, 0]
 
 
 
 
 //Start by adding event listeners
 
-for (var i=0;i<9;i++)
+for (var i=0;i<13;i++)
 {
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
