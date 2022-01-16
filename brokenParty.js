@@ -10,8 +10,8 @@ var slideColour = [1, 2, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
-var whichSolution;
-var solutionList;
+var whichPuzzle;
+var puzzleList = ["0010001310011102111200200", ""]
 var whichChild;
 var solution = 
 [0, 0, 1, 0, 0,
@@ -223,17 +223,20 @@ function checkSolution(){
     setUpSolution();
   }
 }
+
+
+
+
+//set it up obviously
 setUpSolution();
-
-
 
 
 
 function setUpSolution()
 {
-   whichSolution = Math.floor(Math.random() * 10);
+   whichPuzzle = Math.floor(Math.random() * 0);
    for(var i=0;i<25;i++){
-     
+     solution[i] = ((puzzleList[whichPuzzle]).toString())[i];
    }
    //Set up solution display
    whichChild = -1;
