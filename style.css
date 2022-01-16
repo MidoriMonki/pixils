@@ -2,7 +2,7 @@
   margin: 0px;
   float: left;
   background: rgb(30, 30, 30);
-  border-radius: 20px;
+  border-radius: 3vw;
   width: 15vw;
   height: 15vw;
   transition: .5s ease;
@@ -35,14 +35,14 @@
 }
 
 .rumble{
-  animation: rumble .2s;
+  animation: rumble .4s;
 }
 
 @keyframes rumble{
   0% {transform: rotate(0deg);}
-  15% {transform: rotate(5deg);}
-  45% {transform: rotate(-5deg);}
-  60% {transform: rotate(5deg);}
-  75% {transform: rotate(-5deg);}
+  15% {transform: rotate(6deg);}
+  45% {transform: rotate(-6deg);}
+  60% {transform: rotate(6deg);}
+  75% {transform: rotate(-6deg);}
   100% {transform: rotate(0deg);}
 }

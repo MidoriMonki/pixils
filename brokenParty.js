@@ -46,14 +46,13 @@ function dragStart(e)
     document.onmouseup = dragEnd;
     document.onmousedown = dragMove;
   }
+  // rumble reset
   for(i=0;i<24;i++){
       if (storePositions[i] != 0){
-        slide.children[i-1].classList.remove("rumble");
+        slide.children[storePositions[i]-1].classList.remove("rumble");
       }
   }
 }
-
-
 
 
 
@@ -127,6 +126,13 @@ function dragEnd()
         storePositions[i] = storePositions[i-5];
       }
       storePositions[row] = 0;
+    }else{
+        //add rumble effect if failed
+        for(var i=0;i<5;i++){
+        if (storePositions[row+(i*5)] != 0){
+            slide.children[storePositions[row+(i*5)]-1].classList.add("rumble");
+        }
+      } 
     }
     //Set their top property correctly
       for(var i=0;i<5;i++){
