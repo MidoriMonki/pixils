@@ -56,7 +56,7 @@ for (var i=0;i<13;i++)
 //Mobile Start
 function dragStart(e)
 {
-  document.getElementById("test").innerHTML = storePositions;
+  //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
   if (e.type == "touchstart")
@@ -249,7 +249,7 @@ setUpSolution();
 
 function setUpSolution()
 {
-  var colourAlt = Math.floor(Math.random() * 2);
+  var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
   [0, 0, 10, 0, 0,
    0, 1, 2, 3, 0,
@@ -307,6 +307,10 @@ function setUpSolution()
            slideS.children[whichChild].style.top = (row-2)*6 + "vw";
            slideS.children[whichChild].classList.remove("turq");
            slideS.children[whichChild].classList.remove("yes");
+           slideS.children[whichChild].classList.remove("purple");
+           slideS.children[whichChild].classList.remove("orange");
+           slideS.children[whichChild].classList.remove("blue");
+           slideS.children[whichChild].classList.remove("green");
        }
        if (solution[i] == 2){
             slideS.children[whichChild].classList.add("yes");
@@ -327,6 +331,11 @@ function setUpSolution()
    //put everything back to normal
    for(var i=0;i<25;i++){
      if(storePositions[i] != 0){
+       slide.children[storePositions[i]-1].classList.remove("purple");
+       slide.children[storePositions[i]-1].classList.remove("orange");
+       slide.children[storePositions[i]-1].classList.remove("blue");
+       slide.children[storePositions[i]-1].classList.remove("green");
+       
        if(slide.children[storePositions[i]-1].classList.contains("yes")){
          if (colourAlt == 1){
              slide.children[storePositions[i]-1].classList.add("purple");
