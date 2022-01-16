@@ -335,7 +335,6 @@ function setUpSolution()
        }
    } 
    //put everything back to normal
-   var bruh = 0;
    for(var i=0;i<25;i++){
      if(storePositions[i] != 0){
        slide.children[storePositions[i]-1].classList.remove("yes");
@@ -347,25 +346,24 @@ function setUpSolution()
        
        
        let yep = slideColour[whichPuzzle];
-       if(yep[bruh] == 2){
-         slide.children[storePositions[i]].classList.add("yes");
+       if(yep[storePositions[i]-1] == 2){
+         slide.children[storePositions[i]-1].classList.add("yes");
        }
-       else if(yep[bruh] == 3){
-         slide.children[storePositions[i]].classList.add("turq");
+       else if(yep[storePositions[i]-1] == 3){
+         slide.children[storePositions[i]-1].classList.add("turq");
        }
-       bruh++;
        
-       if(slide.children[storePositions[i]].classList.contains("yes")){
+       if(slide.children[storePositions[i]-1].classList.contains("yes")){
          if (colourAlt == 1){
-             slide.children[storePositions[i]].classList.add("purple");
+             slide.children[storePositions[i]-1].classList.add("purple");
          }else if (colourAlt == 2){
-             slide.children[storePositions[i]].classList.add("orange");
+             slide.children[storePositions[i]-1].classList.add("orange");
          }
-       }else if(slide.children[storePositions[i]].classList.contains("turq")){
+       }else if(slide.children[storePositions[i]-1].classList.contains("turq")){
          if (colourAlt == 1){i
-             slide.children[storePositions[i]].classList.add("green");
+             slide.children[storePositions[i]-1].classList.add("green");
          }else if (colourAlt == 2){
-             slide.children[storePositions[i]].classList.add("blue");
+             slide.children[storePositions[i]-1].classList.add("blue");
          }
        }
        slide.children[storePositions[i]-1].style.right = originalPositionsX[storePositions[i]-1];
