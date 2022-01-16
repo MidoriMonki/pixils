@@ -8,7 +8,9 @@
   transition: .5s ease;
   position: absolute;
 }
-
+.byebye{
+  display: none;
+}
 .null{
   background: grey;
   z-index: -10;

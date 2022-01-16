@@ -11,7 +11,7 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013", "002000212000300111110111013", "202000310021110001110001113"];
+var puzzleList = ["001000131001110211120020013", "002000212000300011100111011", "202000310021110001110001113", "001000121001210113110010013", "200020101000200100010111010"];
 var whichChild;
 var amountOfBoxes;
 var solution = 
@@ -236,7 +236,7 @@ setUpSolution();
 function setUpSolution()
 {
    //Setting puzzle up
-   whichPuzzle = Math.floor(Math.random() * 3);
+   whichPuzzle = Math.floor(Math.random() * 5);
    for(var i=0;i<25;i++){
      let why = (puzzleList[whichPuzzle]);
      solution[i] = why[i];
@@ -246,14 +246,22 @@ function setUpSolution()
    //Set up solution display
    whichChild = -1;
    for(var i=0;i<13;i++){
-     if (i<=amountOfBoxes){
-        slideS.children[i].classList.add("box");
-        slide.children[i].classList.add("box");
+     if (i<amountOfBoxes){
+        slideS.children[i].classList.remove("byebye");
+        slide.children[i].classList.remove("byebye");
      }else{
-       slideS.children[i].classList.remove("box");
-       slide.children[i].classList.remove("box");
+        slideS.children[i].classList.add("byebye");
+        slide.children[i].classList.add("byebye");
      }
    }
+   storePositions = 
+  [0, 0, 10, 0, 0,
+   0, 1, 2, 3, 0,
+   11, 4, 5, 6, 13,
+   0, 7, 8, 9, 0,
+   0, 0, 12, 0, 0];
+
+
    for(var i=0;i<25;i++){
          //check horizontal row
          if (i <= 4){
