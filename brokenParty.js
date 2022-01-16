@@ -13,7 +13,7 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "00001111111010111111010115Trolley", "011101101111110100001010014YinYang"];
+var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210003000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "011100101001110010100111013Lucky Eight", "011101101111110100001010014YinYang"];
 var whichChild;
 var amountOfBoxes;
 var solution = 
@@ -260,7 +260,7 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   whichPuzzle = Math.floor(Math.random() * 9);
+   whichPuzzle = 7;
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
@@ -290,6 +290,7 @@ function setUpSolution()
         slide.children[i].classList.add("byebye");
      }
    }
+  
 
    for(var i=0;i<25;i++){
          //check horizontal row
@@ -347,12 +348,11 @@ function setUpSolution()
        let yep = slideColour[whichPuzzle];
        if(yep[bruh] == 2){
          slide.children[storePositions[i]-1].classList.add("yes");
-         bruh++;
        }
        else if(yep[bruh] == 3){
          slide.children[storePositions[i]-1].classList.add("turq");
-         bruh++;
        }
+       bruh++;
        
        if(slide.children[storePositions[i]-1].classList.contains("yes")){
          if (colourAlt == 1){
