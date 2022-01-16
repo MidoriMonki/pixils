@@ -1,10 +1,14 @@
+body{
+  background: rgb(240, 240, 23=40);
+}
+
 .box{
   margin: 0px;
   float: left;
   background: rgb(30, 30, 30);
   border-radius: 3vw;
-  width: 15vw;
-  height: 15vw;
+  width: 15.1vw;
+  height: 15.1vw;
   transition: .5s ease;
   position: absolute;
 }
@@ -48,7 +52,7 @@
 }
 
 #background{
-  background: rgb(230, 230, 230);
+  background: rgb(220, 220, 220);
   position: absolute;
   width: 75vw;
   height: 75vw;
