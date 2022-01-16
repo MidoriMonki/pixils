@@ -85,7 +85,7 @@ function dragStart(e)
 //Moving   mode0 = Y, mode1 = X
 function dragMove(e)
 {
-  document.getElementById("test").innerHTML = storePositions;
+  //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
   if (e.type == "touchmove")

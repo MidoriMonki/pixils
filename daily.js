@@ -33,14 +33,20 @@ var storePositions =
 
 whichPuzzle = 0;
 
-
 for(var i=0;i<15;i++){
   originalPositionsY[i] = slide.children[i].style.top;
   originalPositionsX[i] = slide.children[i].style.right;
 }
 
+startTime();
 
-
+//timer
+var time = 0;
+function startTime() {
+  document.getElementById("test").innerHTML = time/10 + ;
+  time += 1;
+  setTimeout(startTime, 100);
+}
 
 
 //Start by adding event listeners
@@ -85,7 +91,6 @@ function dragStart(e)
 //Moving   mode0 = Y, mode1 = X
 function dragMove(e)
 {
-  document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
   if (e.type == "touchmove")
