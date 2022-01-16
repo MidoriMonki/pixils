@@ -31,7 +31,7 @@ var storePositions =
  0, 0, 12, 0, 0];
 
 
-
+whichPuzzle = 0;
 
 
 for(var i=0;i<15;i++){
