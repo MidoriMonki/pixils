@@ -6,6 +6,7 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
+var slideColour = ["black", "red", "black", "black", "black", "red", "red", "blue", "black", "black", "black", "black", "black"];
 var slide = document.getElementById("slide1");
 var storePositions = [0, 0, 10, 0, 0,
                       0, 1, 2, 3, 0,
@@ -124,6 +125,7 @@ function dragEnd()
   }
   
   mode = 2;
+  checkSolution();
   document.getElementById("bruh").innerHTML = storePositions;
 }
 
@@ -173,3 +175,7 @@ function checkDirection()
 }
 
 document.getElementById("bruh").innerHTML = storePositions;
+
+function checkSolution(){
+  
+}
