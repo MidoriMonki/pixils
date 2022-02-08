@@ -69,8 +69,8 @@ function dragStart(e)
   {
     uPosX = e.clientX;
     uPosY = e.clientY;
-    document.onmouseup = dragEnd;
-    document.onmousedown = dragMove;
+    document.mouseup = dragEnd;
+    document.mousedown = dragMove;
   }
   // rumble reset
   for(i=0;i<25;i++){
@@ -95,8 +95,10 @@ function dragMove(e)
   }
   else
   {
-    document.onmouseup = dragEnd;
-    document.onmousedown = dragMove;
+     vPosX = e.clientX;
+     vPosY = e.clientY;
+    document.mouseup = dragEnd;
+    document.mousedown = dragMove;
   }
   
   // Important to determine which direction we scrolling 
