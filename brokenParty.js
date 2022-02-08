@@ -50,6 +50,7 @@ for (var i=0;i<15;i++)
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
     slide.children[i].mousedown = dragStart;
+    slide.children[i].mouseup = dragEnd;
 }
 
 
@@ -97,8 +98,6 @@ function dragMove(e)
   {
      vPosX = e.clientX;
      vPosY = e.clientY;
-    document.mouseup = dragEnd;
-    document.mousedown = dragMove;
   }
   
   // Important to determine which direction we scrolling 
