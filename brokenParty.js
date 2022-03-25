@@ -49,7 +49,7 @@ for (var i=0;i<15;i++)
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
-    slide.children[i].mousedown = dragStart;
+    slide.children[i].addEventListener('mousedown', dragStart);
     slide.children[i].mouseup = dragEnd;
 }
 
@@ -70,8 +70,8 @@ function dragStart(e)
   {
     uPosX = e.clientX;
     uPosY = e.clientY;
-    document.mouseup = dragEnd;
-    document.mousedown = dragMove;
+    document.addEventListener('mouseup', dragEnd);
+    document.addEventListener('mousedown', dragMove);
   }
   // rumble reset
   for(i=0;i<25;i++){
