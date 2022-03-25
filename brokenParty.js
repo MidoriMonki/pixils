@@ -70,6 +70,7 @@ function dragStart(e)
   {
     uPosX = e.clientX;
     uPosY = e.clientY;
+    target = e.target.id
     document.addEventListener('mouseup', dragEnd);
     document.addEventListener('mousedown', dragMove);
   }
