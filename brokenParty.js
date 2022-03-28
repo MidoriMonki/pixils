@@ -69,14 +69,20 @@ document.addEventListener('keydown', (keyTest) => {
     uPosX = 0;
     vPosX = 0;
     uPosY = 0;
-    vPosY = 10;
+    vPosY = -10;
+        if (mode == 2){
+    checkDirection();
+  }
     dragEnd();
     target = storePositions[who];
   }else if (name == "s"){
     uPosX = 0;
     vPosX = 0;
     uPosY = 0;
-    vPosY = -10;
+    vPosY = 10;
+      if (mode == 2){
+    checkDirection();
+  }
     dragEnd();
     target = storePositions[who];
   }else if (name == "a"){
@@ -84,6 +90,9 @@ document.addEventListener('keydown', (keyTest) => {
     vPosX = -1;
     uPosY = 0;
     vPosY = 0;
+      if (mode == 2){
+    checkDirection();
+  }
     dragEnd();
     target = storePositions[who];
   }else if (name == "d"){
@@ -91,6 +100,9 @@ document.addEventListener('keydown', (keyTest) => {
     vPosX = 1;
     uPosY = 0;
     vPosY = 0;
+      if (mode == 2){
+    checkDirection();
+  }
     dragEnd();
     target = storePositions[who];
   }
