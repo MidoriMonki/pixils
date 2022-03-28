@@ -59,9 +59,37 @@ document.addEventListener('keydown', (keyTest) => {
     target = storePositions[who];
   }
   //yeah
-
+    if (name == "w"){
+    uPosX = 0;
+    vPosX = 0;
+    uPosY = 0;
+    vPosY = 1;
+    dragEnd();
+    target = storePositions[who];
+  }else if (name == "s"){
+    uPosX = 0;
+    vPosX = 0;
+    uPosY = 0;
+    vPosY = -1;
+    dragEnd();
+    target = storePositions[who];
+  }else if (name == "a"){
+    uPosX = 0;
+    vPosX = -1;
+    uPosY = 0;
+    vPosY = 0;
+    dragEnd();
+    target = storePositions[who];
+  }else if (name == "d"){
+    uPosX = 0;
+    vPosX = 1;
+    uPosY = 0;
+    vPosY = 0;
+    dragEnd();
+    target = storePositions[who];
+  }
   
-  document.getElementById("pp").innerHTML = target + "/"+  who + "/"+  storePositions[who];
+  document.getElementById("pp").innerHTML =  "/"+ target + "/"+  who + "/"+  storePositions[who] + "/";
   
     slide.children[target-1].classList.add("selected");
   
