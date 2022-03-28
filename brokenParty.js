@@ -50,7 +50,8 @@ for (var i=0;i<15;i++)
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
     slide.children[i].addEventListener('mousedown', dragStart);
-    slide.children[i].mouseup = dragEnd;
+    slide.children[i].addEventListener('mousemove', dragMove);
+    document.addEventListener('mouseup', dragEnd);
 }
 
 
@@ -64,15 +65,14 @@ function dragStart(e)
   {
      uPosX = e.touches[0].clientX;
      uPosY = e.touches[0].clientY;
-     target = e.target.id
+     target = e.target.id;
   }
   else
   {
     uPosX = e.clientX;
     uPosY = e.clientY;
-    target = e.target.id
-    document.addEventListener('mouseup', dragEnd);
-    document.addEventListener('mousedown', dragMove);
+    target = e.target.id;
+
   }
   // rumble reset
   for(i=0;i<25;i++){
@@ -97,8 +97,10 @@ function dragMove(e)
   }
   else
   {
+     target = e.target.id;
      vPosX = e.clientX;
      vPosY = e.clientY;
+     document.getElementById("pp").innerHTML = vPosX + "///" + vPosY  + "///" + target;
   }
   
   // Important to determine which direction we scrolling 
