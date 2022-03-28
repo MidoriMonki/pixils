@@ -39,8 +39,26 @@ for(var i=0;i<15;i++){
   originalPositionsX[i] = slide.children[i].style.right;
 }
 
+document.addEventListener('keydown', (keyTest) => {
+  var name = event.key;
+  var code = event.code;
+  
+  //yeah
+  target = storePositions += 1;
 
+  {
+    uPosX = e.clientX;
+    uPosY = e.clientY;
+    target = e.target.id;
+    document.getElementById("pp").innerHTML = target + mode;
 
+  }
+  // rumble reset
+  for(i=0;i<25;i++){
+      if (storePositions[i] != 0){
+        slide.children[storePositions[i]-1].classList.remove("rumble");
+      }
+  }
 
 
 //Start by adding event listeners
@@ -72,6 +90,7 @@ function dragStart(e)
     uPosX = e.clientX;
     uPosY = e.clientY;
     target = e.target.id;
+    document.getElementById("pp").innerHTML = target + mode;
 
   }
   // rumble reset
@@ -100,7 +119,7 @@ function dragMove(e)
      target = e.target.id;
      vPosX = e.clientX;
      vPosY = e.clientY;
-     document.getElementById("pp").innerHTML = vPosX + "///" + vPosY  + "///" + target;
+     document.getElementById("pp").innerHTML = target + mode;
   }
   
   // Important to determine which direction we scrolling 
