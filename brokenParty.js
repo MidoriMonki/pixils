@@ -59,6 +59,8 @@ document.addEventListener('keydown', (keyTest) => {
     who += 1;
     target = storePositions[who];
   }
+  
+  alert(who);
   //yeah
     if (name == "w"){
     uPosX = 0;
