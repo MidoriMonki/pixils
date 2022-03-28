@@ -74,3 +74,7 @@ body{
   75% {transform: rotate(-8deg);}
   100% {transform: rotate(0deg);}
 }
+
+.selected{
+  animation: rumble .4s;
+}

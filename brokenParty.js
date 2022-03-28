@@ -32,7 +32,7 @@ var storePositions =
 
 
 target = 5;
-var who = 5;
+var who = 12;
 
 
 for(var i=0;i<15;i++){
@@ -44,13 +44,15 @@ document.addEventListener('keydown', (keyTest) => {
   
   var name = event.key;
   
+  slide.children[storePositions[who]-1].classList.remove("selected");
+  
   if (name == "ArrowUp"){
     who -= 6;
     target = storePositions[who];
   }else if (name == "ArrowDown"){
     who += 6;
     target = storePositions[who];
-  }else if (name == "ArrowLeft" && target){
+  }else if (name == "ArrowLeft"){
     who -= 1;
     target = storePositions[who];
   }else if (name == "ArrowRight"){
@@ -58,7 +60,7 @@ document.addEventListener('keydown', (keyTest) => {
     target = storePositions[who];
   }
   //yeah
-    if (name == "w"){
+  if (name == "w"){
     uPosX = 0;
     vPosX = 0;
     uPosY = 0;
@@ -72,7 +74,7 @@ document.addEventListener('keydown', (keyTest) => {
     vPosY = -1;
     dragEnd();
     target = storePositions[who];
-  }else if (name == "a" && target){
+  }else if (name == "a"){
     uPosX = 0;
     vPosX = -1;
     uPosY = 0;
@@ -85,7 +87,10 @@ document.addEventListener('keydown', (keyTest) => {
     uPosY = 0;
     vPosY = 0;
     dragEnd();
+        target = storePositions[who];
   }
+  
+    slide.children[storePositions[who]-1].classList.add("selected");
   
   
 
