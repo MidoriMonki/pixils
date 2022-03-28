@@ -31,7 +31,8 @@ var storePositions =
  0, 0, 12, 0, 0];
 
 
-
+target = 5;
+var who = 5;
 
 
 for(var i=0;i<15;i++){
@@ -40,25 +41,56 @@ for(var i=0;i<15;i++){
 }
 
 document.addEventListener('keydown', (keyTest) => {
-  var name = event.key;
-  var code = event.code;
   
+  var name = event.key;
+  
+  if (name == "ArrowUp"){
+    who -= 6;
+    target = storePositions[who];
+  }else if (name == "ArrowDown"){
+    who += 6;
+    target = storePositions[who];
+  }else if (name == "ArrowLeft" && target){
+    who -= 1;
+    target = storePositions[who];
+  }else if (name == "ArrowRight"){
+    who += 1;
+    target = storePositions[who];
+  }
   //yeah
+    if (name == "w"){
+    uPosX = 0;
+    vPosX = 0;
+    uPosY = 0;
+    vPosY = 1;
+    dragEnd();
+    target = storePositions[who];
+  }else if (name == "s"){
+    uPosX = 0;
+    vPosX = 0;
+    uPosY = 0;
+    vPosY = -1;
+    dragEnd();
+    target = storePositions[who];
+  }else if (name == "a" && target){
+    uPosX = 0;
+    vPosX = -1;
+    uPosY = 0;
+    vPosY = 0;
+    dragEnd();
+    target = storePositions[who];
+  }else if (name == "d"){
+    uPosX = 0;
+    vPosX = 1;
+    uPosY = 0;
+    vPosY = 0;
+    dragEnd();
+  }
+  
+  
+
   target = storePositions += 1;
-
-  {
-    uPosX = e.clientX;
-    uPosY = e.clientY;
-    target = e.target.id;
-    document.getElementById("pp").innerHTML = target + mode;
-
-  }
-  // rumble reset
-  for(i=0;i<25;i++){
-      if (storePositions[i] != 0){
-        slide.children[storePositions[i]-1].classList.remove("rumble");
-      }
-  }
+});
 
 
 //Start by adding event listeners
