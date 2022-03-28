@@ -76,5 +76,5 @@ body{
 }
 
 .selected{
-  animation: rumble .4s;
+  background: yellow;
 }

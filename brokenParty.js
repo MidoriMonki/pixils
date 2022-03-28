@@ -44,13 +44,12 @@ document.addEventListener('keydown', (keyTest) => {
   
   var name = event.key;
   
-  slide.children[storePositions[who]-1].classList.remove("selected");
-  
+
   if (name == "ArrowUp"){
-    who -= 6;
+    who -= 5;
     target = storePositions[who];
   }else if (name == "ArrowDown"){
-    who += 6;
+    who += 5;
     target = storePositions[who];
   }else if (name == "ArrowLeft"){
     who -= 1;
@@ -60,37 +59,11 @@ document.addEventListener('keydown', (keyTest) => {
     target = storePositions[who];
   }
   //yeah
-  if (name == "w"){
-    uPosX = 0;
-    vPosX = 0;
-    uPosY = 0;
-    vPosY = 1;
-    dragEnd();
-    target = storePositions[who];
-  }else if (name == "s"){
-    uPosX = 0;
-    vPosX = 0;
-    uPosY = 0;
-    vPosY = -1;
-    dragEnd();
-    target = storePositions[who];
-  }else if (name == "a"){
-    uPosX = 0;
-    vPosX = -1;
-    uPosY = 0;
-    vPosY = 0;
-    dragEnd();
-    target = storePositions[who];
-  }else if (name == "d"){
-    uPosX = 0;
-    vPosX = 1;
-    uPosY = 0;
-    vPosY = 0;
-    dragEnd();
-        target = storePositions[who];
-  }
+
   
-    slide.children[storePositions[who]-1].classList.add("selected");
+  document.getElementById("pp").innerHTML = target + "/"+  who + "/"+  storePositions[who];
+  
+    slide.children[target-1].classList.add("selected");
   
   
 
