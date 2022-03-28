@@ -43,9 +43,9 @@ for(var i=0;i<15;i++){
 document.addEventListener('keydown', (keyTest) => {
   
   var name = event.key;
-  
+  if(target != 0){
   slide.children[target-1].classList.remove("selected");
-
+  }
   if (name == "ArrowUp"){
     who -= 5;
     target = storePositions[who];
@@ -60,7 +60,10 @@ document.addEventListener('keydown', (keyTest) => {
     target = storePositions[who];
   }
   
-  alert(who);
+  for (var i=0;i<who;i++){
+    
+  }
+  
   //yeah
     if (name == "w"){
     uPosX = 0;
@@ -94,7 +97,9 @@ document.addEventListener('keydown', (keyTest) => {
   
   document.getElementById("pp").innerHTML =  "/"+ target + "/"+  who + "/"+  storePositions[who] + "/";
   
+  if(target != 0){
     slide.children[target-1].classList.add("selected");
+  }
   
 });
 
