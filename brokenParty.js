@@ -44,6 +44,7 @@ document.addEventListener('keydown', (keyTest) => {
   
   var name = event.key;
   
+  slide.children[target-1].classList.remove("selected");
 
   if (name == "ArrowUp"){
     who -= 5;
@@ -63,14 +64,14 @@ document.addEventListener('keydown', (keyTest) => {
     uPosX = 0;
     vPosX = 0;
     uPosY = 0;
-    vPosY = 1;
+    vPosY = 10;
     dragEnd();
     target = storePositions[who];
   }else if (name == "s"){
     uPosX = 0;
     vPosX = 0;
     uPosY = 0;
-    vPosY = -1;
+    vPosY = -10;
     dragEnd();
     target = storePositions[who];
   }else if (name == "a"){
@@ -93,9 +94,6 @@ document.addEventListener('keydown', (keyTest) => {
   
     slide.children[target-1].classList.add("selected");
   
-  
-
-  target = storePositions += 1;
 });
 
 
