@@ -1,7 +1,9 @@
 body{
-  background: rgb(240, 240, 23=40);
+  background: rgb(240, 240, 234, 0);
 }
 
+/* mobile device screen size */
+@media only screen and (max-width: 600px) {
 .box{
   outline-offset: -40px;
   margin: 0px;
@@ -14,6 +16,26 @@ body{
   transition: .5s ease;
   position: absolute;
 }
+}
+
+/* computer screen size */
+@media only screen and (min-width: 600px) {
+.box{
+  outline-offset: -40px;
+  margin: 0px;
+  float: left;
+  background: rgb(30, 30, 30);
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+  outline: 0vw solid lightgrey;
+  transition: .5s ease;
+  position: absolute;
+}
+}
+
+
+
 .byebye{
   display: none;
 }

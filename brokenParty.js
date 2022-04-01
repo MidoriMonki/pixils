@@ -249,7 +249,7 @@ function dragEnd()
       //Set their right property correctly
       for(var i=(row*5);i<(5+(row*5));i++){
         if (storePositions[i] != 0){
-            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*15 + "vw";
+            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*100 + "px";
 
         }
       } 
@@ -281,7 +281,7 @@ function dragEnd()
     //Set their top property correctly
       for(var i=0;i<5;i++){
         if (storePositions[row+(i*5)] != 0){
-            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-15 + "vw";
+            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-100 + "px";
         }
       } 
   }
@@ -421,9 +421,9 @@ function setUpSolution()
        if (solution[i] != 0){
            whichChild++;
            //apply horizontal
-           slideS.children[whichChild].style.right = (2-i+(row*5))*6 + "vw";
+           slideS.children[whichChild].style.right = (2-i+(row*5))*100 + "px";
            //apply vertical
-           slideS.children[whichChild].style.top = (row-2)*6 + "vw";
+           slideS.children[whichChild].style.top = (row-2)*6 + "px";
            slideS.children[whichChild].classList.remove("turq");
            slideS.children[whichChild].classList.remove("yes");
            slideS.children[whichChild].classList.remove("purple");
