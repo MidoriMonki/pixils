@@ -421,9 +421,9 @@ function setUpSolution()
        if (solution[i] != 0){
            whichChild++;
            //apply horizontal
-           slideS.children[whichChild].style.right = (2-i+(row*5))*100 + "px";
+           slideS.children[whichChild].style.right = (2-i+(row*5))*40 + "px";
            //apply vertical
-           slideS.children[whichChild].style.top = (row-2)*6 + "px";
+           slideS.children[whichChild].style.top = (row-2)*40 + "px";
            slideS.children[whichChild].classList.remove("turq");
            slideS.children[whichChild].classList.remove("yes");
            slideS.children[whichChild].classList.remove("purple");

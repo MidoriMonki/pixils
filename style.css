@@ -70,8 +70,9 @@ body{
 }
 
 .small{
-  width: 20px;
-  height: 20px;
+  margin: 0;
+  width: 40px;
+  height: 40px;
   border-radius: 1vw;
 }
 
