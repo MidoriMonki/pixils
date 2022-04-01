@@ -34,7 +34,7 @@ var canMoveKeys = false;
 
 target = 5;
 var who = 12;
-
+var yeahNah;
 
 for(var i=0;i<15;i++){
   originalPositionsY[i] = slide.children[i].style.top;
@@ -57,7 +57,8 @@ document.addEventListener('keydown', (keyTest) => {
     who -= 1;
     target = storePositions[who];
   }else if (name == "ArrowRight"){
-    who += 1;
+    for (var i=1;storePositions[who+i]==0 || storePositions[who+i];i++){yeahNah = i;}
+    who += i;
     target = storePositions[who];
   }
   
