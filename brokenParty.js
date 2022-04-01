@@ -30,6 +30,7 @@ var storePositions =
  0, 7, 8, 9, 0,
  0, 0, 12, 0, 0];
 
+var canMoveKeys = false;
 
 target = 5;
 var who = 12;
@@ -70,6 +71,7 @@ document.addEventListener('keydown', (keyTest) => {
     vPosX = 0;
     uPosY = 0;
     vPosY = -10;
+    who -= 5;
         if (mode == 2){
     checkDirection();
   }
@@ -80,6 +82,7 @@ document.addEventListener('keydown', (keyTest) => {
     vPosX = 0;
     uPosY = 0;
     vPosY = 10;
+        who += 5;
       if (mode == 2){
     checkDirection();
   }
@@ -90,6 +93,7 @@ document.addEventListener('keydown', (keyTest) => {
     vPosX = -1;
     uPosY = 0;
     vPosY = 0;
+    who -= 1;
       if (mode == 2){
     checkDirection();
   }
@@ -100,14 +104,19 @@ document.addEventListener('keydown', (keyTest) => {
     vPosX = 1;
     uPosY = 0;
     vPosY = 0;
-      if (mode == 2){
+    if (mode == 2){
     checkDirection();
-  }
+    }
     dragEnd();
+    if (canMoveKeys){
+      who += 1;
+    }
+    canMoveKeys = false;
     target = storePositions[who];
   }
-  
-  document.getElementById("pp").innerHTML =  "/"+ target + "/"+  who + "/"+  storePositions[who] + "/";
+  if (target != 0){  
+    document.getElementById("pp").innerHTML =  "/"+ target + "/"+  who + "/"+  storePositions[who] + "/";
+  }
   
   if(target != 0){
     slide.children[target-1].classList.add("selected");
@@ -209,6 +218,8 @@ function dragEnd()
         if (storePositions[i] != 0){
               if (i==(row*5) && vPosX < uPosX || i==(4+(row*5)) && vPosX > uPosX){
                  slide.children[storePositions[i]-1].classList.add("rumble");
+                 canMoveKeys = false;
+                 
               }
           }
         }
@@ -217,6 +228,7 @@ function dragEnd()
       for(var i=(row*5);i<(5+(row*5));i++){
         if (storePositions[i] != 0){
             slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*15 + "vw";
+            canMoveKeys = true;
         }
       } 
   
@@ -239,6 +251,7 @@ function dragEnd()
         if (storePositions[row+(i*5)] != 0){
             if (i==0 && vPosY < uPosY || i==4 && vPosY > uPosY){
                 slide.children[storePositions[row+(i*5)]-1].classList.add("rumble")
+                canMoveKeys = false;
             }
         }
       } 
@@ -247,6 +260,7 @@ function dragEnd()
       for(var i=0;i<5;i++){
         if (storePositions[row+(i*5)] != 0){
             slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-15 + "vw";
+            canMoveKeys = true;
         }
       } 
   }
