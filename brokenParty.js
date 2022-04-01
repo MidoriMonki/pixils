@@ -15,6 +15,7 @@ var correct;
 var whichPuzzle;
 var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "011100101001110010100111013Lucky Eight", "011101101111110100001010014YinYang", "000000121012021202020101012Mushroom", "003000333031313030303000313Alien", "003000212212123021220000014Bee"];
 var whichChild;
+var beforeWho;
 var amountOfBoxes;
 var solution = 
 [0, 0, 1, 0, 0,
@@ -34,7 +35,7 @@ var canMoveKeys = false;
 
 target = 5;
 var who = 12;
-var yeahNah;
+
 
 for(var i=0;i<15;i++){
   originalPositionsY[i] = slide.children[i].style.top;
@@ -48,18 +49,39 @@ document.addEventListener('keydown', (keyTest) => {
   slide.children[target-1].classList.remove("selected");
   }
   if (name == "ArrowUp"){
-    who -= 5;
+    //
+    for (var i=0;storePositions[who+i]==0;i+=5){}
+    beforeWho = who - i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
     target = storePositions[who];
+    //
   }else if (name == "ArrowDown"){
-    who += 5;
+    //
+    for (var i=0;storePositions[who+i]==0;i+=5){}
+    beforeWho = who + i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
+    target = storePositions[who];
+    //
     target = storePositions[who];
   }else if (name == "ArrowLeft"){
-    who -= 1;
+    //
+    for (var i=1;storePositions[who-i]==0;i++){}
+    beforeWho = who - i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
+    target = storePositions[who];
+    //
     target = storePositions[who];
   }else if (name == "ArrowRight"){
-    for (var i=1;storePositions[who+i]==0 || storePositions[who+i];i++){yeahNah = i;}
-    who += i;
+    //
+    for (var i=1;storePositions[who+i]==0;i++){}
+    beforeWho = who + i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
     target = storePositions[who];
+    //
   }
   
   for (var i=0;i<who;i++){
