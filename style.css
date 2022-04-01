@@ -28,7 +28,7 @@ body{
   border-radius: 20px;
   width: 100px;
   height: 100px;
-  outline: 0vw solid lightgrey;
+  outline: 0px solid lightgrey;
   transition: .5s ease;
   position: absolute;
 }
@@ -106,7 +106,7 @@ body{
 }
 
 .selected{
-  outline: 1vw solid lightgrey;
-  outline-offset: -5.5vw;
+  outline: 5px solid lightgrey;
+  outline-offset: -40px;
   animation: rumble2 .6s linear infinite;
 }

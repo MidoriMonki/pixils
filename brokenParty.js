@@ -49,7 +49,7 @@ document.addEventListener('keydown', (keyTest) => {
         slide.children[storePositions[i]-1].classList.remove("rumble");
       }
   }
-  
+  keyTest.preventDefault();
   var name = event.key;
   if(target != 0){
   slide.children[target-1].classList.remove("selected");
