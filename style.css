@@ -3,12 +3,14 @@ body{
 }
 
 .box{
+  outline-offset: -40px;
   margin: 0px;
   float: left;
   background: rgb(30, 30, 30);
   border-radius: 3vw;
   width: 15.1vw;
   height: 15.1vw;
+  outline: 0vw solid lightgrey;
   transition: .5s ease;
   position: absolute;
 }
@@ -64,28 +66,25 @@ body{
 }
 
 .rumble{
-  animation: rumble .4s;
+  animation: rumble .3s;
 }
 
 @keyframes rumble{
   0% {transform: rotate(0deg);}
-  15% {transform: rotate(8deg);}
-  45% {transform: rotate(-8deg);}
-  60% {transform: rotate(8deg);}
+  25% {transform: rotate(8deg);}
   75% {transform: rotate(-8deg);}
   100% {transform: rotate(0deg);}
 }
 
 @keyframes rumble2{
   0% {transform: rotate(0deg);}
-  20% {transform: rotate(6deg);}
-  60% {transform: rotate(-6deg);}
-  80% {transform: rotate(6deg);}
+  25% {transform: rotate(4deg);}
+  75% {transform: rotate(-4deg);}
   100% {transform: rotate(0deg);}
 }
 
 .selected{
-  outline: 5px solid lightgrey;
-  outline-offset: -32px;
-  animation: rumble2 .4s linear infinite;
+  outline: 1vw solid lightgrey;
+  outline-offset: -5.5vw;
+  animation: rumble2 .6s linear infinite;
 }

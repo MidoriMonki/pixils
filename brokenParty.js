@@ -43,6 +43,12 @@ for(var i=0;i<15;i++){
 }
 
 document.addEventListener('keydown', (keyTest) => {
+  // rumble reset
+  for(i=0;i<25;i++){
+      if (storePositions[i] != 0){
+        slide.children[storePositions[i]-1].classList.remove("rumble");
+      }
+  }
   
   var name = event.key;
   if(target != 0){
