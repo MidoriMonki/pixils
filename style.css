@@ -79,10 +79,9 @@ body{
 #background{
   background: rgb(220, 220, 220);
   position: absolute;
-  width: 75vw;
-  height: 45vw;
-  left: 12.5vw;
-  top: 50vw;
+  width: 500px;
+  height: 500px;
+  top: 120px;
   z-index: -1;
   border-radius: 30px;
   
