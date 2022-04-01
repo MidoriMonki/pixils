@@ -50,7 +50,7 @@ document.addEventListener('keydown', (keyTest) => {
   }
   if (name == "ArrowUp"){
     //
-    for (var i=0;storePositions[who+i]==0;i+=5){}
+    for (var i=5;storePositions[who-i]==0;i+=5){}
     beforeWho = who - i;
     if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
     who = beforeWho;
@@ -58,7 +58,7 @@ document.addEventListener('keydown', (keyTest) => {
     //
   }else if (name == "ArrowDown"){
     //
-    for (var i=0;storePositions[who+i]==0;i+=5){}
+    for (var i=5;storePositions[who+i]==0;i+=5){}
     beforeWho = who + i;
     if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
     who = beforeWho;

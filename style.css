@@ -66,6 +66,7 @@ body{
 .rumble{
   animation: rumble .4s;
 }
+
 @keyframes rumble{
   0% {transform: rotate(0deg);}
   15% {transform: rotate(8deg);}
@@ -75,7 +76,16 @@ body{
   100% {transform: rotate(0deg);}
 }
 
+@keyframes rumble2{
+  0% {transform: rotate(0deg);}
+  20% {transform: rotate(6deg);}
+  60% {transform: rotate(-6deg);}
+  80% {transform: rotate(6deg);}
+  100% {transform: rotate(0deg);}
+}
+
 .selected{
-  background: grey;
-  animation: rumble .4s;
+  outline: 5px solid lightgrey;
+  outline-offset: -32px;
+  animation: rumble2 .4s linear infinite;
 }
