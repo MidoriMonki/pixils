@@ -359,8 +359,8 @@ function checkSolution(){
 setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
-      document.getElementById("continue").style.display = "block";
-                         }, 700);
+      setTimeout(function(){ document.getElementById("continue").style.display = "block";}, 700);
+                         }, 400);
 
 
 

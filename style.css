@@ -89,12 +89,12 @@ body{
 }
 
 #background{
-  background: (220, 220, 220);
+  background: rgb(220, 220, 220);
+  z-index: -1;
   position: absolute;
   width: 550px;
   height: 550px;
   top: 134px;
-  z-index: -1;
   border-radius: 30px;
   
 }
