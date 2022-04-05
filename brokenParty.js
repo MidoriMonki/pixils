@@ -8,12 +8,12 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1211121121111","1211121121311", "222232232222211", "111111111111111", "222222222222222", "3313333313333", "22132121232212", "312333233333133", "223222332322000", "33231232231333", "33313333313133", "11131311331113", "33233233113333"];
+var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1213121121111","1211121121311", "222232222222211", "111111111111111", "222222222222222", "3313333313333", "22132121232212", "312333233333133", "223222332322000", "33231232231333", "33313333313133", "11131311331113", "33233233113333", "2333323333133", "11121131211111"];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "020002320022220222202020013Among", "011101101111110100001010014YinYang", "022200000002220020200222011Bōken", "003000333031313030303000313Alien", "003000212212123021220000014Bee", "300030333031313233320000015Piquachoo", "020200020003230022200323012Present", "000000303031313033302202214Frog", "030300333031313033300010014Sad Fox", "303030111001110011103000314Turt", "233300300023300333300101014Yosh", "003000"];
+var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "020002320022220222202020013Among", "011101101111110100001010014YinYang", "022200000002220020200222011Bōken", "003000333031313030303000313Alien", "003000212212123021220000014Bee", "300030333031313233320000015Piquachoo", "020200020003230022200323012Present", "000000303031313033302202214Mr. Frog", "030300333031313033300010014Sad Fox", "303030111001110011103000314Turt", "233300300023300333300101014Yosh", "003000233003330333230010013Tree", "000000010010101213121111114Crown"];
 var whichChild;
 var beforeWho;
 var amountOfBoxes;
@@ -54,7 +54,7 @@ document.addEventListener('keydown', (keyTest) => {
   if(target != 0){
   slide.children[target-1].classList.remove("selected");
   }
-  if (name == "ArrowUp"){
+  if (name == "w"){
     //
     for (var i=5;storePositions[who-i]==0;i+=5){}
     beforeWho = who - i;
@@ -62,7 +62,7 @@ document.addEventListener('keydown', (keyTest) => {
     who = beforeWho;
     target = storePositions[who];
     //
-  }else if (name == "ArrowDown"){
+  }else if (name == "s"){
     //
     for (var i=5;storePositions[who+i]==0;i+=5){}
     beforeWho = who + i;
@@ -71,7 +71,7 @@ document.addEventListener('keydown', (keyTest) => {
     target = storePositions[who];
     //
     target = storePositions[who];
-  }else if (name == "ArrowLeft"){
+  }else if (name == "a"){
     //
     for (var i=1;storePositions[who-i]==0;i++){}
     beforeWho = who - i;
@@ -80,7 +80,7 @@ document.addEventListener('keydown', (keyTest) => {
     target = storePositions[who];
     //
     target = storePositions[who];
-  }else if (name == "ArrowRight"){
+  }else if (name == "d"){
     //
     for (var i=1;storePositions[who+i]==0;i++){}
     beforeWho = who + i;
@@ -95,7 +95,7 @@ document.addEventListener('keydown', (keyTest) => {
   }
   
   //yeah
-    if (name == "w"){
+    if (name == "ArrowUp"){
     uPosX = 0;
     vPosX = 0;
     uPosY = 0;
@@ -105,7 +105,7 @@ document.addEventListener('keydown', (keyTest) => {
     dragEnd();
     if (canMoveKeys){who -= 5;}
     canMoveKeys = false;
-  }else if (name == "s"){
+  }else if (name == "ArrowDown"){
     uPosX = 0;
     vPosX = 0;
     uPosY = 0;
@@ -115,7 +115,7 @@ document.addEventListener('keydown', (keyTest) => {
     dragEnd();
     if (canMoveKeys){who += 5;}
     canMoveKeys = false;
-  }else if (name == "a"){
+  }else if (name == "ArrowLeft"){
     uPosX = 0;
     vPosX = -1;
     uPosY = 0;
@@ -125,7 +125,7 @@ document.addEventListener('keydown', (keyTest) => {
     dragEnd();
     if (canMoveKeys){who -= 1;}
     canMoveKeys = false;
-  }else if (name == "d"){
+  }else if (name == "ArrowRight"){
     uPosX = 0;
     vPosX = 1;
     uPosY = 0;
@@ -373,7 +373,7 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   whichPuzzle = Math.floor(Math.random() * 16);
+   whichPuzzle = Math.floor(Math.random() * (puzzleList.length-1));
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
