@@ -346,7 +346,7 @@ function checkSolution(){
       }
    }
   if (correct){
-    setTimeout(function(){ getElementById("yay").style.display = "block"; alert("Well done!"); setUpSolution();}, 700);
+    setTimeout(function(){ document.getElementById("yay").style.display = "block"; alert("Well done!"); setUpSolution();}, 700);
   }
 }
 
@@ -362,6 +362,7 @@ setUpSolution();
 
 function setUpSolution()
 {
+  document.getElementById("yay").style.display = "none";
   var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
   [0, 0, 10, 14, 0,
