@@ -346,7 +346,7 @@ function checkSolution(){
       }
    }
   if (correct){
-    setTimeout(function(){ document.getElementById("yay").style.display = "block"; alert("Well done!"); setUpSolution();}, 700);
+    setTimeout(function(){document.getElementById("yay").style.display = "block"; document.getElementById("continue").style.display = "block";}, 700);
   }
 }
 
