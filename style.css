@@ -76,8 +76,20 @@ body{
   border-radius: 8px;
 }
 
+#background2{
+  transition: 1s;
+  background: rgba(40, 40, 40, 0.4);
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  top: 134px;
+  z-index: 1;
+  border-radius: 30px;
+  
+}
+
 #background{
-  background: rgb(220, 220, 220);
+  background: (220, 220, 220);
   position: absolute;
   width: 550px;
   height: 550px;

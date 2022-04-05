@@ -348,24 +348,27 @@ function checkSolution(){
    }
   if (correct){
     setTimeout(function(){
-      document.getElementById("yay").style.display = "block"; document.getElementById("background").style.zIndex = 1; 
-                          document.getElementById("background").style.background = "rgba(40, 40, 40, 0.4)";
-                          document.getElementById("continue").style.display = "block";
+      document.getElementById("yay").style.display = "block";
+      document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
+      document.getElementById("continue").style.display = "block";
                          }, 700);
   }
 }
 
 
+setTimeout(function(){
+      document.getElementById("yay").style.display = "block";
+      document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
+      document.getElementById("continue").style.display = "block";
+                         }, 700);
+
+
 
 
 //set it up obviously
-setUpSolution();
-
-
-
-
 function setUpSolution()
 {
+  document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
   document.getElementById("yay").style.display = "none";
   var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
