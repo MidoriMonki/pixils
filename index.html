@@ -24,8 +24,8 @@
     <!-- Import the webpage's javascript file -->
     <script src="/brokenParty.js" defer></script>
   </head>
-  <body>
-    <ul><a id="pp" href="/daily.html">Daily Image</a></ul>
+  <body style="overflow: hidden;">
+    <ul><a id="pp" href="/daily.html">Daily Image</a><button style="position: absolute;" onclick="setUpSolution();">Refresh Puzzle</button></ul>
     
     <center style="font-size: 20px;">Mission:</center>
     <center style="font-size: 35px;" id="nameHolder"></center>
@@ -36,9 +36,9 @@
     
     <nav style="display: flex; justify-content: center; width: 100vw; margin-top: 242px;">
       
-    <div id="continue" style="z-index: 5; background: rgb(220, 220, 220);position: absolute;width: 400px;height: 400px;top:200px;z-index:2;border-radius: 30px;">
-        <center style="margin-top: 10vw; font-size: 50px;">[insert time here]</center>
-        <center style="font-size: 30px;">Well done, you positioned [x] on the leaderboard! Press continue start a new puzzle<br><button onclick="if(daddy){setUpSolution();}else{daddy = true;} document.getElementById('continue').style.display = 'none';" style="font-size: 4vw;">continue</button></center>
+    <div id="continue" style="z-index: 5; background: rgb(220, 220, 220);position: absolute;width: 350px;height: 350px;top:200px;z-index:2;border-radius: 30px; padding: 20px;">
+        <center style="font-size: 50px; margin-top: 60px;">[insert time here]</center>
+        <center style="font-size: 30px;">Well done, you positioned [x] on the leaderboard! Press continue start a new puzzle<br><button onclick="if(daddy){setUpSolution();}else{daddy = true;} document.getElementById('background2').style.background = 'rgba(40, 40, 40, 0)'; document.getElementById('continue').style.display = 'none';" style="font-size: 4vw;">continue</button></center>
     </div>
       
     <div id="slide1" style="position: relative; width: 660px; height: 660px;  right: 275px; ">

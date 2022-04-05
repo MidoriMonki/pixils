@@ -370,7 +370,9 @@ setUpSolution();
 
 function setUpSolution()
 {
+  if(daddy){
   document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
+  }
   document.getElementById("yay").style.display = "none";
   var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
