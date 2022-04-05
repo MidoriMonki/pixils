@@ -350,6 +350,7 @@ function checkSolution(){
       }
    }
   if (correct){
+    mummy = false;
    setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
@@ -494,5 +495,5 @@ function setUpSolution()
        slide.children[storePositions[i]-1].style.top = originalPositionsY[storePositions[i]-1];
      }
    }
-   setTimeout(function(){mummy=true}, 1000);
+   setTimeout(function(){mummy=true;}, 2000);
 }
