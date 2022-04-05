@@ -17,6 +17,7 @@ var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111
 var whichChild;
 var beforeWho;
 var amountOfBoxes;
+var mummy = false;
 var daddy = false;
 var solution = 
 [0, 0, 1, 0, 0,
@@ -340,6 +341,7 @@ function checkDirection()
 
 function checkSolution(){
   correct = true;
+  if(mummy){
   for(i=0;i<25;i++){
       if (storePositions[i] == 0 && solution[i] == 0){}else{
         if ((slideColour[whichPuzzle])[storePositions[i]-1] != solution[i]){
@@ -355,11 +357,8 @@ function checkSolution(){
                          }, 400);
 
   }
+  }
 }
-
-
-
-
 
 
 //set it up obviously
@@ -370,6 +369,7 @@ setUpSolution();
 
 function setUpSolution()
 {
+  mummy = false;
   if(daddy){
   document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
   }
@@ -494,4 +494,5 @@ function setUpSolution()
        slide.children[storePositions[i]-1].style.top = originalPositionsY[storePositions[i]-1];
      }
    }
+   setTimeout(function(){mummy=true}, 1000);
 }
