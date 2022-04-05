@@ -346,8 +346,7 @@ function checkSolution(){
       }
    }
   if (correct){
-    alert("Well done!");
-    setUpSolution();
+    setTimeout(function(){ getElementById("yay").style.display = "block"; alert("Well done!"); setUpSolution();}, 700);
   }
 }
 
