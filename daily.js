@@ -8,14 +8,17 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1213121121111","1211121121311", "111111111111111", "111111111111111", "112122112212", "3313333313333", "22132121232212"];
+var slideColour = "fix this"
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "011100101001110010100111013Lucky Eight", "011101101111110100001010014YinYang", "000000121012021202020101012Mushroom", "003000333031313030303000313Alien", "003000212212123021220000014Bee"];
+var puzzleList = "and this cause the go hand in hand"
 var whichChild;
+var beforeWho;
 var amountOfBoxes;
+var mummy = false;
+var daddy = false;
 var solution = 
 [0, 0, 1, 0, 0,
  0, 1, 3, 1, 0,
@@ -30,30 +33,121 @@ var storePositions =
  0, 7, 8, 9, 0,
  0, 0, 12, 0, 0];
 
+var canMoveKeys = false;
 
-whichPuzzle = 0;
+target = 5;
+var who = 12;
+
 
 for(var i=0;i<15;i++){
   originalPositionsY[i] = slide.children[i].style.top;
   originalPositionsX[i] = slide.children[i].style.right;
 }
 
-//timer
-var time = 0;
-var holdTime = null;
-function startTime() {
-  const today = new Date();
-  let s = today.getSeconds();
-  time = s;
-  if (holdTime == null || s == 0){
-    holdTime = s;
+document.addEventListener('keydown', (keyTest) => {
+  
+  // rumble reset
+  for(i=0;i<25;i++){
+      if (storePositions[i] != 0){
+        slide.children[storePositions[i]-1].classList.remove("rumble");
+      }
   }
-  document.getElementById("test").innerHTML = parseFloat(document.getElementById("test").innerHTML) + time - holdTime;
-  if (time > holdTime){
-    holdTime = time;
+  keyTest.preventDefault();
+  var name = event.key;
+  if(target != 0){
+  slide.children[target-1].classList.remove("selected");
   }
-  setTimeout(startTime, 100);
-}
+  if (name == "w"){
+    //
+    for (var i=5;storePositions[who-i]==0;i+=5){}
+    beforeWho = who - i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
+    target = storePositions[who];
+    //
+  }else if (name == "s"){
+    //
+    for (var i=5;storePositions[who+i]==0;i+=5){}
+    beforeWho = who + i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
+    target = storePositions[who];
+    //
+    target = storePositions[who];
+  }else if (name == "a"){
+    //
+    for (var i=1;storePositions[who-i]==0;i++){}
+    beforeWho = who - i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
+    target = storePositions[who];
+    //
+    target = storePositions[who];
+  }else if (name == "d"){
+    //
+    for (var i=1;storePositions[who+i]==0;i++){}
+    beforeWho = who + i;
+    if (storePositions[beforeWho] == undefined || storePositions[beforeWho] == 0){beforeWho = who;}
+    who = beforeWho;
+    target = storePositions[who];
+    //
+  }
+  
+  for (var i=0;i<who;i++){
+    
+  }
+  
+  //yeah
+    if (name == "ArrowUp"){
+    uPosX = 0;
+    vPosX = 0;
+    uPosY = 0;
+    vPosY = -10;
+    target = storePositions[who];
+    if (mode == 2){checkDirection();}
+    dragEnd();
+    if (canMoveKeys){who -= 5;}
+    canMoveKeys = false;
+  }else if (name == "ArrowDown"){
+    uPosX = 0;
+    vPosX = 0;
+    uPosY = 0;
+    vPosY = 10;
+    target = storePositions[who];
+    if (mode == 2){checkDirection();}
+    dragEnd();
+    if (canMoveKeys){who += 5;}
+    canMoveKeys = false;
+  }else if (name == "ArrowLeft"){
+    uPosX = 0;
+    vPosX = -1;
+    uPosY = 0;
+    vPosY = 0;
+    target = storePositions[who];
+    if (mode == 2){checkDirection();}
+    dragEnd();
+    if (canMoveKeys){who -= 1;}
+    canMoveKeys = false;
+  }else if (name == "ArrowRight"){
+    uPosX = 0;
+    vPosX = 1;
+    uPosY = 0;
+    vPosY = 0;
+    target = storePositions[who];
+    if (mode == 2){checkDirection();}
+    dragEnd();
+    if (canMoveKeys){who += 1;}
+    canMoveKeys = false;
+  }
+  if (target != 0){  
+    document.getElementById("pp").innerHTML =  "/"+ target + "/"+  who + "/"+  storePositions[who] + "/";
+  }
+  
+  if(target != 0){
+    slide.children[target-1].classList.add("selected");
+  }
+  
+});
 
 
 //Start by adding event listeners
@@ -62,14 +156,15 @@ for (var i=0;i<15;i++)
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
-    slide.children[i].mousedown = dragStart;
+    slide.children[i].addEventListener('mousedown', dragStart);
+    //slide.children[i].addEventListener('mousemove', dragMove);
+    document.addEventListener('mouseup', dragEnd);
 }
 
 
 //Mobile Start
 function dragStart(e)
 {
-  startTime();
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
@@ -77,14 +172,15 @@ function dragStart(e)
   {
      uPosX = e.touches[0].clientX;
      uPosY = e.touches[0].clientY;
-     target = e.target.id
+     target = e.target.id;
   }
   else
   {
     uPosX = e.clientX;
     uPosY = e.clientY;
-    document.onmouseup = dragEnd;
-    document.onmousedown = dragMove;
+    target = e.target.id;
+    document.getElementById("pp").innerHTML = target + mode;
+
   }
   // rumble reset
   for(i=0;i<25;i++){
@@ -99,6 +195,7 @@ function dragStart(e)
 //Moving   mode0 = Y, mode1 = X
 function dragMove(e)
 {
+  //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
   if (e.type == "touchmove")
@@ -108,8 +205,10 @@ function dragMove(e)
   }
   else
   {
-    document.onmouseup = dragEnd;
-    document.onmousedown = dragMove;
+     target = e.target.id;
+     vPosX = e.clientX;
+     vPosY = e.clientY;
+     document.getElementById("pp").innerHTML = target + mode;
   }
   
   // Important to determine which direction we scrolling 
@@ -125,6 +224,7 @@ function dragMove(e)
 //End
 function dragEnd()
 {
+   canMoveKeys = true;
   if (mode == 1){
       if (vPosX < uPosX && storePositions[row*5] == 0){
         //left
@@ -144,6 +244,7 @@ function dragEnd()
         if (storePositions[i] != 0){
               if (i==(row*5) && vPosX < uPosX || i==(4+(row*5)) && vPosX > uPosX){
                  slide.children[storePositions[i]-1].classList.add("rumble");
+                 canMoveKeys = false;
               }
           }
         }
@@ -151,7 +252,8 @@ function dragEnd()
       //Set their right property correctly
       for(var i=(row*5);i<(5+(row*5));i++){
         if (storePositions[i] != 0){
-            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*15 + "vw";
+            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*110 + "px";
+
         }
       } 
   
@@ -174,6 +276,7 @@ function dragEnd()
         if (storePositions[row+(i*5)] != 0){
             if (i==0 && vPosY < uPosY || i==4 && vPosY > uPosY){
                 slide.children[storePositions[row+(i*5)]-1].classList.add("rumble")
+                canMoveKeys = false;
             }
         }
       } 
@@ -181,7 +284,7 @@ function dragEnd()
     //Set their top property correctly
       for(var i=0;i<5;i++){
         if (storePositions[row+(i*5)] != 0){
-            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-15 + "vw";
+            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-110 + "px";
         }
       } 
   }
@@ -238,6 +341,7 @@ function checkDirection()
 
 function checkSolution(){
   correct = true;
+  if(mummy){
   for(i=0;i<25;i++){
       if (storePositions[i] == 0 && solution[i] == 0){}else{
         if ((slideColour[whichPuzzle])[storePositions[i]-1] != solution[i]){
@@ -246,12 +350,16 @@ function checkSolution(){
       }
    }
   if (correct){
-    alert("Well done!");
-    setUpSolution();
+    mummy = false;
+   setTimeout(function(){
+      document.getElementById("yay").style.display = "block";
+      document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
+      setTimeout(function(){ document.getElementById("continue").style.display = "block";}, 700);
+                         }, 400);
+
+  }
   }
 }
-
-
 
 
 //set it up obviously
@@ -260,9 +368,13 @@ setUpSolution();
 
 
 
-
 function setUpSolution()
 {
+  mummy = false;
+  if(daddy){
+  document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
+  }
+  document.getElementById("yay").style.display = "none";
   var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
   [0, 0, 10, 14, 0,
@@ -273,6 +385,7 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
+   whichPuzzle = Math.floor(Math.random() * (puzzleList.length-1));
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
@@ -320,9 +433,9 @@ function setUpSolution()
        if (solution[i] != 0){
            whichChild++;
            //apply horizontal
-           slideS.children[whichChild].style.right = (2-i+(row*5))*6 + "vw";
+           slideS.children[whichChild].style.right = (2-i+(row*5))*40 + "px";
            //apply vertical
-           slideS.children[whichChild].style.top = (row-2)*6 + "vw";
+           slideS.children[whichChild].style.top = (row-2)*40 + "px";
            slideS.children[whichChild].classList.remove("turq");
            slideS.children[whichChild].classList.remove("yes");
            slideS.children[whichChild].classList.remove("purple");
@@ -382,4 +495,5 @@ function setUpSolution()
        slide.children[storePositions[i]-1].style.top = originalPositionsY[storePositions[i]-1];
      }
    }
+   setTimeout(function(){mummy=true;}, 2000);
 }
