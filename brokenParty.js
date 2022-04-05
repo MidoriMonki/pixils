@@ -43,6 +43,7 @@ for(var i=0;i<15;i++){
 }
 
 document.addEventListener('keydown', (keyTest) => {
+  
   // rumble reset
   for(i=0;i<25;i++){
       if (storePositions[i] != 0){
@@ -346,7 +347,11 @@ function checkSolution(){
       }
    }
   if (correct){
-    setTimeout(function(){document.getElementById("yay").style.display = "block"; document.getElementById("continue").style.display = "block";}, 700);
+    setTimeout(function(){
+      document.getElementById("yay").style.display = "block"; document.getElementById("background").style.zIndex = 1; 
+                          document.getElementById("background").style.background = "rgba(40, 40, 40, 0.4)";
+                          document.getElementById("continue").style.display = "block";
+                         }, 700);
   }
 }
 
@@ -355,7 +360,6 @@ function checkSolution(){
 
 //set it up obviously
 setUpSolution();
-
 
 
 
