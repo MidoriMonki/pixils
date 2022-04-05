@@ -17,6 +17,7 @@ var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111
 var whichChild;
 var beforeWho;
 var amountOfBoxes;
+var daddy = false;
 var solution = 
 [0, 0, 1, 0, 0,
  0, 1, 3, 1, 0,
@@ -347,25 +348,26 @@ function checkSolution(){
       }
    }
   if (correct){
-    setTimeout(function(){
-      document.getElementById("yay").style.display = "block";
-      document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
-      document.getElementById("continue").style.display = "block";
-                         }, 700);
-  }
-}
-
-
-setTimeout(function(){
+   setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
       setTimeout(function(){ document.getElementById("continue").style.display = "block";}, 700);
                          }, 400);
 
+  }
+}
+
+
+
 
 
 
 //set it up obviously
+setUpSolution();
+
+
+
+
 function setUpSolution()
 {
   document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
