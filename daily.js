@@ -44,6 +44,39 @@ for(var i=0;i<15;i++){
   originalPositionsX[i] = slide.children[i].style.right;
 }
 
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCJLzJumCeSJTYtGfTdG3f9Ze8Iy8mhXwA",
+    authDomain: "pixils-1ff04.firebaseapp.com",
+    databaseURL: "https://pixils-1ff04-default-rtdb.firebaseio.com",
+    projectId: "pixils-1ff04",
+    storageBucket: "pixils-1ff04.appspot.com",
+    messagingSenderId: "184093482791",
+    appId: "1:184093482791:web:15604ab2f534eadf4b9302",
+    measurementId: "G-1RWY2XRGM7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+
+ var today = firebase.storage().ref("q");
+
+
+
+
+
+
 document.addEventListener('keydown', (keyTest) => {
   
   // rumble reset
