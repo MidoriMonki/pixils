@@ -249,7 +249,7 @@ function dragEnd()
       //Set their right property correctly
       for(var i=(row*5);i<(5+(row*5));i++){
         if (storePositions[i] != 0){
-            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*100 + "px";
+            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*110 + "px";
 
         }
       } 
@@ -281,7 +281,7 @@ function dragEnd()
     //Set their top property correctly
       for(var i=0;i<5;i++){
         if (storePositions[row+(i*5)] != 0){
-            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-100 + "px";
+            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-110 + "px";
         }
       } 
   }
