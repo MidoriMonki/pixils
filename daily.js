@@ -415,9 +415,9 @@ function setUpSolution()
   var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
   [0, 0, 10, 14, 0,
-   0, 1, 2, 3, 15,
+   16, 1, 2, 3, 0,
    11, 4, 5, 6, 13,
-   0, 7, 8, 9, 0,
+   0, 7, 8, 9, 15,
    0, 0, 12, 0, 0];
 
    //Setting puzzle up

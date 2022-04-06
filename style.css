@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
 
 body{
   background: rgb(240, 240, 234, 0);
-  font-family: ;
+  font-family: Helvetica, sans-serif;
+}
+
+.bold-title{
+  font-family: 'Source Sans Pro', sans-serif;  
 }
 
 /* mobile device screen size */

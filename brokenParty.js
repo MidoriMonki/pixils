@@ -28,9 +28,9 @@ var solution =
 
 var storePositions = 
 [0, 0, 10, 14, 0,
- 0, 1, 2, 3, 15,
+ 16, 1, 2, 3, 0,
  11, 4, 5, 6, 13,
- 0, 7, 8, 9, 0,
+ 0, 7, 8, 9, 15,
  0, 0, 12, 0, 0];
 
 var canMoveKeys = false;
@@ -39,7 +39,7 @@ target = 5;
 var who = 12;
 
 
-for(var i=0;i<15;i++){
+for(var i=0;i<16;i++){
   originalPositionsY[i] = slide.children[i].style.top;
   originalPositionsX[i] = slide.children[i].style.right;
 }
@@ -151,7 +151,7 @@ document.addEventListener('keydown', (keyTest) => {
 
 
 //Start by adding event listeners
-for (var i=0;i<15;i++)
+for (var i=0;i<16;i++)
 {
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
@@ -377,9 +377,9 @@ function setUpSolution()
   var colourAlt = Math.floor(Math.random() * 3);
   storePositions = 
   [0, 0, 10, 14, 0,
-   0, 1, 2, 3, 15,
+   16, 1, 2, 3, 0,
    11, 4, 5, 6, 13,
-   0, 7, 8, 9, 0,
+   0, 7, 8, 9, 15,
    0, 0, 12, 0, 0];
 
    //Setting puzzle up
@@ -396,7 +396,7 @@ function setUpSolution()
    amountOfBoxes = "" + why[25] + why[26];
    //Set up solution display
    whichChild = -1;
-   for(var i=0;i<15;i++){
+   for(var i=0;i<16;i++){
      if (i<amountOfBoxes){
         slideS.children[i].classList.add("box");
         slide.children[i].classList.add("box");
