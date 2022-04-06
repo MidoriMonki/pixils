@@ -157,7 +157,7 @@ for (var i=0;i<15;i++)
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
     slide.children[i].addEventListener('mousedown', dragStart);
-    //slide.children[i].addEventListener('mousemove', dragMove);
+    slide.children[i].addEventListener('mousemove', dragMove);
     document.addEventListener('mouseup', dragEnd);
 }
 
@@ -165,6 +165,7 @@ for (var i=0;i<15;i++)
 //Mobile Start
 function dragStart(e)
 {
+  alert("woah");
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
