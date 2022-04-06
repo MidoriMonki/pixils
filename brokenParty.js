@@ -140,7 +140,6 @@ document.addEventListener('keydown', (keyTest) => {
     canMoveKeys = false;
   }
   if (target != 0){  
-    document.getElementById("pp").innerHTML =  "/"+ target + "/"+  who + "/"+  storePositions[who] + "/";
   }
   
   if(target != 0){
@@ -340,6 +339,7 @@ function checkDirection()
 
 function checkSolution(){
   correct = true;
+  document.getElementById("pp").innerHTML =  storePositions + "/" + solution;
   if(mummy){
   for(i=0;i<25;i++){
       if (storePositions[i] == 0 && solution[i] == 0){}else{
