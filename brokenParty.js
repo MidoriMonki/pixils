@@ -156,16 +156,15 @@ for (var i=0;i<15;i++)
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
-    slide.children[i].addEventListener('mousedown', dragStart);
-    slide.children[i].addEventListener('mousemove', dragMove);
-    document.addEventListener('mouseup', dragEnd);
+    //slide.children[i].addEventListener('mousedown', dragStart);
+    //slide.children[i].addEventListener('mousemove', dragMove);
+    //document.addEventListener('mouseup', dragEnd);
 }
 
 
 //Mobile Start
 function dragStart(e)
 {
-  alert("woah");
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
@@ -354,7 +353,7 @@ function checkSolution(){
    setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
-      setTimeout(function(){ document.getElementById("continue").style.display = "block";}, 700);
+      setTimeout(function(){ document.getElementById("continue").style.display = "block"; }, 700);
                          }, 400);
 
   }
