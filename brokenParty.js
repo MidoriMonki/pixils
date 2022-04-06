@@ -183,13 +183,12 @@ function dragStart(e)
 
   }
   // rumble reset
-  for(i=0;i<25;i++){
+  for(var i=0;i<25;i++){
       if (storePositions[i] != 0){
         slide.children[storePositions[i]-1].classList.remove("rumble");
       }
   }
 }
-
 
 
 //Moving   mode0 = Y, mode1 = X
@@ -224,7 +223,7 @@ function dragMove(e)
 //End
 function dragEnd()
 {
-   canMoveKeys = true;
+  canMoveKeys = true;
   if (mode == 1){
       if (vPosX < uPosX && storePositions[row*5] == 0){
         //left
