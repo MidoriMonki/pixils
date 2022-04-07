@@ -40,7 +40,7 @@
      if (leaderboard.includes(player))
      {
        for(var i=0;i<5;i++){
-       if (leaderboard(i) == player){break;}
+       if (leaderboard[i] == player){break;}
        }
            leaderboard.splice(i, 1);
            leaderboard.splice(newPos, 0, player);
@@ -106,7 +106,9 @@ ref.on("child_changed", function(snapshot) {
     var timeGrabber = snapshot.child("time" + i);
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();  
+    if (nameGrabber.val() != 0){
     document.getElementById("leaderboard").innerHTML += "#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "<br>";
+    }
     }
   
 });
@@ -323,7 +325,6 @@ function dragStart(e)
     uPosX = e.clientX;
     uPosY = e.clientY;
     target = e.target.id;
-    document.getElementById("pp").innerHTML = target + mode;
 
   }
   // rumble reset
@@ -508,7 +509,6 @@ function checkDirection()
 
 function checkSolution(){
   correct = true;
-  document.getElementById("pp").innerHTML =  storePositions + "/" + solution;
   if(mummy){
   for(i=0;i<25;i++){
       if (storePositions[i] == 0 && solution[i] == 0){}else{
