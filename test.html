@@ -78,7 +78,7 @@
 ref.orderByChild("time").on("child_added", function(snapshot) {
   
   
-if (whom != null){ times[whom] = snapshot.time; leaderboard[whom] = snapshot.key; whom++; }else{ leaderboard[snapshot.newPos] = snapshot.key; times[snapshot.newPos] = snapshot.time;}
+if (whom != null){ times[whom] = snapshot.val().time; leaderboard[whom] = snapshot.key; whom++; }else{ leaderboard[snapshot.val().newPos] = snapshot.key; times[snapshot.val().newPos] =  snapshot.val().time;}
     document.getElementById("leaderboard").innerHTML = leaderboard + times;
   
 });
@@ -90,13 +90,13 @@ if (whom != null){ times[whom] = snapshot.time; leaderboard[whom] = snapshot.key
 ref.orderByChild("time").on("child_changed", function(snapshot) {  
       
     leaderboard.splice(leaderboard.indexOf(snapshot.key), 1);
-    leaderboard.splice(snapshot.newPos, 0, snapshot.time);
+    leaderboard.splice(snapshot.val().newPos, 0,  snapshot.val().time);
     times.splice(times.indexOf(leaderboard[snapshot.key]), 1);
-    times.splice(snapshot.newPos, 0, snapshot.time);
+    times.splice(snapshot.val().newPos, 0,  snapshot.val().time);
   
   
-    leaderboard[snapshot.newPos] = snapshot.key;
-    times[snapshot.newPos] = snapshot.time;
+    leaderboard[snapshot.val().newPos] = snapshot.key;
+    times[snapshot.val().newPos] =  snapshot.val().time;
     
     document.getElementById("leaderboard").innerHTML = leaderboard + times;
   
@@ -108,6 +108,7 @@ ref.orderByChild("time").on("child_changed", function(snapshot) {
     
       <input placeholder="pp" onchange="send()">
       <p id="leaderboard"></p>
+    
     
   </body>
 </html>
