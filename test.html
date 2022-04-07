@@ -27,7 +27,7 @@
     
     var leaderboard = [0];
     var times = [0];
-    var player = "MasonC";
+    var player = "Hello";
     var whom = 0;
     var test = false;
     var time = 4;
@@ -49,27 +49,33 @@
       firebase.analytics();
         
     function send(){
-         
       
-     leaderboard.splice(5, 1); 
+     var newPos = 2;   
+      
+     leaderboard.splice(4, 1);
+     leaderboard.splice(newPos, 0, player);
+     times.splice(4, 1);
+     times.splice(newPos, 0, time);
       
           firebase
           .database()
           .ref("leaderboard")
           .child("Top5")
           .set({
-             name1: "Izaac",
-             time1: 20000,
-             name2: "Adam",
-             time2: 22000,
-             name3: "Sean",
-             time3: 24000,
-             name4: "Mason",
-             time4: 26000,
-             name5: "Arthur",
-             time5: 200000,
+             name1: leaderboard[0],
+             time1: times[0],
+             name2: leaderboard[1],
+             time2: times[1],
+             name3: leaderboard[2],
+             time3: times[2],
+             name4: leaderboard[3],
+             time4: times[3],
+             name5: leaderboard[4],
+             time5: times[4],
           });
     }
+    
+    
     
     
     var rootRef = firebase.database().ref("leaderboard").orderByChild("time");
