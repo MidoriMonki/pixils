@@ -36,6 +36,7 @@ var storePositions =
  0, 0, 12, 0, 0];
 
 var canMoveKeys = false;
+var canDoShit;
 
 target = 5;
 var who = 12;
@@ -49,7 +50,7 @@ for(var i=0;i<16;i++){
 document.addEventListener('keydown', (keyTest) => {
   
   keyTest.preventDefault();
-  if (canMoveKeys){
+  if (canDoShit){
   if (start != true){
     letsDoThis();
   }
@@ -224,7 +225,7 @@ function dragMove(e)
 
 //Timer shit
 var Interval;
-
+var timey = document.getElementById("timer");
 function letsDoThis(){
 clearInterval(Interval);
 Interval = setInterval(startTimer, 10);
@@ -232,6 +233,16 @@ Interval = setInterval(startTimer, 10);
 
 function startTimer(){
   timer++;
+  if (timer < 100){
+     timey.innerHTML = "0:00:" + timer;
+  }else if(timer < 1000){
+     timey.innerHTML = "0:0" + timer.charAt(0); + ":" + timer.charAt(1); + timer.charAt(2);;
+  }else if(timer < 10000){
+     timey.innerHTML = "0:" + timer[0] + timer[1] + ":" + timer[2] + timer[3];
+  }else if(timer < 100000){
+     timey.innerHTML = timer[0] + ":" + timer[1] + timer[2] + ":" + timer[3] + timer[4];
+  }
+  
 }
 
 
