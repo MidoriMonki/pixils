@@ -23,7 +23,7 @@
   <body>
     
 
-      <script>
+  <script>
     
     var player = "Monki"
     var test = false;
@@ -42,13 +42,14 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
-    if(test){
+        
+    function send(){
           firebase
           .database()
           .ref("leaderboard")
-          .child("3")
+          .child("4")
           .set({
-             time: 3
+             time: 2
           });
 
      }
@@ -60,12 +61,14 @@
     var ref = firebase.database().ref("leaderboard");
     ref.orderByChild("time").on("child_added", function(snapshot) {
     console.log(snapshot.key);
+    document.getElementById("leaderboard").innerHTML += snapshot.key;
 });
     
 
   </script>
     
-      <input placeholder="pp">
-
+      <input placeholder="pp" onchange="send()">
+      <p id="leaderboard"></p>
+    
   </body>
 </html>
