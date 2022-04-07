@@ -386,8 +386,8 @@ function checkSolution(){
     mummy = false;
     time = timer;
     clearInterval(Interval);
-    player = prompt("Please enter your name", "Harry Potter");
-   setTimeout(function(){
+    player = prompt("Please enter your name", "");
+    setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
       setTimeout(function(){ document.getElementById("continue").style.display = "block"; }, 700);
@@ -421,7 +421,7 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   whichPuzzle = Math.floor(Math.random() * (puzzleList.length));
+   whichPuzzle = 0;
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
