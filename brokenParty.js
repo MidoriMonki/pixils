@@ -7,6 +7,8 @@ var vPosY;
 var uPosY;
 var target;
 var mode = 2;
+var timer = 0;
+var start;
 var pixilsInRow;
 var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1213121121111","1211121121311", "2222322223222222", "111111111111111", "222222222222222", "3313333313333", "22132121232212", "312333233333133", "223222332322000", "33231232231333", "33313333313133", "11131311331113", "33233233113333", "2333323333133", "11121131211111", "1111112111", "111111111111111", "2222122222", "121112121111"];
 var slide = document.getElementById("slide1");
@@ -46,13 +48,17 @@ for(var i=0;i<16;i++){
 
 document.addEventListener('keydown', (keyTest) => {
   
+  keyTest.preventDefault();
+  if (canMoveKeys){
+  if (start != true){
+    letsDoThis();
+  }
   // rumble reset
   for(i=0;i<25;i++){
       if (storePositions[i] != 0){
         slide.children[storePositions[i]-1].classList.remove("rumble");
       }
   }
-  keyTest.preventDefault();
   var name = event.key;
   if(target != 0){
   slide.children[target-1].classList.remove("selected");
@@ -145,6 +151,7 @@ document.addEventListener('keydown', (keyTest) => {
   if(target != 0){
     slide.children[target-1].classList.add("selected");
   }
+  }
   
 });
 
@@ -215,6 +222,17 @@ function dragMove(e)
   }
 }
 
+//Timer shit
+var Interval;
+
+function letsDoThis(){
+clearInterval(Interval);
+Interval = setInterval(startTimer, 10);
+}
+
+function startTimer(){
+  timer++;
+}
 
 
 
