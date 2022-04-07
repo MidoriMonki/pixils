@@ -5,7 +5,7 @@
 
     var leaderboard = [0, 0, 0, 0, 0];
     var times = [9999999, 9999999, 9999999, 9999999, 9999999];
-    var player = "Izaac";
+    var player = "";
     var whom = 0;
     var test = false;
     var time = 200;
@@ -28,6 +28,8 @@
         
     function send(){
       
+     player = prompt("Please enter your name", ""); 
+     if (player != "0" || player != null){
      var newPos = null;
       
      for(var i=0;i<5;i++){
@@ -71,6 +73,10 @@
              time5: times[4],
           });
        }
+      }else{
+        alert("username not allowed");
+        send();
+      }
     }
      
     
@@ -393,6 +399,7 @@ function startTimer(){
 function dragEnd()
 {
   canMoveKeys = true;
+  letsDoThis();
   if (mode == 1){
       if (vPosX < uPosX && storePositions[row*5] == 0){
         //left
@@ -521,7 +528,6 @@ function checkSolution(){
     mummy = false;
     time = timer;
     clearInterval(Interval);
-    player = prompt("Please enter your name", "");
     send();
     setTimeout(function(){
       document.getElementById("yay").style.display = "block";
