@@ -47,14 +47,22 @@
       firebase.analytics();
         
     function send(){
+      
+      leaderboard.remove(player);
+      for (var i=0;times[i]<time;i++)
+      leaderboard.splice(i, 0, time);
+         
           firebase
           .database()
           .ref("leaderboard")
           .child(1)
           .set({
              name: "Adam Whittome",
-             time: 111
+             time: 1111111,
+             newPos: i
           });
+      
+      
 
      }
     
@@ -67,10 +75,25 @@
     leaderboard[whom] = snapshot.key;
     document.getElementById("leaderboard").innerHTML += snapshot.key;
 });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     ref.orderByChild("time").on("child_changed", function(snapshot) {
     leaderboard[whom] = snapshot.key;
-    document.getElementById("leaderboard").innerHTML += snapshot.key;
+    
+    document.getElementById("leaderboard").innerHTML = leaderboard;
+      
+    
 });
+    
+
 
   </script>
     
