@@ -49,16 +49,22 @@
       firebase.analytics();
         
     function send(){
-
-      for (var i=0;times[i]<time;i++){pp = i}
          
           firebase
           .database()
           .ref("leaderboard")
-          .child(player)
+          .child("Top5")
           .set({
-             time: time,
-             newPos: pp
+             name1: "Izaac",
+             time1: 20000,
+             name2: "Adam",
+             time2: 22000,
+             name3: "Sean",
+             time3: 24000,
+             name4: "Mason",
+             time4: 26000,
+             name5: "Arthur",
+             time5: 200000,
           });
     }
     
@@ -67,18 +73,12 @@
     var key = rootRef.key;  
     var ref = firebase.database().ref("leaderboard");
     
-    setTimeout(function(){ whom = null }, 2000);
     
     
-ref.orderByChild("time").on("child_added", function(snapshot) {
+ref.on("child_added", function(snapshot) {
   
-  
-if (whom != null){ times[whom] = snapshot.val().time; leaderboard[whom] = snapshot.key; whom++; }else{
-  
-        leaderboard.splice(snapshot.val().newPos, 0,  snapshot.key);      
-        times.splice(snapshot.val().newPos, 0,  snapshot.val().time); 
-      
-      }
+        
+    leaderboard[0] = snapshot. 
     document.getElementById("leaderboard").innerHTML = leaderboard + times;
   
 });
