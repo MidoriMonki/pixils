@@ -9,6 +9,7 @@ var target;
 var mode = 2;
 var timer = 0;
 var start;
+var player;
 var pixilsInRow;
 var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1213121121111","1211121121311", "2222322223222222", "111111111111111", "222222222222222", "3313333313333", "22132121232212", "312333233333133", "223222332322000", "33231232231333", "33313333313133", "11131311331113", "33233233113333", "2333323333133", "11121131211111", "1111112111", "111111111111111", "2222122222", "121112121111"];
 var slide = document.getElementById("slide1");
@@ -18,6 +19,7 @@ var whichPuzzle;
 var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "022202233022220022200202016Among", "011101101111110100001010014YinYang", "022200000002220020200222011Bōken", "003000333031313030303000313Alien", "003000212212123021220000014Bee", "300030333031313233320000015Piquachoo", "020200020003230022200323012Present", "000000303031313033302202214Mr. Frog", "030300333031313033300010014Sad Fox", "003003111301110011100303014Turt", "233300300023300333300101014Yosh", "003000233003330333230010013Tree", "000000010010101213121111114Crown", "000001100210000110000111110Snake", "011111100110011100101100115Moon", "000002022002212202200000010Fish", "011101000101010022201000112Penguin"];
 var whichChild;
 var beforeWho;
+var time;
 var amountOfBoxes;
 var mummy = false;
 var daddy = false;
@@ -236,13 +238,16 @@ function startTimer(){
   if (timer < 100){
      timey.innerHTML = "0:00:" + timer;
   }else if(timer < 1000){
-     timey.innerHTML = "0:0" + timer.charAt(0); + ":" + timer.charAt(1); + timer.charAt(2);;
+     timey.innerHTML = "0:0" + timer.toString()[0] + ":" + timer.toString()[1] + timer.toString()[2];
   }else if(timer < 10000){
-     timey.innerHTML = "0:" + timer[0] + timer[1] + ":" + timer[2] + timer[3];
+     timey.innerHTML = "0:" + timer.toString()[0] + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3];
   }else if(timer < 100000){
-     timey.innerHTML = timer[0] + ":" + timer[1] + timer[2] + ":" + timer[3] + timer[4];
-  }
-  
+     timey.innerHTML = timer.toString()[0] + ":" + timer.toString()[1] + timer.toString()[2] + ":" + timer.toString()[3] + timer.toString()[4];
+  }else if(timer < 1000000){
+     timey.innerHTML = timer.toString()[0] + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3] + ":" + timer.toString()[4] + timer.toString()[5];
+  }else if(timer < 10000000){
+    timey.innerHTML = "You've taken your time haven't you?";
+  } 
 }
 
 
@@ -379,6 +384,9 @@ function checkSolution(){
    }
   if (correct){
     mummy = false;
+    time = timer;
+    clearInterval(Interval);
+    player = prompt("Please enter your name", "Harry Potter");
    setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
