@@ -46,9 +46,8 @@
           firebase
           .database()
           .ref("leaderboard")
-          .push()
+          .child("Player1")
           .set({
-            name: "Player 1",
             time: 1
           });
      }
