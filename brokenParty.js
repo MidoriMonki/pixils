@@ -1,5 +1,10 @@
-    var leaderboard = [0];
-    var times = [0];
+
+   // The chaos begins
+
+
+
+    var leaderboard = [0, 0, 0, 0, 0];
+    var times = [9999999, 9999999, 9999999, 9999999, 9999999];
     var player = "Izaac";
     var whom = 0;
     var test = false;
@@ -83,8 +88,10 @@ ref.on("child_added", function(snapshot) {
     var nameGrabber = snapshot.child("name" + i);
     var timeGrabber = snapshot.child("time" + i);
     leaderboard[i - 1] = nameGrabber.val();  
-    times[i - 1] = timeGrabber.val();  
-    document.getElementById("leaderboard").innerHTML += leaderboard[i - 1] + times[i - 1];
+    times[i - 1] = timeGrabber.val();
+    if (nameGrabber.val() != 0){
+        document.getElementById("leaderboard").innerHTML += "#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "<br>";
+    }
     }
   
 });
@@ -99,7 +106,7 @@ ref.on("child_changed", function(snapshot) {
     var timeGrabber = snapshot.child("time" + i);
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();  
-    document.getElementById("leaderboard").innerHTML += leaderboard[i - 1] + times[i - 1];
+    document.getElementById("leaderboard").innerHTML += "#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "<br>";
     }
   
 });
@@ -114,7 +121,7 @@ ref.on("child_changed", function(snapshot) {
 
 
 
-
+//More puzzle focused stuff
 
 
 
@@ -515,6 +522,7 @@ function checkSolution(){
     time = timer;
     clearInterval(Interval);
     player = prompt("Please enter your name", "");
+    send();
     setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
