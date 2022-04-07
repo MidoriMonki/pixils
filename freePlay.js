@@ -8,12 +8,12 @@ var uPosY;
 var target;
 var mode = 2;
 var pixilsInRow;
-var slideColour = "fix this"
+var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1213121121111","1211121121311", "2222322223222222", "111111111111111", "222222222222222", "3313333313333", "22132121232212", "312333233333133", "223222332322000", "33231232231333", "33313333313133", "11131311331113", "33233233113333", "2333323333133", "11121131211111", "1111112111", "111111111111111", "2222122222", "121112121111"];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = "and this cause the go hand in hand"
+var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "022202233022220022200202016Among", "011101101111110100001010014YinYang", "022200000002220020200222011Bōken", "003000333031313030303000313Alien", "003000212212123021220000014Bee", "300030333031313233320000015Piquachoo", "020200020003230022200323012Present", "000000303031313033302202214Mr. Frog", "030300333031313033300010014Sad Fox", "003003111301110011100303014Turt", "233300300023300333300101014Yosh", "003000233003330333230010013Tree", "000000010010101213121111114Crown", "000001100210000110000111110Snake", "011111100110011100101100115Moon", "000002022002212202200000010Fish", "011101000101010022201000112Penguin"];
 var whichChild;
 var beforeWho;
 var amountOfBoxes;
@@ -28,9 +28,9 @@ var solution =
 
 var storePositions = 
 [0, 0, 10, 14, 0,
- 0, 1, 2, 3, 15,
+ 16, 1, 2, 3, 0,
  11, 4, 5, 6, 13,
- 0, 7, 8, 9, 0,
+ 0, 7, 8, 9, 15,
  0, 0, 12, 0, 0];
 
 var canMoveKeys = false;
@@ -39,47 +39,10 @@ target = 5;
 var who = 12;
 
 
-for(var i=0;i<15;i++){
+for(var i=0;i<16;i++){
   originalPositionsY[i] = slide.children[i].style.top;
   originalPositionsX[i] = slide.children[i].style.right;
 }
-
-
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCJLzJumCeSJTYtGfTdG3f9Ze8Iy8mhXwA",
-  authDomain: "pixils-1ff04.firebaseapp.com",
-  databaseURL: "https://pixils-1ff04-default-rtdb.firebaseio.com",
-  projectId: "pixils-1ff04",
-  storageBucket: "pixils-1ff04.appspot.com",
-  messagingSenderId: "184093482791",
-  appId: "1:184093482791:web:15604ab2f534eadf4b9302",
-  measurementId: "G-1RWY2XRGM7"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-
-firebase
-        .database()
-        .ref("messages")
-        .on("child_added", function(snapshot) {
-            
-
-});
-
-
-
 
 document.addEventListener('keydown', (keyTest) => {
   
@@ -177,7 +140,6 @@ document.addEventListener('keydown', (keyTest) => {
     canMoveKeys = false;
   }
   if (target != 0){  
-    document.getElementById("pp").innerHTML =  "/"+ target + "/"+  who + "/"+  storePositions[who] + "/";
   }
   
   if(target != 0){
@@ -188,14 +150,14 @@ document.addEventListener('keydown', (keyTest) => {
 
 
 //Start by adding event listeners
-for (var i=0;i<15;i++)
+for (var i=0;i<16;i++)
 {
     slide.children[i].addEventListener('touchstart', dragStart);
     slide.children[i].addEventListener('touchend', dragEnd);
     slide.children[i].addEventListener('touchmove', dragMove);
-    slide.children[i].addEventListener('mousedown', dragStart);
+    //slide.children[i].addEventListener('mousedown', dragStart);
     //slide.children[i].addEventListener('mousemove', dragMove);
-    document.addEventListener('mouseup', dragEnd);
+    //document.addEventListener('mouseup', dragEnd);
 }
 
 
@@ -220,13 +182,12 @@ function dragStart(e)
 
   }
   // rumble reset
-  for(i=0;i<25;i++){
+  for(var i=0;i<25;i++){
       if (storePositions[i] != 0){
         slide.children[storePositions[i]-1].classList.remove("rumble");
       }
   }
 }
-
 
 
 //Moving   mode0 = Y, mode1 = X
@@ -261,7 +222,7 @@ function dragMove(e)
 //End
 function dragEnd()
 {
-   canMoveKeys = true;
+  canMoveKeys = true;
   if (mode == 1){
       if (vPosX < uPosX && storePositions[row*5] == 0){
         //left
@@ -378,6 +339,7 @@ function checkDirection()
 
 function checkSolution(){
   correct = true;
+  document.getElementById("pp").innerHTML =  storePositions + "/" + solution;
   if(mummy){
   for(i=0;i<25;i++){
       if (storePositions[i] == 0 && solution[i] == 0){}else{
@@ -391,7 +353,7 @@ function checkSolution(){
    setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
-      setTimeout(function(){ document.getElementById("continue").style.display = "block";}, 700);
+      setTimeout(function(){ document.getElementById("continue").style.display = "block"; }, 700);
                          }, 400);
 
   }
@@ -422,7 +384,7 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   whichPuzzle = Math.floor(Math.random() * (puzzleList.length-1));
+   whichPuzzle = Math.floor(Math.random() * (puzzleList.length));
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
@@ -434,7 +396,7 @@ function setUpSolution()
    amountOfBoxes = "" + why[25] + why[26];
    //Set up solution display
    whichChild = -1;
-   for(var i=0;i<15;i++){
+   for(var i=0;i<16;i++){
      if (i<amountOfBoxes){
         slideS.children[i].classList.add("box");
         slide.children[i].classList.add("box");
