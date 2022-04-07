@@ -53,20 +53,20 @@ body{
 }
 .yes
 {
-    background: red;
+    background: rgb(242, 30, 84);
 }
 .turq
 {
-    background: rgb(0, 131, 140);
+    background: rgb(10, 151, 160);
 }
 /* Alternate colours*/
 .purple
 {
-    background: rgb(119, 0, 140);
+    background: rgb(129, 0, 150);
 }
 .green
 {
-    background: rgb(0, 160, 160);
+    background: rgb(30, 190, 120);
 }
 .orange
 {
@@ -74,7 +74,7 @@ body{
 }
 .blue
 {
-    background: rgb(0, 84, 140);
+    background: rgb(10, 94, 160);
 }
 
 .small{
