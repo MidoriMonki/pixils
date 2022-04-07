@@ -53,9 +53,11 @@
           });
      }
     
+    var database = firebase.database();
+    var leaderboard = firebase.database().ref("leaderboard").orderByChild("time");
+    setTimeout(function(){ alert(database); }, 1000);
     
-    var leaderboard = "" + firebase.database().ref("leaderboard").orderByChild("Time");
-    setTimeout(function(){ alert(leaderboard); }, 1000);
+    
 
   </script>
     
