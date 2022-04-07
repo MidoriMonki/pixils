@@ -27,7 +27,7 @@
     
     var leaderboard = [0];
     var times = [0];
-    var player = "Monki"
+    var player = 1;
     var whom = 0;
     var test = false;
       // Your web app's Firebase configuration
@@ -48,49 +48,51 @@
         
     function send(){
       
-      leaderboard.remove(player);
+      leaderboard.splice(leaderboard.indexOf(player), 1);
       for (var i=0;times[i]<time;i++)
       leaderboard.splice(i, 0, time);
          
           firebase
           .database()
           .ref("leaderboard")
-          .child(1)
+          .child("Adam Whittome")
           .set({
-             name: "Adam Whittome",
              time: 1111111,
              newPos: i
           });
       
       
 
-     }
+    }
     
     
     var rootRef = firebase.database().ref("leaderboard").orderByChild("time");
-    var key = rootRef.key;
-      
+    var key = rootRef.key;  
     var ref = firebase.database().ref("leaderboard");
-    ref.orderByChild("time").on("child_added", function(snapshot) {
-    leaderboard[whom] = snapshot.key;
-    document.getElementById("leaderboard").innerHTML += snapshot.key;
+    
+    setTimeout(function(){ whom = null }, 2000);
+    
+    
+ref.orderByChild("time").on("child_added", function(snapshot) {
+  
+  
+if (whom != null){ leaderboard[whom] = snapshot.key; }else{ leaderboard[newPos] = snapshot.key; }
+    document.getElementById("leaderboard").innerHTML = leaderboard;
+  
 });
     
     
+  
     
     
-    
-    
-    
-    
-    
-    
-    ref.orderByChild("time").on("child_changed", function(snapshot) {
-    leaderboard[whom] = snapshot.key;
+ref.orderByChild("time").on("child_changed", function(snapshot) {  
+      
+    leaderboard.remove(snapshot.key);
+    leaderboard.splice(snapshot.newPos, 0, snapshot.time);
+    leaderboard[newPos] = snapshot.key;
     
     document.getElementById("leaderboard").innerHTML = leaderboard;
-      
-    
+  
 });
     
 
