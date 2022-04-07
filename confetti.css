@@ -1,0 +1,30 @@
+body {
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+}
+
+#canvas {
+    background: linear-gradient(#9FF781, #F3F781);
+}
+
+.copy {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #333333;
+    
+    h1 {
+        margin: 0;
+        color: white;
+        letter-spacing: 1px;
+        font-size: 7vmin;
+        font-weight: 700;
+    }
+    
+    p {
+        margin: 0;
+    }
+}
