@@ -27,10 +27,11 @@
     
     var leaderboard = [0];
     var times = [0];
-    var player = "IzaacM";
+    var player = "MasonC";
     var whom = 0;
     var test = false;
-    var time = 0;
+    var time = 4;
+    var pp = 0;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       var firebaseConfig = {
@@ -49,9 +50,7 @@
         
     function send(){
 
-      for (var i=0;times[i]<time;i++)
-      var pp = i - 1;
-      alert(i + pp)
+      for (var i=0;times[i]<time;i++){pp = i}
          
           firebase
           .database()
@@ -74,8 +73,13 @@
 ref.orderByChild("time").on("child_added", function(snapshot) {
   
   
-if (whom != null){ times[whom] = snapshot.val().time; leaderboard[whom] = snapshot.key; whom++; }else{ leaderboard[snapshot.val().newPos] = snapshot.key; times[snapshot.val().newPos] =  snapshot.val().time;}
-    document.getElementById("leaderboard").innerHTML = leaderboard;
+if (whom != null){ times[whom] = snapshot.val().time; leaderboard[whom] = snapshot.key; whom++; }else{
+  
+        leaderboard.splice(snapshot.val().newPos, 0,  snapshot.key);      
+        times.splice(snapshot.val().newPos, 0,  snapshot.val().time); 
+      
+      }
+    document.getElementById("leaderboard").innerHTML = leaderboard + times;
   
 });
     
