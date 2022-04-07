@@ -1,4 +1,4 @@
-    var leaderboard = firebase.database().ref("leaderboard").orderByChild("time").time<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
 
@@ -23,7 +23,49 @@
   <body>
     
 
+      <script>
     
+    var player = "Monki"
+    var test = false;
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyDH_nuwVGfMk6pOMJEiDOWm93f-WWivbbw",
+        authDomain: "didgeridooo-abb4e.firebaseapp.com",
+        databaseURL: "https://didgeridooo-abb4e.firebaseio.com",
+        projectId: "didgeridooo-abb4e",
+        storageBucket: "didgeridooo-abb4e.appspot.com",
+        messagingSenderId: "195317769364",
+        appId: "1:195317769364:web:4e65206eac143f62894081",
+        measurementId: "G-DZJY7M6G97"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    if(test){
+          firebase
+          .database()
+          .ref("leaderboard")
+          .child("3")
+          .set({
+             time: 3
+          });
+
+     }
+    
+    
+    var rootRef = firebase.database().ref("leaderboard").orderByChild("time");
+    var key = rootRef.key;
+      
+    var ref = firebase.database().ref("leaderboard");
+    ref.orderByChild("time").on("child_added", function(snapshot) {
+    console.log(snapshot.key);
+});
+    
+
+  </script>
+    
+      <input placeholder="pp">
 
   </body>
 </html>

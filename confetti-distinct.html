@@ -6,7 +6,45 @@
 
   <title>🎊</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --primary-color: #eeeeee;
+      --secondary-color: #363636;
+      --secondary-variant-color: #272727;
+      --background-color: #212121;
+      --inner-color: #ffffff;
+      --border-color: #555651;
+
+      /* icons by Google - Material Design
+       * https://material.io/resources/icons/?style=baseline
+       */
+      --switch-moon-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23eeeeee' d='M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z'%3E%3C/path%3E%3C/svg%3E");
+      --switch-sun-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23212121' d='M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z'%3E%3C/path%3E%3C/svg%3E");
+      --switch-auto-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23eeeeee' d='M10.85 12.65h2.3L12 9l-1.15 3.65zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM14.3 16l-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9z'%3E%3C/path%3E%3C/svg%3E");
+      --switch-auto-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23212121' d='M10.85 12.65h2.3L12 9l-1.15 3.65zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM14.3 16l-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9z'%3E%3C/path%3E%3C/svg%3E");
+
+      --theme-switch: var(--switch-moon-white);
+    }
+
+    [data-theme="light"] {
+      --primary-color: #212121;
+      --secondary-color: #ffffff;
+      --background-color: #f0f0f0;
+      --inner-color: #363636;
+
+      --theme-switch: var(--switch-sun-black);
+    }
+
+    [auto-theme] {
+      --theme-switch: var(--switch-auto-white);
+    }
+
+    [data-theme="light"][auto-theme] {
+      --theme-switch: var(--switch-auto-black);
+    }
+
     html, body {
       margin: 0;
       padding: 0;
@@ -51,6 +89,31 @@
       outline: none;
       margin-right: 12px;
       cursor: pointer;
+    }
+
+    .theme:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      width: var(--size);
+      height: var(--size);
+      background-repeat: no-repeat;
+      background-position: center;
+      background: var(--theme-switch);
+    }
+
+    .github-icon {
+      --size: 36px;
+      position: relative;
+      display: block;
+      width: var(--size);
+      height: var(--size);
+      margin-right: 12px;
+    }
+
+    .github-icon svg.icon {
+      fill: var(--primary-color);
     }
 
     h1, h2, .center {
@@ -271,9 +334,6 @@
 
   <header>
     <button id="themeToggle" title="Switch Theme" class="theme"></button>
-    <a class="github-icon" title="Visit on GitHub" href="https://github.com/catdad/canvas-confetti" aria-label="View source on Github">
-      <svg class="icon"><use xlink:href="#octo"></use></svg>
-    </a>
   </header>
 
   <h1>Canvas Confetti</h1>
@@ -289,35 +349,6 @@
               <svg class="icon"><use xlink:href="#run"></use></svg>
             </span>
           </button>
-        </div>
-        <div class="description">
-          <p>
-            The default mode... just your regular basic average blast of confetti. But it's still
-            a little cool, right?
-          </p>
-        </div>
-      </div>
-      <div class="editor"></div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="group" data-name="random">
-      <div class="flex-rows">
-        <div class="left">
-          <h2><a href="#random" id="random" class="anchor">Random Direction</a></h2>
-          <button class="run">
-            Run
-            <span class="icon">
-              <svg class="icon"><use xlink:href="#run"></use></svg>
-            </span>
-          </button>
-        </div>
-        <div class="description">
-          <p>
-            Go crazy with some randomness. Shoot a random amount of confetti in random directions.
-            (Go ahead... you know you want to click that button more than once.)
-          </p>
         </div>
       </div>
       <div class="editor"></div>
@@ -347,116 +378,6 @@
       <div class="editor"></div>
     </div>
   </div>
-
-  <div class="container">
-    <div class="group" data-name="fireworks">
-      <div class="flex-rows">
-        <div class="left">
-          <h2><a href="#fireworks" id="fireworks" class="anchor">Fireworks</a></h2>
-          <button class="run">
-            Run
-            <span class="icon">
-              <svg class="icon"><use xlink:href="#run"></use></svg>
-            </span>
-          </button>
-        </div>
-        <div class="description">
-          <p>
-            Why click a button repeatedly when you can have code do it for you? Shoot some firework
-            of confetti from the sides of page so you can still read the content in the center.
-          </p>
-        </div>
-      </div>
-      <div class="editor"></div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="group" data-name="snow">
-      <div class="flex-rows">
-        <div class="left">
-          <h2><a href="#snow" id="snow" class="anchor">Snow</a></h2>
-          <button class="run">
-            Run
-            <span class="icon">
-              <svg class="icon"><use xlink:href="#run"></use></svg>
-            </span>
-          </button>
-        </div>
-        <div class="description">
-          <p>
-            The effect is not limited to crazy rapid fire of confetti though. You can create a
-            wintery mood with gently falling particles across the entire page.
-          </p>
-        </div>
-      </div>
-      <div class="editor"></div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="group" data-name="continuous">
-      <div class="flex-rows">
-        <div class="left">
-          <h2><a href="#continuous" id="continuous" class="anchor">School Pride</a></h2>
-          <button class="run">
-            Run
-            <span class="icon">
-              <svg class="icon"><use xlink:href="#run"></use></svg>
-            </span>
-          </button>
-        </div>
-        <div class="description">
-          <p>
-            But if you are into crazy rapid fire of confetti, what could be a better use than
-            to show everyone what you are all about? Tell people where you are from with two
-            confetti cannons from either side of the page.
-          </p>
-          <p class="center">🌰 Go Buckeyes! 🌰</p>
-        </div>
-      </div>
-      <div class="editor"></div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="group" data-name="custom">
-      <div class="flex-rows">
-        <div class="left">
-          <h2><a href="#custom-canvas" id="custom-canvas" class="anchor">Custom Canvas</a></h2>
-          <button class="run">
-            Run
-            <span class="icon">
-              <svg class="icon"><use xlink:href="#run"></use></svg>
-            </span>
-          </button>
-        </div>
-        <div class="description">
-          <p>
-            But if you just hate confetti all over the place, there's something here for you
-            as well. You can limit where the confetti appear by providing your own canvas element.
-          </p>
-        </div>
-      </div>
-      <div class="editor"></div>
-      <div class="flex-rows">
-        <canvas id="my-canvas" class="custom-canvas"></canvas>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <a href="https://github.com/catdad">
-      <span class="icon">
-        <svg class="icon"><use xlink:href="#code"></use></svg>
-      </span>
-      <span> with </span>
-      <span class="icon">
-        <svg class="icon"><use xlink:href="#heart"></use></svg>
-      </span>
-      <span> by <b>catdad</b></span>
-    </a>
-  </footer>
 
   <script>
     var editors = [];
@@ -520,18 +441,6 @@
           origin: { y: 0.6 }
         });
       },
-      random: function random() {
-        function randomInRange(min, max) {
-          return Math.random() * (max - min) + min;
-        }
-
-        confetti({
-          angle: randomInRange(55, 125),
-          spread: randomInRange(50, 70),
-          particleCount: randomInRange(50, 100),
-          origin: { y: 0.6 }
-        });
-      },
       realistic: function realistic() {
         var count = 200;
         var defaults = {
@@ -567,102 +476,6 @@
           startVelocity: 45,
         });
       },
-      fireworks: function fireworks() {
-        var duration = 15 * 1000;
-        var animationEnd = Date.now() + duration;
-        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-        function randomInRange(min, max) {
-          return Math.random() * (max - min) + min;
-        }
-
-        var interval = setInterval(function () {
-          var timeLeft = animationEnd - Date.now();
-
-          if (timeLeft <= 0) {
-            return clearInterval(interval);
-          }
-
-          var particleCount = 50 * (timeLeft / duration);
-          // since particles fall down, start a bit higher than random
-          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-        }, 250);
-      },
-      snow: function snow() {
-        var duration = 15 * 1000;
-        var animationEnd = Date.now() + duration;
-        var skew = 1;
-
-        function randomInRange(min, max) {
-          return Math.random() * (max - min) + min;
-        }
-
-        (function frame() {
-          var timeLeft = animationEnd - Date.now();
-          var ticks = Math.max(200, 500 * (timeLeft / duration));
-          skew = Math.max(0.8, skew - 0.001);
-
-          confetti({
-            particleCount: 1,
-            startVelocity: 0,
-            ticks: ticks,
-            origin: {
-              x: Math.random(),
-              // since particles fall down, skew start toward the top
-              y: (Math.random() * skew) - 0.2
-            },
-            colors: ['#ffffff'],
-            shapes: ['circle'],
-            gravity: randomInRange(0.4, 0.6),
-            scalar: randomInRange(0.4, 1),
-            drift: randomInRange(-0.4, 0.4)
-          });
-
-          if (timeLeft > 0) {
-            requestAnimationFrame(frame);
-          }
-        }());
-      },
-      continuous: function continuous() {
-        var end = Date.now() + (15 * 1000);
-
-        // go Buckeyes!
-        var colors = ['#bb0000', '#ffffff'];
-
-        (function frame() {
-          confetti({
-            particleCount: 2,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-            colors: colors
-          });
-          confetti({
-            particleCount: 2,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-            colors: colors
-          });
-
-          if (Date.now() < end) {
-            requestAnimationFrame(frame);
-          }
-        }());
-      },
-      custom: function() {
-        var canvas = document.getElementById('my-canvas');
-
-        // you should  only initialize a canvas once, so save this function
-        // we'll save it to the canvas itself for the purpose of this demo
-        canvas.confetti = canvas.confetti || confetti.create(canvas, { resize: true });
-
-        canvas.confetti({
-          spread: 70,
-          origin: { y: 1.2 }
-        });
-      }
     };
 
     function pretty(val) {
@@ -716,7 +529,5 @@
       });
     };
   </script>
-
-  <script src="/analytics.js" async></script>
 </body>
 </html>
