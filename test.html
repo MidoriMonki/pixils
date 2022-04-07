@@ -30,7 +30,7 @@
     var player = "MasonC";
     var whom = 0;
     var test = false;
-    var time = 7;
+    var time = 4;
     var pp = 0;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -93,11 +93,7 @@ ref.on("child_changed", function(snapshot) {
     leaderboard.splice(leaderboard.indexOf(snapshot.key), 1);}
     leaderboard.splice(snapshot.val().newPos, 0,  snapshot.key);
     times.splice(times.indexOf(leaderboard[snapshot.key]), 1);
-    times.splice(snapshot.val().newPos, 0,  snapshot.val().time);
-  
-  
-    leaderboard[snapshot.val().newPos] = snapshot.key;
-    times[snapshot.val().newPos] =  snapshot.val().time;
+    times.splice((snapshot.val().newPos - 1), 0,  snapshot.val().time);
     
     document.getElementById("leaderboard").innerHTML = leaderboard + times;
   
