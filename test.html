@@ -9,43 +9,54 @@
     <!-- Import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- Import the webpage's javascript file -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
     
   </head>
   <body>
     
 
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCJLzJumCeSJTYtGfTdG3f9Ze8Iy8mhXwA",
-    authDomain: "pixils-1ff04.firebaseapp.com",
-    databaseURL: "https://pixils-1ff04-default-rtdb.firebaseio.com",
-    projectId: "pixils-1ff04",
-    storageBucket: "pixils-1ff04.appspot.com",
-    messagingSenderId: "184093482791",
-    appId: "1:184093482791:web:15604ab2f534eadf4b9302",
-    measurementId: "G-1RWY2XRGM7"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  <script>
     
-  import { getDatabase, ref, query, orderByChild } from "firebase/database";
-
-  const db = getDatabase();
-
-  const myUserId = auth.currentUser.uid;
-  const topUserPostsRef = query(ref(db, 'user-posts/' + myUserId), orderByChild('Time'));  
+    var test = false;
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyDH_nuwVGfMk6pOMJEiDOWm93f-WWivbbw",
+        authDomain: "didgeridooo-abb4e.firebaseapp.com",
+        databaseURL: "https://didgeridooo-abb4e.firebaseio.com",
+        projectId: "didgeridooo-abb4e",
+        storageBucket: "didgeridooo-abb4e.appspot.com",
+        messagingSenderId: "195317769364",
+        appId: "1:195317769364:web:4e65206eac143f62894081",
+        measurementId: "G-DZJY7M6G97"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
     
+     if(test){
+          firebase
+          .database()
+          .ref("leaderboard")
+          .push()
+          .set({
+            name: "Player 1",
+            time: 1
+          });
+     }
+    
+    
+    var leaderboard = "" + firebase.database().ref("leaderboard").orderByChild("Time");
+    setTimeout(function(){ alert(leaderboard); }, 1000);
+
   </script>
     
 
