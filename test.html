@@ -27,9 +27,10 @@
     
     var leaderboard = [0];
     var times = [0];
-    var player = 1;
+    var player = "Adam";
     var whom = 0;
     var test = false;
+    var time = 60000;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       var firebaseConfig = {
@@ -48,21 +49,22 @@
         
     function send(){
       
+      if (leaderboard.indexOf(player) != null){
       leaderboard.splice(leaderboard.indexOf(player), 1);
+      }
       for (var i=0;times[i]<time;i++)
-      leaderboard.splice(i, 0, time);
+      leaderboard.splice(i, 0, player);
          
           firebase
           .database()
           .ref("leaderboard")
-          .child("Adam Whittome")
+          .child(player)
           .set({
-             time: 1111111,
+             time: 11,
              newPos: i
           });
       
       
-
     }
     
     
@@ -70,14 +72,14 @@
     var key = rootRef.key;  
     var ref = firebase.database().ref("leaderboard");
     
-    setTimeout(function(){ whom = null }, 2000);
+    setTimeout(function(){ whom = null }, 3000);
     
     
 ref.orderByChild("time").on("child_added", function(snapshot) {
   
   
-if (whom != null){ leaderboard[whom] = snapshot.key; }else{ leaderboard[newPos] = snapshot.key; }
-    document.getElementById("leaderboard").innerHTML = leaderboard;
+if (whom != null){ times[whom] = snapshot.time; leaderboard[whom] = snapshot.key; whom++; }else{ leaderboard[snapshot.newPos] = snapshot.key; times[snapshot.newPos] = snapshot.time;}
+    document.getElementById("leaderboard").innerHTML = leaderboard + times;
   
 });
     
@@ -87,11 +89,16 @@ if (whom != null){ leaderboard[whom] = snapshot.key; }else{ leaderboard[newPos] 
     
 ref.orderByChild("time").on("child_changed", function(snapshot) {  
       
-    leaderboard.remove(snapshot.key);
+    leaderboard.splice(leaderboard.indexOf(snapshot.key), 1);
     leaderboard.splice(snapshot.newPos, 0, snapshot.time);
-    leaderboard[newPos] = snapshot.key;
+    times.splice(times.indexOf(leaderboard[snapshot.key]), 1);
+    times.splice(snapshot.newPos, 0, snapshot.time);
+  
+  
+    leaderboard[snapshot.newPos] = snapshot.key;
+    times[snapshot.newPos] = snapshot.time;
     
-    document.getElementById("leaderboard").innerHTML = leaderboard;
+    document.getElementById("leaderboard").innerHTML = leaderboard + times;
   
 });
     
