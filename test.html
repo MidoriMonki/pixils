@@ -27,10 +27,10 @@
     
     var leaderboard = [0];
     var times = [0];
-    var player = "Adam";
+    var player = "IzaacM";
     var whom = 0;
     var test = false;
-    var time = 60000;
+    var time = 6;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       var firebaseConfig = {
@@ -53,14 +53,13 @@
       leaderboard.splice(leaderboard.indexOf(player), 1);
       }
       for (var i=0;times[i]<time;i++)
-      leaderboard.splice(i, 0, player);
          
           firebase
           .database()
           .ref("leaderboard")
           .child(player)
           .set({
-             time: 11,
+             time: time,
              newPos: i
           });
       
@@ -72,14 +71,14 @@
     var key = rootRef.key;  
     var ref = firebase.database().ref("leaderboard");
     
-    setTimeout(function(){ whom = null }, 3000);
+    setTimeout(function(){ whom = null }, 2000);
     
     
 ref.orderByChild("time").on("child_added", function(snapshot) {
   
   
 if (whom != null){ times[whom] = snapshot.val().time; leaderboard[whom] = snapshot.key; whom++; }else{ leaderboard[snapshot.val().newPos] = snapshot.key; times[snapshot.val().newPos] =  snapshot.val().time;}
-    document.getElementById("leaderboard").innerHTML = leaderboard + times;
+    document.getElementById("leaderboard").innerHTML = leaderboard;
   
 });
     
@@ -87,10 +86,10 @@ if (whom != null){ times[whom] = snapshot.val().time; leaderboard[whom] = snapsh
   
     
     
-ref.orderByChild("time").on("child_changed", function(snapshot) {  
+ref.on("child_changed", function(snapshot) {  
       
     leaderboard.splice(leaderboard.indexOf(snapshot.key), 1);
-    leaderboard.splice(snapshot.val().newPos, 0,  snapshot.val().time);
+    leaderboard.splice(snapshot.val().newPos, 0,  snapshot.key);
     times.splice(times.indexOf(leaderboard[snapshot.key]), 1);
     times.splice(snapshot.val().newPos, 0,  snapshot.val().time);
   
@@ -98,7 +97,7 @@ ref.orderByChild("time").on("child_changed", function(snapshot) {
     leaderboard[snapshot.val().newPos] = snapshot.key;
     times[snapshot.val().newPos] =  snapshot.val().time;
     
-    document.getElementById("leaderboard").innerHTML = leaderboard + times;
+    document.getElementById("leaderboard").innerHTML = leaderboard;
   
 });
     
@@ -106,7 +105,7 @@ ref.orderByChild("time").on("child_changed", function(snapshot) {
 
   </script>
     
-      <input placeholder="pp" onchange="send()">
+      <bi onchange="send()">
       <p id="leaderboard"></p>
     
     
