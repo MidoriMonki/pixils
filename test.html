@@ -50,6 +50,9 @@
         
     function send(){
          
+      
+     leaderboard.splice(5, 1); 
+      
           firebase
           .database()
           .ref("leaderboard")
@@ -77,25 +80,30 @@
     
 ref.on("child_added", function(snapshot) {
   
-        
-    leaderboard[0] = snapshot. 
-    document.getElementById("leaderboard").innerHTML = leaderboard + times;
+    document.getElementById("leaderboard").innerHTML = ""; 
+     
+    for(var i=1;i<6;i++){
+    var nameGrabber = snapshot.child("name" + i);
+    var timeGrabber = snapshot.child("time" + i);
+    leaderboard[i - 1] = nameGrabber.val();  
+    times[i - 1] = timeGrabber.val();  
+    document.getElementById("leaderboard").innerHTML += leaderboard[i - 1] + times[i - 1];
+    }
   
 });
-    
-    
-  
-    
+
     
 ref.on("child_changed", function(snapshot) {  
      
-    if (leaderboard.indexOf(player) != null){
-    leaderboard.splice(leaderboard.indexOf(snapshot.key), 1);}
-    leaderboard.splice(snapshot.val().newPos, 0,  snapshot.key);
-    times.splice(times.indexOf(leaderboard[snapshot.key]), 1);
-    times.splice((snapshot.val().newPos - 1), 0,  snapshot.val().time);
-    
-    document.getElementById("leaderboard").innerHTML = leaderboard + times;
+    document.getElementById("leaderboard").innerHTML = ""; 
+     
+    for(var i=1;i<6;i++){
+    var nameGrabber = snapshot.child("name" + i);
+    var timeGrabber = snapshot.child("time" + i);
+    leaderboard[i - 1] = nameGrabber.val();  
+    times[i - 1] = timeGrabber.val();  
+    document.getElementById("leaderboard").innerHTML += leaderboard[i - 1] + times[i - 1];
+    }
   
 });
     
