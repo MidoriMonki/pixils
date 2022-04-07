@@ -49,10 +49,10 @@
           firebase
           .database()
           .ref("leaderboard")
-          .child("3")
+          .child("4")
           .set({
-             name: "Player3",
-             time: 4
+             name: "Player4",
+             time: 3
           });
 
      }
@@ -65,7 +65,6 @@
     ref.orderByChild("time").on("child_added", function(snapshot) {
     leaderboard[snapshot.key] = snapshot.key;
     document.getElementById("leaderboard").innerHTML += snapshot.key;
-    alert(leaderboard[snapshot.key]);
 });
     
 
