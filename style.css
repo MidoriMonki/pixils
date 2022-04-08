@@ -12,7 +12,7 @@ body{
 
 /* mobile device screen size */
 @media only screen and (max-width: 600px) {
-  body {position: fixed;}
+  body {position: fixed; background}
 }
 
 /* computer screen size */
