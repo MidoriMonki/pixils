@@ -383,14 +383,10 @@ function startTimer(){
      timey.innerHTML = "0:00:" + timer;
   }else if(timer < 1000){
      timey.innerHTML = "0:0" + timer.toString()[0] + ":" + timer.toString()[1] + timer.toString()[2];
-  }else if(timer < 10000){
-     if ((timer.toString()[0] - 6*verySpecialVariable) == "6"){verySpecialVariable++;}
-     timey.innerHTML = "0:" + (timer.toString()[0] - 6*verySpecialVariable) + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3];
-  }else if(timer < 100000){
-     timey.innerHTML = timer.toString()[0] + ":" + timer.toString()[1] + timer.toString()[2] + ":" + timer.toString()[3] + timer.toString()[4];
-  }else if(timer < 1000000){
-     timey.innerHTML = timer.toString()[0] + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3] + ":" + timer.toString()[4] + timer.toString()[5];
   }else if(timer < 10000000){
+     if ((timer.toString()[0] - 6*verySpecialVariable) == "6"){verySpecialVariable++;}
+     timey.innerHTML = verySpecialVariable + ":" + (timer.toString()[0] - 6*verySpecialVariable) + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3];
+  }else{
     timey.innerHTML = "You've taken your time haven't you?";
   } 
 }
