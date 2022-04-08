@@ -2,12 +2,6 @@
    // The chaos begins
     var desktop = true;
 
-
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-      desktop = false;
-      alert("wow it worked");
-    }
-
     var leaderboard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var times = [9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999];
     var player = "";
@@ -30,6 +24,10 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+
+
+
+
         
     function send(){
       
@@ -37,9 +35,18 @@
      if (player != "0" || player != null || player != "test"){
      var newPos = null;
       
+       if (desktop){
+         
      for(var i=0;i<5;i++){
-       if (time<times[i]){var newPos = i; break;}
-     }
+         if (time<times[i]){var newPos = i; break;}
+          }
+       }else{
+         
+              for(var i=5;i<10;i++){
+             if (time<times[i]){var newPos = i; break;}
+               }
+
+       }
       
     
      if (newPos!=null){ 
@@ -132,7 +139,7 @@ ref.on("child_added", function(snapshot) {
     document.getElementById("leaderboard").innerHTML = "<h1 class='bold-title'>Leaderboard</h1>"; 
     
     if (desktop){
-              for(var i=1;i<5;i++){
+              for(var i=1;i<6;i++){
               var nameGrabber = snapshot.child("name" + i);
               var timeGrabber = snapshot.child("time" + i);
               leaderboard[i - 1] = nameGrabber.val();  
@@ -387,6 +394,7 @@ function dragStart(e)
   e.preventDefault();
   if (e.type == "touchstart")
   {
+     desktop = false;
      uPosX = e.touches[0].clientX;
      uPosY = e.touches[0].clientY;
      target = e.target.id;
