@@ -119,3 +119,23 @@ body{
   outline-offset: -40px;
   animation: rumble2 .6s linear infinite;
 }
+
+.1{
+  colour: gold;
+}
+
+.2{
+  colour: silver;
+}
+
+.3{
+  colour: brown;
+}
+
+.4{
+  colour: black;
+}
+
+.5{
+  colour: black;
+}

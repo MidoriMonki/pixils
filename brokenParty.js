@@ -29,7 +29,7 @@
     function send(){
       
      player = prompt("Please enter your name", ""); 
-     if (player != "0" || player != "null"){
+     if (player != "0" || player != "null" || player != "test"){
      var newPos = null;
       
      for(var i=0;i<5;i++){
@@ -96,7 +96,7 @@ ref.on("child_added", function(snapshot) {
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();
     if (nameGrabber.val() != 0){
-        document.getElementById("leaderboard").innerHTML += "#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "<br>";
+        document.getElementById("leaderboard").innerHTML += "<p class=" + i + ">#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
     }
     }
   
@@ -384,7 +384,8 @@ function startTimer(){
   }else if(timer < 1000){
      timey.innerHTML = "0:0" + timer.toString()[0] + ":" + timer.toString()[1] + timer.toString()[2];
   }else if(timer < 10000000){
-     if ((timer.toString()[0] - 6*verySpecialVariable) == "6"){verySpecialVariable++;}
+     if ((timer.toString()[0] - (6*verySpecialVariable)) == "6"){verySpecialVariable++;}
+     if (timer.toString()[0] == 0){verySpecialVariable=0;}
      timey.innerHTML = verySpecialVariable + ":" + (timer.toString()[0] - 6*verySpecialVariable) + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3];
   }else{
     timey.innerHTML = "You've taken your time haven't you?";
