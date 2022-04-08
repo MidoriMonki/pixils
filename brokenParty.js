@@ -136,7 +136,7 @@
     
 ref.on("child_added", function(snapshot) {
   
-    document.getElementById("leaderboard").innerHTML = "<h1 class='bold-title'>Leaderboard</h1>"; 
+    document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Desktop Leaderboard</h3>"; 
     
     if (desktop){
               for(var i=1;i<6;i++){
@@ -149,7 +149,7 @@ ref.on("child_added", function(snapshot) {
               }
               }
     }else{
-            for(var i=6;i<10;i++){
+            for(var i=6;i<11;i++){
             var nameGrabber = snapshot.child("name" + i);
             var timeGrabber = snapshot.child("time" + i);
             leaderboard[i - 1] = nameGrabber.val();  
@@ -165,7 +165,7 @@ ref.on("child_added", function(snapshot) {
     
 ref.on("child_changed", function(snapshot) {  
      
-    document.getElementById("leaderboard").innerHTML = ""; 
+    document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Mobile Leaderboard</h3>"; 
      
     if (desktop){  
     for(var i=1;i<5;i++){
@@ -752,4 +752,48 @@ function setUpSolution()
      }
    }
    setTimeout(function(){mummy=true;}, 2000);
+}
+
+confetti();
+
+function confetti(){
+      try {
+      var count = 400;
+      var defaults = {
+        origin: { y: 1 },
+      };
+
+      function fire(particleRatio, opts) {
+        confetti(
+          Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio),
+          })
+        );
+      }
+
+      fire(0.25, {
+        spread: 26,
+        startVelocity: 55,
+      });
+      fire(0.2, {
+        spread: 60,
+      });
+      fire(0.35, {
+        spread: 100,
+        decay: 0.91,
+        scalar: 0.8,
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 25,
+        decay: 0.92,
+        scalar: 1.2,
+      });
+      fire(0.1, {
+        spread: 120,
+        startVelocity: 45,
+      });
+    } catch (e) {
+      console.error(e);
+    }
 }
