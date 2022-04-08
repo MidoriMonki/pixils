@@ -1,10 +1,13 @@
 
    // The chaos begins
+    var desktop = true;
 
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     desktop = false;
+    }
 
-
-    var leaderboard = [0, 0, 0, 0, 0];
-    var times = [9999999, 9999999, 9999999, 9999999, 9999999];
+    var leaderboard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    var times = [9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999];
     var player = "";
     var whom = 0;
     var test = false;
@@ -39,9 +42,10 @@
     
      if (newPos!=null){ 
      
+     if (desktop){
      if (leaderboard.includes(player))
-     {
-       for(var i=0;i<6;i++){
+     { 
+       for(var i=0;i<5;i++){
        if (leaderboard[i] == player){break;}
        }
            leaderboard.splice(i, 1);
@@ -51,15 +55,40 @@
        
        }else{
 
-           leaderboard.splice(5, 1);
+           leaderboard.splice(4, 1);
            leaderboard.splice(newPos, 0, player);
-           times.splice(5, 1);
+           times.splice(4, 1);
            times.splice(newPos, 0, time);
      }
+     }else if (leaderboard.includes(player)){
+       
+       
+       for(var i=5;i<10;i++){
+       if (leaderboard[i] == player){break;}
+       }
+           leaderboard.splice(i, 1);
+           leaderboard.splice(newPos, 0, player);
+           times.splice(i, 1);
+           times.splice(newPos, 0, time);
+       
+       }else{
+
+           leaderboard.splice(9, 1);
+           leaderboard.splice(newPos, 0, player);
+           times.splice(9, 1);
+           times.splice(newPos, 0, time);
+       }
+       
+       
+       
+       
+       
+       
+       
           firebase
           .database()
           .ref("leaderboard")
-          .child("Top6")
+          .child("Top5")
           .set({
              name1: leaderboard[0],
              time1: times[0],
@@ -72,7 +101,15 @@
              name5: leaderboard[4],
              time5: times[4],
              name6: leaderboard[5],
-             time6: times[5]
+             time6: times[5],
+             name7: leaderboard[6],
+             time7: times[6],
+             name8: leaderboard[7],
+             time8: times[7],
+             name9: leaderboard[8],
+             time9: times[8],
+             name10: leaderboard[9],
+             time10: times[9],
           });
        }
       }else{
@@ -91,16 +128,28 @@
 ref.on("child_added", function(snapshot) {
   
     document.getElementById("leaderboard").innerHTML = "<h1 class='bold-title'>Leaderboard</h1>"; 
-     
-    for(var i=1;i<6;i++){
-    var nameGrabber = snapshot.child("name" + i);
-    var timeGrabber = snapshot.child("time" + i);
-    leaderboard[i - 1] = nameGrabber.val();  
-    times[i - 1] = timeGrabber.val();
-    if (nameGrabber.val() != 0){
-        document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
-    }
-    }
+    
+    if (desktop){
+              for(var i=1;i<5;i++){
+              var nameGrabber = snapshot.child("name" + i);
+              var timeGrabber = snapshot.child("time" + i);
+              leaderboard[i - 1] = nameGrabber.val();  
+              times[i - 1] = timeGrabber.val();
+              if (nameGrabber.val() != 0){
+                  document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+              }
+              }
+    }else{
+            for(var i=5;i<10;i++){
+            var nameGrabber = snapshot.child("name" + i);
+            var timeGrabber = snapshot.child("time" + i);
+            leaderboard[i - 1] = nameGrabber.val();  
+            times[i - 1] = timeGrabber.val();
+            if (nameGrabber.val() != 0){
+                document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i + 5) + "px'>#" + (i - 5) + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+            }
+            }
+      }
   
 });
 
@@ -109,13 +158,25 @@ ref.on("child_changed", function(snapshot) {
      
     document.getElementById("leaderboard").innerHTML = ""; 
      
-    for(var i=1;i<6;i++){
+    if (desktop){  
+    for(var i=1;i<5;i++){
     var nameGrabber = snapshot.child("name" + i);
     var timeGrabber = snapshot.child("time" + i);
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();  
     if (nameGrabber.val() != 0){
     document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+    }
+    }
+    }else{
+          for(var i=6;i<10;i++){
+            var nameGrabber = snapshot.child("name" + i);
+            var timeGrabber = snapshot.child("time" + i);
+            leaderboard[i - 1] = nameGrabber.val();  
+            times[i - 1] = timeGrabber.val();  
+            if (nameGrabber.val() != 0){
+            document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+            }
     }
     }
   

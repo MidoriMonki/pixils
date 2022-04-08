@@ -5,17 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🎊</title>
 
-  <script>
-    // this page is a demo that is not built, so fudge the module.exports support
-    // define a global `module` so that the actual source file can use it
-    window.module = {};
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js" defer></script>
-  <script>
-    // define the `module.exports` as the `confetti` global, the way that the
-    // cdn distributed file would
-    window.confetti = module.exports;
-  </script>
   
 </head>
 <body>
@@ -28,9 +18,8 @@
 
   <script>
     window.onload = function () {
-      [].forEach.call(document.querySelectorAll('.group'), function (group) {
-        var name = group.getAttribute('data-name');
-        var button = group.querySelector('.run');
+    [].forEach.call(document.querySelectorAll('.group'), function (group) {
+        var button = document.querySelector('.run');
 
         button.onclick = function (ev) {
           // stop mobile browsers from zooming when clicking
