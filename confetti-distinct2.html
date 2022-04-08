@@ -9,6 +9,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --primary-color: #eeeeee;
+      --secondary-color: #363636;
+      --secondary-variant-color: #272727;
+      --background-color: #212121;
+      --inner-color: #ffffff;
+      --border-color: #555651;
+
+      /* icons by Google - Material Design
+       * https://material.io/resources/icons/?style=baseline
+       */
+      --switch-moon-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23eeeeee' d='M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z'%3E%3C/path%3E%3C/svg%3E");
+      --switch-sun-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23212121' d='M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z'%3E%3C/path%3E%3C/svg%3E");
+      --switch-auto-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23eeeeee' d='M10.85 12.65h2.3L12 9l-1.15 3.65zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM14.3 16l-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9z'%3E%3C/path%3E%3C/svg%3E");
+      --switch-auto-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' %3E%3Cpath fill='%23212121' d='M10.85 12.65h2.3L12 9l-1.15 3.65zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM14.3 16l-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9z'%3E%3C/path%3E%3C/svg%3E");
+
+      --theme-switch: var(--switch-moon-white);
+    }
+
+    [data-theme="light"] {
+      --primary-color: #212121;
+      --secondary-color: #ffffff;
+      --background-color: #f0f0f0;
+      --inner-color: #363636;
+
+      --theme-switch: var(--switch-sun-black);
+    }
+
+    [auto-theme] {
+      --theme-switch: var(--switch-auto-white);
+    }
+
+    [data-theme="light"][auto-theme] {
+      --theme-switch: var(--switch-auto-black);
+    }
 
     html, body {
       margin: 0;
@@ -41,6 +76,44 @@
       align-items: center;
       width: 100%;
       height: 64px;
+    }
+
+    .theme {
+      --size: 28px;
+      position: relative;
+      display: inline-block;
+      width: var(--size);
+      height: var(--size);
+      background: none;
+      border: none;
+      outline: none;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .theme:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "";
+      width: var(--size);
+      height: var(--size);
+      background-repeat: no-repeat;
+      background-position: center;
+      background: var(--theme-switch);
+    }
+
+    .github-icon {
+      --size: 36px;
+      position: relative;
+      display: block;
+      width: var(--size);
+      height: var(--size);
+      margin-right: 12px;
+    }
+
+    .github-icon svg.icon {
+      fill: var(--primary-color);
     }
 
     h1, h2, .center {
@@ -208,8 +281,14 @@
     window.confetti = module.exports;
   </script>
 
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.0/ace.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.min.js"></script>
 </head>
 <body>
+
+  <header>
+    <button id="themeToggle" title="Switch Theme" class="theme"></button>
+  </header>
 
   <div class="container">
     <div class="group" data-name="realistic">
@@ -229,6 +308,58 @@
   </div>
 
   <script>
+    var editors = [];
+    var activeTheme = 'dark';
+    var currentStep = parseInt(localStorage.getItem('canvas-confetti/theme'), 10) || 0;
+    var prefersLightTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
+    var themes = {
+      light: 'ace/theme/xcode',
+      dark: 'ace/theme/monokai'
+    };
+
+    var getPreferedTheme = function () {
+      return prefersLightTheme ? prefersLightTheme.matches ? 'light' : 'dark' : 'dark';
+    };
+
+    var setTheme = function (isAuto, theme) {
+      if (isAuto) {
+        document.body.setAttribute('auto-theme', true);
+        activeTheme = getPreferedTheme();
+      } else {
+        document.body.removeAttribute('auto-theme');
+        activeTheme = theme;
+      }
+
+      document.body.setAttribute('data-theme', activeTheme);
+
+      editors.forEach(function(editor) {
+        editor.setTheme(themes[activeTheme]);
+      });
+    };
+
+    var updateTheme = function (step) {
+      currentStep = step;
+
+      switch (step) {
+        case 0:
+          setTheme(true);
+          prefersLightTheme && prefersLightTheme.addEventListener('change', setTheme);
+          break;
+        case 1:
+        case 2:
+          setTheme(false, step === 1 ? 'dark' : 'light');
+          prefersLightTheme && prefersLightTheme.removeListener(setTheme);
+          break;
+      }
+
+      localStorage.setItem('canvas-confetti/theme', currentStep);
+    }
+
+    updateTheme(currentStep);
+
+    document.getElementById('themeToggle').addEventListener('click', function (event) {
+      updateTheme(++currentStep % 3);
+    });
 
     var modes = {
       realistic: function realistic() {
@@ -268,8 +399,19 @@
       },
     };
 
+    function pretty(val) {
+      return js_beautify(val, { indent_size: 2, brace_style: 'preserve-inline', });
+    }
+
     function getCode(name) {
-      return modes[name];
+      // pretty-print the code, since we will use minified code in production
+      var code = pretty(modes[name].toString());
+      // take out the function wrapper, trim all whitespace
+      code = code.split('\n').slice(1).slice(0, -1).map(function (s) {
+        return s.trim();
+      }).join('\n');
+      // pretty-print again
+      return pretty(code);
     }
 
     window.onload = function () {
@@ -278,8 +420,19 @@
         var button = group.querySelector('.run');
         var codeElem = group.querySelector('.editor');
 
+        var editor = ace.edit(codeElem);
+        editor.setTheme(themes[activeTheme]);
+        editor.session.setMode('ace/mode/javascript');
+        editor.session.setUseSoftTabs(true);
+        editor.session.setTabSize(2);
+
         editor.session.setValue(getCode(name));
 
+        var count = editor.session.getLength();
+
+        // set height so that all code is visible
+        codeElem.style.minHeight = (14 * count) + 1 + 'px';
+        codeElem.style.height = (count) + 'rem';
 
         button.onclick = function (ev) {
           // stop mobile browsers from zooming when clicking
