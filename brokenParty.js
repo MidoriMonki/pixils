@@ -88,7 +88,7 @@
     
 ref.on("child_added", function(snapshot) {
   
-    document.getElementById("leaderboard").innerHTML = ""; 
+    document.getElementById("leaderboard").innerHTML = "<h1>Leaderboard</h1>"; 
      
     for(var i=1;i<6;i++){
     var nameGrabber = snapshot.child("name" + i);
@@ -96,7 +96,7 @@ ref.on("child_added", function(snapshot) {
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();
     if (nameGrabber.val() != 0){
-        document.getElementById("leaderboard").innerHTML += "<p class=" + i + ">#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+        document.getElementById("leaderboard").innerHTML += "<p style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
     }
     }
   

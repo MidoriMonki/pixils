@@ -120,22 +120,16 @@ body{
   animation: rumble2 .6s linear infinite;
 }
 
-.1{
-  colour: gold;
-}
 
-.2{
-  colour: silver;
-}
 
-.3{
-  colour: brown;
-}
-
-.4{
-  colour: black;
-}
-
-.5{
-  colour: black;
+#background3{
+  background: rgb(220, 220, 220);
+  z-index: -1;
+  position: absolute;
+  width: 250px;
+  height: 450px;
+  top: 134px;
+  left: 32px;
+  border-radius: 30px;
+  
 }
