@@ -139,10 +139,11 @@
     
     
 ref.on("child_added", function(snapshot) {
+    document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Mobile Leaderboard</h3>"; 
   
-    document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Desktop Leaderboard</h3>"; 
     
     if (desktop){
+          document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Desktop Leaderboard</h3>"; 
               for(var i=1;i<6;i++){
               var nameGrabber = snapshot.child("name" + i);
               var timeGrabber = snapshot.child("time" + i);
@@ -172,7 +173,8 @@ ref.on("child_changed", function(snapshot) {
     document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Mobile Leaderboard</h3>"; 
      
     if (desktop){  
-    for(var i=1;i<5;i++){
+          document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Desktop Leaderboard</h3>"; 
+    for(var i=1;i<6;i++){
     var nameGrabber = snapshot.child("name" + i);
     var timeGrabber = snapshot.child("time" + i);
     leaderboard[i - 1] = nameGrabber.val();  
@@ -398,7 +400,6 @@ function dragStart(e)
   e.preventDefault();
   if (e.type == "touchstart")
   {
-     desktop = false;
      uPosX = e.touches[0].clientX;
      uPosY = e.touches[0].clientY;
      target = e.target.id;
@@ -422,6 +423,8 @@ function dragStart(e)
 //Moving   mode0 = Y, mode1 = X
 function dragMove(e)
 {
+   desktop = false;
+  alert("damn");
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
