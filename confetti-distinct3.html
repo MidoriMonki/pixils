@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>🎊</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
   <script>
     // this page is a demo that is not built, so fudge the module.exports support
@@ -21,21 +20,11 @@
 </head>
 <body>
 
-  <div class="container">
     <div class="group" data-name="realistic">
-      <div class="flex-rows">
-        <div class="left">
-          <h2><a href="#realistic" id="realistic" class="anchor">Realistic Look</a></h2>
-          <button class="run">
-            Run
-            <span class="icon">
-              <svg class="icon"><use xlink:href="#run"></use></svg>
-            </span>
-          </button>
-        </div>
-      </div>
+      <button class="run">
+        Run
+      </button>
     </div>
-  </div>
 
   <script>
     window.onload = function () {
@@ -54,34 +43,34 @@
             origin: { y: 0.7 }
             };
 
-        function fire(particleRatio, opts) {
-          confetti(Object.assign({}, defaults, opts, {
-            particleCount: Math.floor(count * particleRatio)
-          }));
-        }
+            function fire(particleRatio, opts) {
+              confetti(Object.assign({}, defaults, opts, {
+                particleCount: Math.floor(count * particleRatio)
+              }));
+            }
 
-        fire(0.25, {
-          spread: 26,
-          startVelocity: 55,
-        });
-        fire(0.2, {
-          spread: 60,
-        });
-        fire(0.35, {
-          spread: 100,
-          decay: 0.91,
-          scalar: 0.8
-        });
-        fire(0.1, {
-          spread: 120,
-          startVelocity: 25,
-          decay: 0.92,
-          scalar: 1.2
-        });
-        fire(0.1, {
-          spread: 120,
-          startVelocity: 45,
-        });
+            fire(0.25, {
+              spread: 26,
+              startVelocity: 55,
+            });
+            fire(0.2, {
+              spread: 60,
+            });
+            fire(0.35, {
+              spread: 100,
+              decay: 0.91,
+              scalar: 0.8
+            });
+            fire(0.1, {
+              spread: 120,
+              startVelocity: 25,
+              decay: 0.92,
+              scalar: 1.2
+            });
+            fire(0.1, {
+              spread: 120,
+              startVelocity: 45,
+            });
           } catch (e) {
             console.error(e);
           }

@@ -113,7 +113,7 @@ ref.on("child_changed", function(snapshot) {
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();  
     if (nameGrabber.val() != 0){
-    document.getElementById("leaderboard").innerHTML += "#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "<br>";
+    document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
     }
     }
   
@@ -529,6 +529,11 @@ function checkSolution(){
     time = timer;
     clearInterval(Interval);
     send();
+    document.getElementById("topBit").innerHTML = "Congratulations!";
+    document.getElementById("topBit").innerHTML = "Your time is " + time + ".";
+    if (newPos != null){
+        document.getElementById("topBit").innerHTML += "<br>You placed " + newPos + " on the leaderboard!";
+    }
     setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
