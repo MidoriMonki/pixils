@@ -29,7 +29,7 @@
     function send(){
       
      player = prompt("Please enter your name", ""); 
-     if (player != "0" || player != null){
+     if (player != "0" || player != "null"){
      var newPos = null;
       
      for(var i=0;i<5;i++){
