@@ -424,7 +424,7 @@ function dragStart(e)
 function dragMove(e)
 {
    desktop = false;
-  alert("damn");
+
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
