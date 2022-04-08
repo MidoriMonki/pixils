@@ -2,8 +2,10 @@
    // The chaos begins
     var desktop = true;
 
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-     desktop = false;
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+      desktop = false;
+      alert("wow it worked");
     }
 
     var leaderboard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -140,7 +142,7 @@ ref.on("child_added", function(snapshot) {
               }
               }
     }else{
-            for(var i=5;i<10;i++){
+            for(var i=6;i<10;i++){
             var nameGrabber = snapshot.child("name" + i);
             var timeGrabber = snapshot.child("time" + i);
             leaderboard[i - 1] = nameGrabber.val();  
@@ -165,7 +167,7 @@ ref.on("child_changed", function(snapshot) {
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();  
     if (nameGrabber.val() != 0){
-    document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+    document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i + 5) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
     }
     }
     }else{
@@ -175,7 +177,7 @@ ref.on("child_changed", function(snapshot) {
             leaderboard[i - 1] = nameGrabber.val();  
             times[i - 1] = timeGrabber.val();  
             if (nameGrabber.val() != 0){
-            document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+            document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i + 5) + "px'>#" + (i - 5) + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
             }
     }
     }
