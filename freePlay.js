@@ -178,7 +178,6 @@ function dragStart(e)
     uPosX = e.clientX;
     uPosY = e.clientY;
     target = e.target.id;
-    document.getElementById("pp").innerHTML = target + mode;
 
   }
   // rumble reset
@@ -206,7 +205,6 @@ function dragMove(e)
      target = e.target.id;
      vPosX = e.clientX;
      vPosY = e.clientY;
-     document.getElementById("pp").innerHTML = target + mode;
   }
   
   // Important to determine which direction we scrolling 
@@ -339,7 +337,6 @@ function checkDirection()
 
 function checkSolution(){
   correct = true;
-  document.getElementById("pp").innerHTML =  storePositions + "/" + solution;
   if(mummy){
   for(i=0;i<25;i++){
       if (storePositions[i] == 0 && solution[i] == 0){}else{

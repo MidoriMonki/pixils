@@ -180,7 +180,7 @@ ref.on("child_changed", function(snapshot) {
     leaderboard[i - 1] = nameGrabber.val();  
     times[i - 1] = timeGrabber.val();  
     if (nameGrabber.val() != 0){
-    document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i + 5) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
+    document.getElementById("leaderboard").innerHTML += "<p class='bold-title' style='margin-bottom: -5px; font-size: " + (22 - i) + "px'>#" + i + " | " + leaderboard[i - 1] + " | " + times[i - 1] + "</p>";
     }
     }
     }else{
