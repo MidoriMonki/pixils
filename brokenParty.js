@@ -121,6 +121,10 @@
              time10: times[9],
           });
        }
+       
+        if (newPos != null){
+        document.getElementById("topBit").innerHTML += "<br>You placed " + newPos + " on the leaderboard!";
+    }
       }else{
         alert("username not allowed");
         send();
@@ -601,16 +605,13 @@ function checkSolution(){
     mummy = false;
     time = timer;
     clearInterval(Interval);
-    send();
+    confetti();
     document.getElementById("topBit").innerHTML = "Congratulations!";
     document.getElementById("topBit").innerHTML = "Your time is " + time + ".";
-    if (newPos != null){
-        document.getElementById("topBit").innerHTML += "<br>You placed " + newPos + " on the leaderboard!";
-    }
     setTimeout(function(){
       document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
-      setTimeout(function(){ document.getElementById("continue").style.display = "block"; }, 700);
+      setTimeout(function(){ send(); document.getElementById("continue").style.display = "block"; }, 700);
                          }, 400);
 
   }
@@ -754,46 +755,46 @@ function setUpSolution()
    setTimeout(function(){mummy=true;}, 2000);
 }
 
-confetti();
+
 
 function confetti(){
-      try {
-      var count = 400;
-      var defaults = {
-        origin: { y: 1 },
-      };
+          try {
+              var count = 400;
+              var defaults = {
+                origin: { y: 1 },
+              };
 
-      function fire(particleRatio, opts) {
-        confetti(
-          Object.assign({}, defaults, opts, {
-            particleCount: Math.floor(count * particleRatio),
-          })
-        );
-      }
+              function fire(particleRatio, opts) {
+                confetti(
+                  Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio),
+                  })
+                );
+              }
 
-      fire(0.25, {
-        spread: 26,
-        startVelocity: 55,
-      });
-      fire(0.2, {
-        spread: 60,
-      });
-      fire(0.35, {
-        spread: 100,
-        decay: 0.91,
-        scalar: 0.8,
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 25,
-        decay: 0.92,
-        scalar: 1.2,
-      });
-      fire(0.1, {
-        spread: 120,
-        startVelocity: 45,
-      });
-    } catch (e) {
-      console.error(e);
-    }
+              fire(0.25, {
+                spread: 26,
+                startVelocity: 55,
+              });
+              fire(0.2, {
+                spread: 60,
+              });
+              fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 0.8,
+              });
+              fire(0.1, {
+                spread: 120,
+                startVelocity: 25,
+                decay: 0.92,
+                scalar: 1.2,
+              });
+              fire(0.1, {
+                spread: 120,
+                startVelocity: 45,
+              });
+            } catch (e) {
+              console.error(e);
+            }
 }
