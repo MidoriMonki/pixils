@@ -369,6 +369,7 @@ function dragMove(e)
 
 //Timer shit
 var Interval;
+var verySpecialVariable = 0;
 var timey = document.getElementById("timer");
 function letsDoThis(){
 clearInterval(Interval);
@@ -378,11 +379,13 @@ Interval = setInterval(startTimer, 10);
 function startTimer(){
   timer++;
   if (timer < 100){
+     verySpecialVariable = 0;
      timey.innerHTML = "0:00:" + timer;
   }else if(timer < 1000){
      timey.innerHTML = "0:0" + timer.toString()[0] + ":" + timer.toString()[1] + timer.toString()[2];
   }else if(timer < 10000){
-     timey.innerHTML = "0:" + timer.toString()[0] + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3];
+     if ((timer.toString()[0] - 6*verySpecialVariable) == "6"){verySpecialVariable++;}
+     timey.innerHTML = "0:" + (timer.toString()[0] - 6*verySpecialVariable) + timer.toString()[1] + ":" + timer.toString()[2] + timer.toString()[3];
   }else if(timer < 100000){
      timey.innerHTML = timer.toString()[0] + ":" + timer.toString()[1] + timer.toString()[2] + ":" + timer.toString()[3] + timer.toString()[4];
   }else if(timer < 1000000){
