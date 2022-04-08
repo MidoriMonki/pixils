@@ -123,7 +123,7 @@
        }
        
         if (newPos != null){
-        document.getElementById("bottomBit").innerHTML += "<br>You placed " + newPos + " on the leaderboard!";
+        document.getElementById("bottomBit").innerHTML = document.getElementById("bottomBit").innerHTML = "Your time is " + time + "." + "<br>You placed " + newPos + " on the leaderboard!";
     }
       }else{
         alert("username not allowed");
