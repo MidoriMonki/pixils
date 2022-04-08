@@ -29,7 +29,7 @@
     function send(){
       
      player = prompt("Please enter your name", ""); 
-     if (player != "0" || player != "null" || player != "test"){
+     if (player != "0" || player != null || player != "test"){
      var newPos = null;
       
      for(var i=0;i<5;i++){
@@ -41,7 +41,7 @@
      
      if (leaderboard.includes(player))
      {
-       for(var i=0;i<5;i++){
+       for(var i=0;i<6;i++){
        if (leaderboard[i] == player){break;}
        }
            leaderboard.splice(i, 1);
@@ -51,15 +51,15 @@
        
        }else{
 
-           leaderboard.splice(4, 1);
+           leaderboard.splice(5, 1);
            leaderboard.splice(newPos, 0, player);
-           times.splice(4, 1);
+           times.splice(5, 1);
            times.splice(newPos, 0, time);
      }
           firebase
           .database()
           .ref("leaderboard")
-          .child("Top5")
+          .child("Top6")
           .set({
              name1: leaderboard[0],
              time1: times[0],
@@ -71,6 +71,8 @@
              time4: times[3],
              name5: leaderboard[4],
              time5: times[4],
+             name6: leaderboard[5],
+             time6: times[5]
           });
        }
       }else{
