@@ -123,7 +123,7 @@
        }
        
         if (newPos != null){
-        document.getElementById("topBit").innerHTML += "<br>You placed " + newPos + " on the leaderboard!";
+        document.getElementById("bottomBit").innerHTML += "<br>You placed " + newPos + " on the leaderboard!";
     }
       }else{
         alert("username not allowed");
@@ -607,9 +607,8 @@ function checkSolution(){
     clearInterval(Interval);
     confetti();
     document.getElementById("topBit").innerHTML = "Congratulations!";
-    document.getElementById("topBit").innerHTML = "Your time is " + time + ".";
+    document.getElementById("bottomBit").innerHTML = "Your time is " + time + ".";
     setTimeout(function(){
-      document.getElementById("yay").style.display = "block";
       document.getElementById("background2").style.background = "rgba(40, 40, 40, 0.4)";
       setTimeout(function(){ send(); document.getElementById("continue").style.display = "block"; }, 700);
                          }, 400);
@@ -759,7 +758,7 @@ function setUpSolution()
 
 function confetti(){
           try {
-              var count = 400;
+              var count = 1000;
               var defaults = {
                 origin: { y: 1 },
               };
@@ -773,25 +772,25 @@ function confetti(){
               }
 
               fire(0.25, {
-                spread: 26,
+                spread: 100,
                 startVelocity: 55,
               });
               fire(0.2, {
-                spread: 60,
+                spread: 150,
               });
               fire(0.35, {
-                spread: 100,
+                spread: 200,
                 decay: 0.91,
                 scalar: 0.8,
               });
               fire(0.1, {
-                spread: 120,
+                spread: 250,
                 startVelocity: 25,
                 decay: 0.92,
                 scalar: 1.2,
               });
               fire(0.1, {
-                spread: 120,
+                spread: 300,
                 startVelocity: 45,
               });
             } catch (e) {
