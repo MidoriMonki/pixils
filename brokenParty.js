@@ -206,19 +206,28 @@ key = rootRef.key;
 
     
 ref.on("child_added", function(snapshot) {
-  const d = new Date();
-  let day = d.getDay();
-  let m = d.getMonth();
-  let y = d.getYear();
-  let h = d.getHours();
-  let z = d.getTimezoneOffset();
+  const today = new Date();
+  const date = new Date("4/14/2022");
+
+    // One day in milliseconds
+    const oneDay = 1000 * 60 * 60 * 24;
+
+    // Calculating the time difference between two dates
+    const diffInTime = date.getTime() - today.getTime();
+
+    // Calculating the no. of days between two dates
+    const diffInDays = Math.trunc(diffInTime / oneDay);
+
+    day = diffInDays;
   
-  
+  let h = date.getHours();
+  let z = date.getTimezoneOffset();
   
   
   if (((z/60) + h) >= 0){
     day++;
   }
+  alert(day);
   
   
 });
