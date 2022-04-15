@@ -8,6 +8,7 @@
     var whom = 0;
     var test = false;
     var time = 200;
+    var puzzleList = [0];
     var pp = 0;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -196,6 +197,22 @@ ref.on("child_changed", function(snapshot) {
     }
   
 });
+
+
+
+rootRef = firebase.database().ref("puzzles");
+key = rootRef.key;  
+
+    
+ref.on("child_added", function(snapshot) {
+  const d = new Date();
+  let dif = d.getHours();
+  let diff = d.getTimezoneOffset();
+  alert(dif + diff);
+  
+});
+
+
     
     
 
@@ -237,7 +254,6 @@ var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
 var whichPuzzle;
-var puzzleList = ["001000131001110211120020013Rocket", "002000212000300011100111011Flower", "202000310021110001110001113Sword", "010101212101210001000000011Heart", "200020101000200100010111010Smile", "000000023020102110111101113Castle", "010100111010101022200030012Cat", "022202233022220022200202016Among", "011101101111110100001010014YinYang", "022200000002220020200222011Bōken", "003000333031313030303000313Alien", "003000212212123021220000014Bee", "300030333031313233320000015Piquachoo", "020200020003230022200323012Present", "000000303031313033302202214Mr. Frog", "030300333031313033300010014Sad Fox", "003003111301110011100303014Turt", "233300300023300333300101014Yosh", "003000233003330333230010013Tree", "000000010010101213121111114Crown", "000001100210000110000111110Snake", "011111100110011100101100115Moon", "000002022002212202200000010Fish", "011101000101010022201000112Penguin"];
 var whichChild;
 var beforeWho;
 var time;
