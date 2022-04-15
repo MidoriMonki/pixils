@@ -1,4 +1,4 @@
-
+//    {"shuffle": "1", "solution":"1"}
    // The chaos begins
     var desktop = true;
 
@@ -201,19 +201,14 @@ ref.on("child_changed", function(snapshot) {
 
 
 
-rootRef = firebase.database().ref("puzzles");
-key = rootRef.key;  
-
-    
-ref.on("child_added", function(snapshot) {
   const today = new Date();
-  const date = new Date("4/14/2022");
+  const date = new Date("4/15/2022");
 
     // One day in milliseconds
     const oneDay = 1000 * 60 * 60 * 24;
 
     // Calculating the time difference between two dates
-    const diffInTime = date.getTime() - today.getTime();
+    const diffInTime = today.getTime() - date.getTime();
 
     // Calculating the no. of days between two dates
     const diffInDays = Math.trunc(diffInTime / oneDay);
@@ -227,10 +222,32 @@ ref.on("child_added", function(snapshot) {
   if (((z/60) + h) >= 0){
     day++;
   }
-  alert(day);
   
+
+
+      firebase
+          .database()
+          .ref("puzzles")
+          .child("0")
+          .set({
+             solution: "001000131001110211120020013Rocket",
+             shuffle: "1211121121311"
+          });
+
+
+rootRef = firebase.database().ref("puzzles");
+key = rootRef.key;  
+
+    
+ref.on("child_added", function(snapshot) {
   
+  if (snapshot.key == day){
+    puzzleList[0] = snapshot.shuffle.val();
+  }
 });
+
+  
+
 
 
     
