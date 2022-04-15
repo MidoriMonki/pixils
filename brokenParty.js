@@ -8,7 +8,8 @@
     var whom = 0;
     var test = false;
     var time = 200;
-    var puzzleList = [0];
+    var day;
+    var puzzleList = ["001000131001110211120020013Rocket"];
     var pp = 0;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -206,9 +207,19 @@ key = rootRef.key;
     
 ref.on("child_added", function(snapshot) {
   const d = new Date();
-  let dif = d.getHours();
-  let diff = d.getTimezoneOffset();
-  alert(dif + diff);
+  let day = d.getDay();
+  let m = d.getMonth();
+  let y = d.getYear();
+  let h = d.getHours();
+  let z = d.getTimezoneOffset();
+  
+  
+  
+  
+  if (((z/60) + h) >= 0){
+    day++;
+  }
+  
   
 });
 
