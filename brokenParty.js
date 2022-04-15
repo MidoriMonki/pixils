@@ -8,8 +8,9 @@
     var whom = 0;
     var test = false;
     var time = 200;
-    var day;
-    var puzzleList = ["001000131001110211120020013Rocket"];
+    var day = 0;
+    var slideColour = [0];
+    var puzzleList = [0];
     var pp = 0;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -93,8 +94,7 @@
        
        
        
-       
-       
+      
        
           firebase
           .database()
@@ -225,24 +225,18 @@ ref.on("child_changed", function(snapshot) {
   
 
 
-      firebase
-          .database()
-          .ref("puzzles")
-          .child("0")
-          .set({
-             solution: "001000131001110211120020013Rocket",
-             shuffle: "1211121121311"
-          });
 
 
 rootRef = firebase.database().ref("puzzles");
 key = rootRef.key;  
 
     
-ref.on("child_added", function(snapshot) {
+rootRef.on("child_added", function(snapshot) {
   
   if (snapshot.key == day){
-    puzzleList[0] = snapshot.shuffle.val();
+    puzzleList[0] = snapshot.child("solution").val();
+    slideColour[0] = snapshot.child("shuffle").val();
+    setUpSolution();
   }
 });
 
@@ -286,7 +280,6 @@ var timer = 0;
 var start;
 var player;
 var pixilsInRow;
-var slideColour = ["1211121121311","1211121121311","1211121121311","1211121121111","1211121121311","1213121121111","1211121121311", "2222322223222222", "111111111111111", "222222222222222", "3313333313333", "22132121232212", "312333233333133", "223222332322000", "33231232231333", "33313333313133", "11131311331113", "33233233113333", "2333323333133", "11121131211111", "1111112111", "111111111111111", "2222122222", "121112121111"];
 var slide = document.getElementById("slide1");
 var slideS = document.getElementById("slide2");
 var correct;
@@ -673,9 +666,6 @@ function checkSolution(){
   }
 }
 
-
-//set it up obviously
-setUpSolution();
 
 
 
