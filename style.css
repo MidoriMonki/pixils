@@ -12,7 +12,7 @@ body{
 
 /* mobile device screen size */
 @media only screen and (max-width: 1000px) {
-  body {position: fixed; background-color: grey;}
+  body {position: fixed;}
   .box{
   outline-offset: -39px;
   margin: 0px;
@@ -25,6 +25,21 @@ body{
   transition: .5s ease;
   position: absolute;
 }
+  #slide1{
+    margin-top: 30vh;
+  }
+  #background2{
+    width: 100px;
+    height: 100px;
+    margin-top: 0vh;
+    border-radius: 30px;
+  }
+    #background{
+    width: 100vw;
+    height: 100vw;
+    margin-top: 30vh;
+    border-radius: 30px;
+  }
 }
 
 /* computer screen size */
@@ -41,6 +56,18 @@ body{
   transition: .5s ease;
   position: absolute;
 }
+    #background2{
+    width: 550px;
+    height: 550px;
+    margin-top: 0vh;
+    border-radius: 30px;
+  }
+    #background{
+    width: 550vw;
+    height: 550vw;
+    margin-top: 30vh;
+    border-radius: 30px;
+  }
 }
 
 
@@ -89,8 +116,6 @@ body{
   transition: 0.6s;
   background: rgba(40, 40, 40, 0.4);
   position: absolute;
-  width: 550px;
-  height: 550px;
   top: 134px;
   z-index: 1;
   border-radius: 30px;
@@ -101,8 +126,6 @@ body{
   background: rgb(220, 220, 220);
   z-index: -1;
   position: absolute;
-  width: 550px;
-  height: 550px;
   top: 134px;
   border-radius: 30px;
   
