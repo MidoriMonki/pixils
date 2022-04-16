@@ -248,12 +248,15 @@ rootRef.on("child_added", function(snapshot) {
     
 var screenMobile = false;
 
-
+function checkSize(){
 if (document.getElementById("1").style.width == "15vw" && screenMobile == false){
    screenMobile = true;
+   alert("bruh");
    for (var i=0;i<16;i++){
-     document.getElementById(i).style.rifg
+     let temp = document.getElementById(i).style.right;
+     document.getElementById(i).style.right = (temp.slice(0, temp.length - 2) * 2) + "px";
    }
+}
 }
 
 
@@ -322,7 +325,7 @@ for(var i=0;i<16;i++){
 }
 
 document.addEventListener('keydown', (keyTest) => {
-  
+  checkSize();
   keyTest.preventDefault();
   if (canDoShit){
   if (start != true){
@@ -446,6 +449,7 @@ for (var i=0;i<16;i++)
 //Mobile Start
 function dragStart(e)
 {
+  checkSize();
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
