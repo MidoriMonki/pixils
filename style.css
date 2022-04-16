@@ -11,12 +11,25 @@ body{
 }
 
 /* mobile device screen size */
-@media only screen and (max-width: 600px) {
-  body {position: fixed; background}
+@media only screen and (max-width: 1000px) {
+  body {position: fixed; background-color: grey;}
+  .box{
+  outline-offset: -40px;
+  margin: 0px;
+  float: left;
+  right: initial;
+  background: rgb(30, 30, 30);
+  border-radius: 20px;
+  width: 15vw;
+  height: 20vw;
+  outline: 0px solid lightgrey;
+  transition: .5s ease;
+  position: absolute;
+}
 }
 
 /* computer screen size */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1000px) {
 .box{
   outline-offset: -40px;
   margin: 0px;
