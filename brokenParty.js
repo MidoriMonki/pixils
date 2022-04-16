@@ -243,15 +243,14 @@ rootRef.on("child_added", function(snapshot) {
   
 
 
-
     
 var type = "px";
 var width = 110;
 var screenMobile = false;
 
+
 function checkSize(){
-alert(document.getElementById("2").style.width);
-if (screenMobile == false){
+if (screen.width <= 1000 && screenMobile == false){
    screenMobile = true;
    type = "vw";
    width = 17.5;
@@ -330,7 +329,6 @@ for(var i=0;i<16;i++){
 }
 
 document.addEventListener('keydown', (keyTest) => {
-  checkSize();
   keyTest.preventDefault();
   if (canDoShit){
   if (start != true){
@@ -454,7 +452,6 @@ for (var i=0;i<16;i++)
 //Mobile Start
 function dragStart(e)
 {
-  checkSize();
   //document.getElementById("test").innerHTML = storePositions;
   e = e || window.event;
   e.preventDefault();
@@ -686,7 +683,6 @@ function checkSolution(){
 
 function setUpSolution()
 {
-  checkSize();
   mummy = false;
   if(daddy){
   document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
@@ -813,6 +809,7 @@ function setUpSolution()
      }
    }
    setTimeout(function(){mummy=true;}, 2000);
+  checkSize();
 }
 
 
