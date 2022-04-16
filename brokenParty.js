@@ -249,10 +249,10 @@ rootRef.on("child_added", function(snapshot) {
 var screenMobile = false;
 
 function checkSize(){
-if (document.getElementById("1").style.width == "15vw" && screenMobile == false){
+if (screenMobile == false){
    screenMobile = true;
    alert("bruh");
-   for (var i=0;i<16;i++){
+   for (var i=1;i<16;i++){
      let temp = document.getElementById(i).style.right;
      document.getElementById(i).style.right = (temp.slice(0, temp.length - 2) * 2) + "px";
    }
