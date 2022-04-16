@@ -39,7 +39,6 @@
      if (b != day){
        
        alert("It's a new day, so the puzzle has reset!");
-       whichPuzzle++;
        setUpSolution()
        
        
@@ -720,7 +719,6 @@ function setUpSolution()
 
    //Setting puzzle up
    document.getElementById("nameHolder").innerHTML = "";
-   whichPuzzle = 0;
    let why = (puzzleList[whichPuzzle]);
    for(var i=27;i<why.length;i++){
       document.getElementById("nameHolder").innerHTML += why[i];
