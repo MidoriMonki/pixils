@@ -17,11 +17,10 @@ body{
   outline-offset: -40px;
   margin: 0px;
   float: left;
-  right: initial;
   background: rgb(30, 30, 30);
   border-radius: 20px;
   width: 15vw;
-  height: 20vw;
+  height: 15vw;
   outline: 0px solid lightgrey;
   transition: .5s ease;
   position: absolute;

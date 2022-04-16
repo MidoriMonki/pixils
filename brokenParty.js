@@ -246,10 +246,15 @@ rootRef.on("child_added", function(snapshot) {
 
     
     
+var screenMobile = false;
 
 
-
-
+if (document.getElementById("1").style.width == "15vw" && screenMobile == false){
+   screenMobile = true;
+   for (var i=0;i<16;i++){
+     document.getElementById(i).style.rifg
+   }
+}
 
 
 
