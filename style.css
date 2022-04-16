@@ -66,9 +66,9 @@ body{
     border-radius: 30px;
   }
     #background{
-    width: 550vw;
-    height: 550vw;
-    margin-top: 30vh;
+    width: 550px;
+    height: 550px;
+    margin-top: 0vh;
     border-radius: 30px;
   }
   #slide1{

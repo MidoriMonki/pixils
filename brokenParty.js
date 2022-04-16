@@ -453,6 +453,7 @@ for (var i=0;i<16;i++)
 function dragStart(e)
 {
   //document.getElementById("test").innerHTML = storePositions;
+  e = e || window.event;
   e.preventDefault();
   if (e.type == "touchstart")
   {
@@ -482,6 +483,7 @@ function dragMove(e)
    desktop = false;
 
   //document.getElementById("test").innerHTML = storePositions;
+  e = e || window.event;
   e.preventDefault();
   if (e.type == "touchmove")
   {
@@ -533,6 +535,7 @@ function startTimer(){
 //End
 function dragEnd(e)
 {
+  e = e || window.event;
   e.preventDefault();
   canMoveKeys = true;
   letsDoThis();
