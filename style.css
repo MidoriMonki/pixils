@@ -12,7 +12,7 @@ body{
 
 /* mobile device screen size */
 @media only screen and (max-width: 1000px) {
-  body {position: fixed;}
+  body {position: fixed; overflow: hidden;}
   .box{
   outline-offset: -39px;
   margin: 0px;
@@ -26,18 +26,21 @@ body{
   position: absolute;
 }
   #slide1{
+    right: 25.5vw;
     margin-top: 30vh;
   }
   #background2{
-    width: 100px;
-    height: 100px;
-    margin-top: 0vh;
+    width: 87.5vw;
+    height: 87.5vw;
+    right: 7vw;
+    margin-top: 22.5vh;
     border-radius: 30px;
   }
     #background{
-    width: 100vw;
-    height: 100vw;
-    margin-top: 30vh;
+    width: 87.5vw;
+    height: 87.5vw;
+    right: 7vw;
+    margin-top: 22.5vh;
     border-radius: 30px;
   }
 }
@@ -67,6 +70,9 @@ body{
     height: 550vw;
     margin-top: 30vh;
     border-radius: 30px;
+  }
+  #slide1{
+   right: 275px;
   }
 }
 
