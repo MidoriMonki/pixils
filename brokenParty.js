@@ -35,7 +35,6 @@
         
     function send(){
      let b = day;
-     testD = "4/15/2022";
      checkDay();
      if (b != day){
        
