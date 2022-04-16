@@ -245,16 +245,20 @@ rootRef.on("child_added", function(snapshot) {
 
 
     
-    
+var type = "px";
+var width = 110;
 var screenMobile = false;
 
 function checkSize(){
 if (screenMobile == false){
    screenMobile = true;
-   alert("bruh");
+   type = "vw";
+   width = 17.5;
    for (var i=1;i<16;i++){
      let temp = document.getElementById(i).style.right;
-     document.getElementById(i).style.right = (temp.slice(0, temp.length - 2) * 2) + "px";
+     document.getElementById(i).style.right = (temp.slice(0, temp.length - 2) / 6.28571428) + "vw";
+     temp = document.getElementById(i).style.top;
+     document.getElementById(i).style.top = (temp.slice(0, temp.length - 2) / 6.28571428) + "vw";
    }
 }
 }
@@ -562,7 +566,7 @@ function dragEnd()
       //Set their right property correctly
       for(var i=(row*5);i<(5+(row*5));i++){
         if (storePositions[i] != 0){
-            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*110 + "px";
+            slide.children[storePositions[i]-1].style.right = (2-(i-(row*5)))*width + type;
 
         }
       } 
@@ -594,7 +598,7 @@ function dragEnd()
     //Set their top property correctly
       for(var i=0;i<5;i++){
         if (storePositions[row+(i*5)] != 0){
-            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-110 + "px";
+            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-width + type;
         }
       } 
   }
