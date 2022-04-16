@@ -34,11 +34,14 @@
         
     function send(){
      let b = day;
+     testD = "4/15/2022";
      checkDay();
      if (b != day){
        
        alert("It's a new day, so the puzzle has reset!");
-       setUpSolution();
+       whichPuzzle++;
+       setUpSolution()
+       
        
      }else{
        
@@ -236,7 +239,7 @@ function checkDay(){
     day++;
   }
   
-  testD = "4/15/2022"
+  whichPuzzle = day;
 }
   
 
@@ -249,11 +252,12 @@ key = rootRef.key;
     
 rootRef.on("child_added", function(snapshot) {
   
-  if (snapshot.key == day){
-    puzzleList[0] = snapshot.child("solution").val();
-    slideColour[0] = snapshot.child("shuffle").val();
-    setUpSolution();
-  }
+    puzzleList[snapshot.key] = snapshot.child("solution").val();
+    slideColour[snapshot.key] = snapshot.child("shuffle").val();
+    if (snapshot.key == day){
+      setUpSolution();
+    }
+  
 });
 
   
