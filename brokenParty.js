@@ -33,7 +33,15 @@
 
         
     function send(){
-      
+     let b = day;
+     checkDay();
+     if (b != day){
+       
+       alert("It's a new day, so the puzzle has reset!");
+       setUpSolution();
+       
+     }else{
+       
      player = prompt("Please enter your name", ""); 
      if (player != "0" || player != null || player != "test"){
      var newPos = null;
@@ -132,6 +140,7 @@
         send();
       }
     }
+}
      
     
     var rootRef = firebase.database().ref("leaderboard").orderByChild("time");
@@ -200,9 +209,13 @@ ref.on("child_changed", function(snapshot) {
 });
 
 
+var testD = "4/16/2022";
+checkDay();
 
+function checkDay(){
+  
   const today = new Date();
-  const date = new Date("4/15/2022");
+  const date = new Date(testD);
 
     // One day in milliseconds
     const oneDay = 1000 * 60 * 60 * 24;
@@ -222,6 +235,9 @@ ref.on("child_changed", function(snapshot) {
   if (((z/60) + h) >= 0){
     day++;
   }
+  
+  testD = "4/15/2022"
+}
   
 
 
