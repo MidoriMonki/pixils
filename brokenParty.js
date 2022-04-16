@@ -12,6 +12,7 @@
     var slideColour = [0];
     var puzzleList = [0];
     var pp = 0;
+    var boardDay;
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       var firebaseConfig = {
@@ -39,12 +40,12 @@
      if (b != day){
        
        alert("It's a new day, so the puzzle has reset!");
-       setUpSolution()
+       setUpSolution();
        
        
      }else{
        
-     player = prompt("Please enter your name", ""); 
+     player = prompt("Please enter your name", "Name"); 
      if (player != "0" || player != null || player != "test"){
      var newPos = null;
       
@@ -111,6 +112,7 @@
           .ref("leaderboard")
           .child("Top5")
           .set({
+             day: day,
              name1: leaderboard[0],
              time1: times[0],
              name2: leaderboard[1],
@@ -156,6 +158,7 @@ ref.on("child_added", function(snapshot) {
   
     
     if (desktop){
+          boardDay = snapshot.child("day").val();
           document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Desktop Leaderboard</h3>"; 
               for(var i=1;i<6;i++){
               var nameGrabber = snapshot.child("name" + i);
@@ -167,6 +170,7 @@ ref.on("child_added", function(snapshot) {
               }
               }
     }else{
+            boardDay = snapshot.child("day").val();
             for(var i=6;i<11;i++){
             var nameGrabber = snapshot.child("name" + i);
             var timeGrabber = snapshot.child("time" + i);
@@ -186,7 +190,8 @@ ref.on("child_changed", function(snapshot) {
     document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Mobile Leaderboard</h3>"; 
      
     if (desktop){  
-          document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Desktop Leaderboard</h3>"; 
+          document.getElementById("leaderboard").innerHTML = "<h3 class='bold-title'>Desktop Leaderboard</h3>";
+    boardDay = snapshot.child("day").val();
     for(var i=1;i<6;i++){
     var nameGrabber = snapshot.child("name" + i);
     var timeGrabber = snapshot.child("time" + i);
@@ -197,6 +202,7 @@ ref.on("child_changed", function(snapshot) {
     }
     }
     }else{
+          boardDay = snapshot.child("day").val();
           for(var i=6;i<10;i++){
             var nameGrabber = snapshot.child("name" + i);
             var timeGrabber = snapshot.child("time" + i);
@@ -288,7 +294,36 @@ if (screen.width <= 1000 && screenMobile == false){
 
 //More puzzle focused stuff
 
-
+function resetBoard(){
+  
+          firebase
+          .database()
+          .ref("leaderboard")
+          .child("Top5")
+          .set({
+             day: day,
+             name1: 0,
+             time1: 9999999999,
+             name2: 0,
+             time2: 9999999999,
+             name3: 0,
+             time3: 9999999999,
+             name4: 0,
+             time4: 9999999999,
+             name5: 0,
+             time5: 9999999999,
+             name6: 0,
+             time6: 9999999999,
+             name7: leaderboard[6],
+             time7: times[6],
+             name8: leaderboard[7],
+             time8: times[7],
+             name9: leaderboard[8],
+             time9: times[8],
+             name10: leaderboard[9],
+             time10: times[9],
+          });
+}
 
 
 
@@ -673,6 +708,9 @@ function checkDirection()
 
 
 function checkSolution(){
+  if (boardDay != day){
+    resetBoard();
+  }
   correct = true;
   if(mummy){
   for(i=0;i<25;i++){
