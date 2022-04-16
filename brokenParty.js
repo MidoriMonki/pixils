@@ -250,7 +250,8 @@ var width = 110;
 var screenMobile = false;
 
 function checkSize(){
-if (document.getElementById("1").style.width != "17.58vw" && screenMobile == false){
+alert(document.getElementById("2").style.width);
+if (screenMobile == false){
    screenMobile = true;
    type = "vw";
    width = 17.5;

@@ -14,7 +14,7 @@ body{
 @media only screen and (max-width: 1000px) {
   body {position: fixed; background-color: grey;}
   .box{
-  outline-offset: -40px;
+  outline-offset: -39px;
   margin: 0px;
   float: left;
   background: rgb(30, 30, 30);
