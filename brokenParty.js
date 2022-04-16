@@ -250,7 +250,7 @@ var width = 110;
 var screenMobile = false;
 
 function checkSize(){
-if (screenMobile == false){
+if (document.getElementById("1").style.width != "17.58vw" && screenMobile == false){
    screenMobile = true;
    type = "vw";
    width = 17.5;
@@ -685,6 +685,7 @@ function checkSolution(){
 
 function setUpSolution()
 {
+  checkSize();
   mummy = false;
   if(daddy){
   document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
