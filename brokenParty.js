@@ -314,14 +314,14 @@ function resetBoard(){
              time5: 9999999999,
              name6: 0,
              time6: 9999999999,
-             name7: leaderboard[6],
-             time7: times[6],
-             name8: leaderboard[7],
-             time8: times[7],
-             name9: leaderboard[8],
-             time9: times[8],
-             name10: leaderboard[9],
-             time10: times[9],
+             name7: 0,
+             time7: 9999999999,
+             name8: 0,
+             time8: 9999999999,
+             name9: 0,
+             time9: 9999999999,
+             name10: 0,
+             time10: 9999999999,
           });
 }
 
@@ -708,9 +708,6 @@ function checkDirection()
 
 
 function checkSolution(){
-  if (boardDay != day){
-    resetBoard();
-  }
   correct = true;
   if(mummy){
   for(i=0;i<25;i++){
@@ -743,6 +740,9 @@ function checkSolution(){
 function setUpSolution()
 {
   mummy = false;
+  if (boardDay != day){
+    resetBoard();
+  }
   if(daddy){
   document.getElementById("background2").style.background = "rgba(40, 40, 40, 0)";
   }
