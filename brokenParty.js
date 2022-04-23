@@ -216,7 +216,7 @@ ref.on("child_changed", function(snapshot) {
 });
 
 
-var testD = "4/18/2022";
+var testD = "4/23/2022";
 checkDay();
 
 function checkDay(){
