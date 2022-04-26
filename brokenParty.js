@@ -44,8 +44,9 @@
        
      }else{
        
-     player = prompt("Please enter your name", "Name"); 
-     if (player != "0" || player != null || player != "test"){
+     player = prompt("Please enter your name", "Max of 8 characters"); 
+     alert(player);
+     if (player != "0" && player != null && player != "test" && player.length <= 8){
      var newPos = null;
       
        if (desktop){
