@@ -71,12 +71,15 @@
      if (leaderboard.includes(player))
      { 
        for(var i=0;i<5;i++){
+           
        if (leaderboard[i] == player){break;}
        }
+           if (times[i] > time){
            leaderboard.splice(i, 1);
            leaderboard.splice(newPos, 0, player);
            times.splice(i, 1);
            times.splice(newPos, 0, time);
+           }
        
        }else{
 
