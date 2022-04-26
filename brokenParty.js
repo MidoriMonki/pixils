@@ -43,10 +43,12 @@
        
        
      }else{
-       
-     player = prompt("Please enter your name", "Max of 8 characters"); 
-     alert(player);
-     if (player != "0" && player != null && player != "test" && player.length <= 8){
+     
+     if (player == "")
+     {
+         player = prompt("Please enter your name", "Max of 8 characters"); 
+     }
+     if (player != "0" && player != null && player != "" && player != "null" && player != "test" && player.length <= 8){
      var newPos = null;
       
        if (desktop){
@@ -141,6 +143,7 @@
     }
       }else{
         alert("username not allowed");
+        player = "";
         send();
       }
     }
