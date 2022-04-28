@@ -11,7 +11,7 @@ body{
 }
 
 /* mobile device screen size */
-@media only screen and (max-width: 1000px) {
+@media only screen and (orientation:portrait) {
   body {position: fixed; overflow: hidden;}
   .box{
   outline-offset: -39px;
@@ -46,7 +46,7 @@ body{
 }
 
 /* computer screen size */
-@media only screen and (min-width: 1000px) {
+@media only screen and (orientation:landscape) {
 .box{
   outline-offset: -40px;
   margin: 0px;
