@@ -62,9 +62,10 @@
      else
      {
          ok = false;
-         alert("Gottem");
+         alert("Dumb Bitch");
      }
      
+       
      if (player != "0" && player != null && player != "" && player != "null" && player != "test" && player.length <= 8 && ok){
        
      var newPos = null;
