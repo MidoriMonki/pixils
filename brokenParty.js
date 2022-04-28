@@ -30,7 +30,7 @@
       firebase.analytics();
 
 
-
+//Fuck you Adam ;) love you <3
 
         
     function send(){
@@ -43,12 +43,16 @@
        
        
      }else{
+       
      
      if (player == "")
      {
-         player = prompt("Please enter your name", "Max of 8 characters"); 
+         player = prompt("Please enter your name", "Max of 8 characters");
+         localStorage.setItem(day, time);
      }
+     
      if (player != "0" && player != null && player != "" && player != "null" && player != "test" && player.length <= 8){
+       
      var newPos = null;
       
        if (desktop){
