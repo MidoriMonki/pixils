@@ -1,7 +1,7 @@
 //    {"shuffle": "1", "solution":"1"}
    // The chaos begins
     var desktop = true;
-
+    var ok = false;
     var leaderboard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     var times = [9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999, 9999999];
     var player = "";
@@ -48,10 +48,24 @@
      if (player == "")
      {
          player = prompt("Please enter your name", "Max of 8 characters");
+     }
+     if (localStorage.getItem(day) == undefined && time > 1000)
+     {
          localStorage.setItem(day, time);
+         ok = true;
+     }
+     else if (localStorage.getItem(day) > time * 8)
+     {
+         localStorage.setItem(day, time);
+         ok = true;
+     }
+     else
+     {
+         ok = false;
+         alert("Gottem");
      }
      
-     if (player != "0" && player != null && player != "" && player != "null" && player != "test" && player.length <= 8){
+     if (player != "0" && player != null && player != "" && player != "null" && player != "test" && player.length <= 8 && ok){
        
      var newPos = null;
       
@@ -61,7 +75,7 @@
          if (time<times[i]){var newPos = i; break;}
           }
        }else{
-         
+         && player.length <= 8
               for(var i=5;i<10;i++){
              if (time<times[i]){var newPos = i; break;}
                }
