@@ -1,9 +1,0 @@
-i optimised the confetti and edited some of its variables
-you can use it now
-be sure to include all scripts, and then you can change how it is triggered.
-
--Sean
-
-
-ok 
-- Izaac
