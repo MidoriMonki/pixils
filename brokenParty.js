@@ -353,7 +353,7 @@ function resetBoard(){
 
 
 
-
+resetBoard();
 
 
 
