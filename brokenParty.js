@@ -241,9 +241,9 @@ ref.on("child_changed", function(snapshot) {
 });
 
 
-//var testD = "4/26/2022";
+var testD = "4/26/2022";
 //For some reason it has to been written in American format :(
-var testD = "7/22/2023";
+
 checkDay();
 
 function checkDay(){
@@ -270,8 +270,8 @@ function checkDay(){
     day++;
   }
   
-  if (day == 7){
-    day = 0;
+  for (var i=0; day>6; i++){
+    day -= 7;
   }
   whichPuzzle = day;
   
