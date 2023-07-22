@@ -681,7 +681,7 @@ function dragEnd(e)
     //Set their top property correctly
       for(var i=0;i<5;i++){
         if (storePositions[row+(i*5)] != 0){
-            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-width + type;
+            slide.children[storePositions[row+(i*5)]-1].style.top = (2-i)*-width-2 + type;
         }
       } 
   }
@@ -835,7 +835,7 @@ function setUpSolution()
            //apply horizontal
            slideS.children[whichChild].style.right = (2-i+(row*5))*40 + "px";
            //apply vertical
-           slideS.children[whichChild].style.top = (row-2)*40 + "px";
+           slideS.children[whichChild].style.top = ((row-2)*40 - 2) + "px";
            slideS.children[whichChild].classList.remove("turq");
            slideS.children[whichChild].classList.remove("yes");
            slideS.children[whichChild].classList.remove("purple");
