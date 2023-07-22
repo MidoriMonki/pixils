@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Pixils Daily</title>
+
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    
+    
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-storage.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+    
+    <script src="/brokenParty.js" defer></script>
+    
+    
+  </head>
+  <body style="">
+    
+    
+    <ul><a id="pp" href="/freePlay.html">Free Play</a><button style="position: absolute;" onclick="setUpSolution(); timer = 0; clearInterval(Interval);">Refresh Puzzle</button></ul>
+    <div id="background3"></div>
+    <center style="font-size: 20px;" class="bold-title">Mission:</center>
+    <center style="font-size: 35px;" class="bold-title" id="nameHolder"></center>
+    <h1 id="timer" class="bold-title" style="position: absolute; margin-top: 150px; font-size: 60px; right: 100px;">0:00:00</h1>
+    <p id="leaderboard" class="bold-title" style="position: absolute; left: 47px;"></p>
+    
+     <img id="yay" src="https://cdn.glitch.global/39c41995-40ef-4a5c-b9b9-9d80f57d1b52/1afe7ae8-a4bc-4df1-bdbb-3a085dbd5592.gif?v=1649146364785" style="display: none; position: absolute; margin-top: 0px; z-index: 2; width: 100%;">
+    
+           <!-- <iframe style="position: absolute; margin-top: 250px; right: 100px; width: 300px; height: 350px;" src="https://didgerichat.glitch.me"></iframe> -->
+    
+    <nav style="display: flex; justify-content: center; width: 100vw; margin-top: 238px;">
+      
+    <div id="continue" style="z-index: 5;border-radius: 5px; background: rgb(220, 220, 220);position: absolute;width: 350px;height: 350px;top:200px;z-index:2;border-radius: 30px; padding: 20px;">
+        <center id="topBit" style="font-size: 45px; margin-top: 40px;">Welcome!</center>
+        <center id="bottomBit"  style="font-size: 26px;">Your goal is to match the picture on the right. Use the WASD keys to move from tile to tile and the arrow keys to move rows</center><br><center><button onclick="timer = 0; mummy = false; setTimeout(function(){mummy=true; canDoShit = true; }, 500); if(daddy){setUpSolution();}else{daddy = true;} document.getElementById('background2').style.background = 'rgba(40, 40, 40, 0)'; document.getElementById('continue').style.display = 'none';    setTimeout(function(){ document.getElementById('background2').style.display = 'none'; }, 600);" style="font-size: 4vw;">continue</button></center>
+    </div>
+      
+    <div id="slide1" style="position: relative; width: 660px; height: 660px;">
+       <div id="1" style="right: 110px; top: -112px;" class="box"></div>
+       <div id="2" style="right: 0px; top: -112px;" class="box"></div>
+       <div id="3" style="right: -110px; top: -112px;" class="box"></div>
+       <div id="4" style="right: 110px; top: -2px;" class="box"></div>
+       <div id="5" style="right: 0px; top: -2px;" class="box"></div>
+       <div id="6" style="right: -110px; top: -2px;" class="box"></div>
+       <div id="7" style="right: 110px; top: 108px;" class="box"></div>
+       <div id="8" style="right: 0px; top: 108px;" class="box"></div> 
+       <div id="9" style="right: -110px; top: 108px;" class="box"></div>
+       <div id="10" style="right: 0px; top: -222px;" class="box"></div>
+       <div id="11" style="right: 220px; top: -2px;" class="box"></div>
+       <div id="12" style="right: 0px; top: 218px;" class="box"></div>
+       <div id="13" style="right: -220px; top: -2px;" class="box"></div>
+       <div id="14" style="right: -110px; top: -222px;" class="box"></div>
+       <div id="15" style="right: -220px; top: 108px;" class="box"></div>
+       <div id="16" style="right: 220px; top: -112px;" class="box"></div>
+    </div>
+      
+      <div id="background2"></div>
+      <div id="background"></div>
+      <div id="background4"></div>
+    </nav>
+    
+      <div id="slide2" style="width: 100px; height: 100px; top: 125px; right: 175px; position :absolute;">
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div> 
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+       <div class="small box"></div>
+    </div>
+    
+    
+  
+  </body>
+</html>
